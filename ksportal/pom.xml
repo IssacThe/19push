@@ -1,0 +1,270 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project
+  xmlns="http://maven.apache.org/POM/4.0.0"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+
+  <!-- POM file generated with GWT webAppCreator -->
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>com.kamitsoft</groupId>
+  <artifactId>ksportal</artifactId>
+  <packaging>war</packaging>
+  <version>1.0</version>
+  <name>GWT Maven Archetype</name>
+
+  <properties>
+    <!-- Convenience property to set the GWT version -->
+    <gwtVersion>2.4.0</gwtVersion>
+    <!-- GWT needs at least java 1.5   9.1-901-1.jdbc4-->
+    <psqlVersion>9.1-901-1.jdbc4</psqlVersion>
+    <hibernateVersion>2.2</hibernateVersion>
+    <jettyVersion>6.1.10</jettyVersion>
+    <webappDirectory>${project.build.directory}/${project.build.finalName}</webappDirectory>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+   	<gwtp.version>0.7</gwtp.version>
+   	<liquibaseVersion>1.9.3.0</liquibaseVersion>
+   	<db-driver>org.postgresql.Driver</db-driver>
+   	<db-connection-url>jdbc:postgresql://localhost:5432/kportal</db-connection-url>
+   	<db-connection-username>postgres</db-connection-username>
+    <db-connection-password></db-connection-password>
+    
+  </properties>
+
+  <dependencies>
+	
+ 	<!-- gwt  -->
+    <dependency>
+      <groupId>com.google.gwt</groupId>
+      <artifactId>gwt-servlet</artifactId>
+      <version>${gwtVersion}</version>
+      <scope>runtime</scope>
+    </dependency>
+    <dependency>
+      <groupId>com.google.gwt</groupId>
+      <artifactId>gwt-user</artifactId>
+      <version>${gwtVersion}</version>
+      <scope>provided</scope>
+    </dependency>
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>4.7</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>javax.validation</groupId>
+      <artifactId>validation-api</artifactId>
+      <version>1.0.0.GA</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>javax.validation</groupId>
+      <artifactId>validation-api</artifactId>
+      <version>1.0.0.GA</version>
+      <classifier>sources</classifier>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+    	<groupId>com.google.gwt.inject</groupId>
+    	<artifactId>gin</artifactId>
+    	<version>2.0.0</version>
+    </dependency>
+
+    <dependency>
+    	<groupId>org.codehaus.mojo</groupId>
+    	<artifactId>hibernate3-maven-plugin</artifactId>
+    	<version>${hibernateVersion}</version>
+    	<exclusions>
+    	<!-- Avoid jetty conflict log  -->
+    		<exclusion>
+    			<artifactId>slf4j-log4j12</artifactId>
+    			<groupId>org.slf4j</groupId>
+    		</exclusion>
+    		<!-- Avoid error on uibind parsing used by gwt  -->
+    		<exclusion>
+    			<groupId>xerces</groupId>
+				<artifactId>xercesImpl</artifactId>
+    		</exclusion> 
+    	
+    	</exclusions>
+    </dependency>
+    
+     <!-- Avoid hybernate conflict log  -->
+     <dependency>
+        <groupId>org.slf4j</groupId>
+        <artifactId>slf4j-log4j12</artifactId>
+        <version>1.7.5</version>
+    </dependency>
+    
+    <!-- Avoid error on uibind parsing  -->
+	<dependency>
+		<groupId>xerces</groupId>
+		<artifactId>xercesImpl</artifactId>
+		<version>2.9.1</version>
+	</dependency>
+            
+
+   <!-- MVP component -->
+   <dependency>
+     <groupId>com.gwtplatform</groupId>
+     <artifactId>gwtp-mvp-client</artifactId>
+     <version>${gwtp.version}</version>
+     <scope>provided</scope>
+   </dependency>
+
+   <!-- Dispatch component -->
+   <dependency>
+     <groupId>com.gwtplatform</groupId>
+     <artifactId>gwtp-dispatch-client</artifactId>
+     <version>${gwtp.version}</version>
+     <scope>provided</scope> 
+   </dependency>
+
+   <dependency>
+     <groupId>com.gwtplatform</groupId>
+     <artifactId>gwtp-dispatch-server-guice</artifactId>
+
+     <version>${gwtp.version}</version>
+   </dependency>
+
+   <!-- Crawler component -->
+   <dependency>
+     <groupId>com.gwtplatform</groupId>
+     <artifactId>gwtp-crawler</artifactId>
+     <version>${gwtp.version}</version>
+   </dependency>
+
+   <!-- Annotation component -->
+   <dependency>
+     <groupId>com.gwtplatform</groupId>
+     <artifactId>gwtp-processors</artifactId>
+     <version>${gwtp.version}</version>
+     <scope>provided</scope>
+   </dependency>
+  </dependencies>
+
+            
+  <build>
+    <!-- Generate compiled stuff in the folder used for developing mode -->
+    <outputDirectory>${webappDirectory}/WEB-INF/classes</outputDirectory>
+
+    <plugins>
+    
+     <plugin>
+            <groupId>org.liquibase</groupId>
+            <artifactId>liquibase-plugin</artifactId>
+            <version>${liquibaseVersion}</version>
+            <configuration>
+                   <changeLogFile>src/main/resources/db/changelog.xml</changeLogFile>
+                   <driver>${db-driver}</driver>
+                   <url>${db-connection-url}</url>
+                   <username>${db-connection-username}</username>
+				   <password>${db-connection-password}</password>
+                   <promptOnNonLocalDatabase>false</promptOnNonLocalDatabase>
+                   <contexts>main</contexts>
+             </configuration>
+            <executions>
+                <execution>
+                    <phase>process-resources</phase>
+                    <goals>
+                        <goal>update</goal>
+                    </goals>
+                </execution>
+            </executions>
+            <dependencies>
+	        <dependency>
+	            <groupId>postgresql</groupId>
+	            <artifactId>postgresql</artifactId>
+	            <version>${psqlVersion}</version>
+	        </dependency>
+    </dependencies>
+            
+        </plugin>
+	
+	<!--plugin>
+	        <groupId>org.mortbay.jetty</groupId>
+	        <artifactId>maven-jetty-plugin</artifactId>
+	        <version>${jettyVersion}</version>
+	        
+	    <configuration>
+                <scanIntervalSeconds>10</scanIntervalSeconds>
+                <stopKey>foo</stopKey>
+                <stopPort>9999</stopPort>
+        </configuration>
+        <executions>
+                <execution>
+                        <id>start-jetty</id>
+                        <phase>pre-integration-test</phase>
+                        <goals>
+                                <goal>run</goal>
+                        </goals>
+                        <configuration>
+                                <scanIntervalSeconds>0</scanIntervalSeconds>
+                                <daemon>true</daemon>
+                        </configuration>
+                </execution>
+                <execution>
+                        <id>stop-jetty</id>
+                        <phase>post-integration-test</phase>
+                        <goals>
+                                <goal>stop</goal>
+                        </goals>
+                </execution>
+        </executions>
+	     
+	</plugin-->
+		
+      <!-- GWT Maven Plugin -->
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>gwt-maven-plugin</artifactId>
+        <version>${gwtVersion}</version>
+        <executions>
+          <execution>
+            <goals>
+              <goal>compile</goal>
+              <goal>test</goal>
+              <goal>i18n</goal>
+              <goal>generateAsync</goal>
+            </goals>
+          </execution>
+        </executions>
+        <!-- Plugin configuration. There are many available options, see 
+          gwt-maven-plugin documentation at codehaus.org -->
+        <configuration>
+          <runTarget>ksaportal.html</runTarget>
+          <hostedWebapp>${webappDirectory}</hostedWebapp>
+          <i18nMessagesBundle>com.kamitsoft.client.Messages</i18nMessagesBundle>
+        </configuration>
+      </plugin>
+
+      <!-- Copy static web files before executing gwt:run -->
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-war-plugin</artifactId>
+        <version>2.1.1</version>
+        <executions>
+          <execution>
+            <phase>compile</phase>
+            <goals>
+              <goal>exploded</goal>
+            </goals>
+          </execution>
+        </executions>
+        <configuration>
+          <webappDirectory>${webappDirectory}</webappDirectory>
+        </configuration>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <version>2.3.2</version>
+        <configuration>
+          <source>1.5</source>
+          <target>1.5</target>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
+
+</project>

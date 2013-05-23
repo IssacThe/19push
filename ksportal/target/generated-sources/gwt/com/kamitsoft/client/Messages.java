@@ -2,7 +2,7 @@ package com.kamitsoft.client;
 
 /**
  * Interface to represent the messages contained in resource bundle:
- * 	/Users/tourfade/Documents/workspace/kportal/ksportal/src/main/resources/com/kamitsoft/client/Messages.properties'.
+ * 	/Users/tourfade/git/kportal/ksportal/src/main/resources/com/kamitsoft/client/Messages.properties'.
  */
 public interface Messages extends com.google.gwt.i18n.client.Messages {
   

@@ -17,12 +17,12 @@ public class MainPageView extends ViewImpl implements MainPagePresenter.Display 
 
   public interface Binder extends UiBinder<Widget, MainPageView> {	}
 
-  @UiField HTMLPanel mainPanel; 
+
   
-  @UiField SimplePanel hmenu;
-  @UiField SimplePanel vmenu;
-  @UiField SimplePanel header;
-  @UiField SimplePanel mainContent;
+  @UiField SimplePanel topBar;
+  @UiField SimplePanel bottomBar;
+
+  @UiField HTMLPanel mainContent;
   
 	  @Inject
 	 public MainPageView(final Binder binder) {
@@ -31,11 +31,11 @@ public class MainPageView extends ViewImpl implements MainPagePresenter.Display 
 	  
   	@Override
 	public void setInSlot(Object slot, Widget content) {
-	    if (slot == MainPagePresenter.TYPE_VMenuContent) {
-	        setVerticalMenu(content);
+	    if (slot == MainPagePresenter.TYPE_TopBar) {
+	        setTopBar(content);
 	    }
-	    if (slot == MainPagePresenter.TYPE_HeaderContent) {
-	        setHeader(content);
+	    if (slot == MainPagePresenter.TYPE_BottomBar) {
+	        setBottomBar(content);
 	    }
 	    if (slot == MainPagePresenter.TYPE_MainContent) {
 	        setMainContent(content);
@@ -47,19 +47,18 @@ public class MainPageView extends ViewImpl implements MainPagePresenter.Display 
 		mainContent.add(content);
   	}
   
-  	private void setHeader(Widget content) {
-	  header.clear();
-	  header.add(content);
+  	private void setBottomBar(Widget content) {
+  		bottomBar.clear();
+  		bottomBar.add(content);
 	
   	}
-  	private void setVerticalMenu(Widget content) {
-	  vmenu.clear();
-	  vmenu.add(content);
+  	private void setTopBar(Widget content) {
+  		topBar.clear();
+  		topBar.add(content);
   	}
 
   	
 	public Widget asWidget() {
-		// TODO Auto-generated method stub
 		return widget;
 	}
   

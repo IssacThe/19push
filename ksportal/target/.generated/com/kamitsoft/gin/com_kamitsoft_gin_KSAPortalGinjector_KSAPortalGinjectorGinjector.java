@@ -28,34 +28,50 @@ public class com_kamitsoft_gin_KSAPortalGinjector_KSAPortalGinjectorGinjector {
   
   
   /**
-   * Injector fragment for com.kamitsoft.client.core.login
+   * Injector fragment for com.kamitsoft.client.core.bars.bottombar
    */
-  private com.kamitsoft.client.core.login.com_kamitsoft_gin_KSAPortalGinjector_KSAPortalGinjectorGinjector_fragment fieldFragment_com$kamitsoft$client$core$login = null;
+  private com.kamitsoft.client.core.bars.bottombar.com_kamitsoft_gin_KSAPortalGinjector_KSAPortalGinjectorGinjector_fragment fieldFragment_com$kamitsoft$client$core$bars$bottombar = null;
   /**
-   * Getter for injector fragment for com.kamitsoft.client.core.login
+   * Getter for injector fragment for com.kamitsoft.client.core.bars.bottombar
    */
-  public com.kamitsoft.client.core.login.com_kamitsoft_gin_KSAPortalGinjector_KSAPortalGinjectorGinjector_fragment getFragment_com_kamitsoft_client_core_login() {
-    if (fieldFragment_com$kamitsoft$client$core$login == null) {
-        fieldFragment_com$kamitsoft$client$core$login = new com.kamitsoft.client.core.login.com_kamitsoft_gin_KSAPortalGinjector_KSAPortalGinjectorGinjector_fragment(this);
+  public com.kamitsoft.client.core.bars.bottombar.com_kamitsoft_gin_KSAPortalGinjector_KSAPortalGinjectorGinjector_fragment getFragment_com_kamitsoft_client_core_bars_bottombar() {
+    if (fieldFragment_com$kamitsoft$client$core$bars$bottombar == null) {
+        fieldFragment_com$kamitsoft$client$core$bars$bottombar = new com.kamitsoft.client.core.bars.bottombar.com_kamitsoft_gin_KSAPortalGinjector_KSAPortalGinjectorGinjector_fragment(this);
     }
     
-    return fieldFragment_com$kamitsoft$client$core$login;
+    return fieldFragment_com$kamitsoft$client$core$bars$bottombar;
   }
   
   
   /**
-   * Injector fragment for com.kamitsoft.client.core.verticalmenu
+   * Injector fragment for com.kamitsoft.client.core.bars.topbar
    */
-  private com.kamitsoft.client.core.verticalmenu.com_kamitsoft_gin_KSAPortalGinjector_KSAPortalGinjectorGinjector_fragment fieldFragment_com$kamitsoft$client$core$verticalmenu = null;
+  private com.kamitsoft.client.core.bars.topbar.com_kamitsoft_gin_KSAPortalGinjector_KSAPortalGinjectorGinjector_fragment fieldFragment_com$kamitsoft$client$core$bars$topbar = null;
   /**
-   * Getter for injector fragment for com.kamitsoft.client.core.verticalmenu
+   * Getter for injector fragment for com.kamitsoft.client.core.bars.topbar
    */
-  public com.kamitsoft.client.core.verticalmenu.com_kamitsoft_gin_KSAPortalGinjector_KSAPortalGinjectorGinjector_fragment getFragment_com_kamitsoft_client_core_verticalmenu() {
-    if (fieldFragment_com$kamitsoft$client$core$verticalmenu == null) {
-        fieldFragment_com$kamitsoft$client$core$verticalmenu = new com.kamitsoft.client.core.verticalmenu.com_kamitsoft_gin_KSAPortalGinjector_KSAPortalGinjectorGinjector_fragment(this);
+  public com.kamitsoft.client.core.bars.topbar.com_kamitsoft_gin_KSAPortalGinjector_KSAPortalGinjectorGinjector_fragment getFragment_com_kamitsoft_client_core_bars_topbar() {
+    if (fieldFragment_com$kamitsoft$client$core$bars$topbar == null) {
+        fieldFragment_com$kamitsoft$client$core$bars$topbar = new com.kamitsoft.client.core.bars.topbar.com_kamitsoft_gin_KSAPortalGinjector_KSAPortalGinjectorGinjector_fragment(this);
     }
     
-    return fieldFragment_com$kamitsoft$client$core$verticalmenu;
+    return fieldFragment_com$kamitsoft$client$core$bars$topbar;
+  }
+  
+  
+  /**
+   * Injector fragment for com.kamitsoft.client.core.welcom
+   */
+  private com.kamitsoft.client.core.welcom.com_kamitsoft_gin_KSAPortalGinjector_KSAPortalGinjectorGinjector_fragment fieldFragment_com$kamitsoft$client$core$welcom = null;
+  /**
+   * Getter for injector fragment for com.kamitsoft.client.core.welcom
+   */
+  public com.kamitsoft.client.core.welcom.com_kamitsoft_gin_KSAPortalGinjector_KSAPortalGinjectorGinjector_fragment getFragment_com_kamitsoft_client_core_welcom() {
+    if (fieldFragment_com$kamitsoft$client$core$welcom == null) {
+        fieldFragment_com$kamitsoft$client$core$welcom = new com.kamitsoft.client.core.welcom.com_kamitsoft_gin_KSAPortalGinjector_KSAPortalGinjectorGinjector_fragment(this);
+    }
+    
+    return fieldFragment_com$kamitsoft$client$core$welcom;
   }
   
   
@@ -72,22 +88,6 @@ public class com_kamitsoft_gin_KSAPortalGinjector_KSAPortalGinjectorGinjector {
     }
     
     return fieldFragment_com$kamitsoft$client$core;
-  }
-  
-  
-  /**
-   * Injector fragment for com.kamitsoft.client.core.soyapassion
-   */
-  private com.kamitsoft.client.core.soyapassion.com_kamitsoft_gin_KSAPortalGinjector_KSAPortalGinjectorGinjector_fragment fieldFragment_com$kamitsoft$client$core$soyapassion = null;
-  /**
-   * Getter for injector fragment for com.kamitsoft.client.core.soyapassion
-   */
-  public com.kamitsoft.client.core.soyapassion.com_kamitsoft_gin_KSAPortalGinjector_KSAPortalGinjectorGinjector_fragment getFragment_com_kamitsoft_client_core_soyapassion() {
-    if (fieldFragment_com$kamitsoft$client$core$soyapassion == null) {
-        fieldFragment_com$kamitsoft$client$core$soyapassion = new com.kamitsoft.client.core.soyapassion.com_kamitsoft_gin_KSAPortalGinjector_KSAPortalGinjectorGinjector_fragment(this);
-    }
-    
-    return fieldFragment_com$kamitsoft$client$core$soyapassion;
   }
   
   
@@ -145,8 +145,8 @@ public class com_kamitsoft_gin_KSAPortalGinjector_KSAPortalGinjectorGinjector {
   public void initializeEagerSingletons() {
     
     getFragment_com_gwtplatform_mvp_client().initializeEagerSingletons();
+    getFragment_com_kamitsoft_client_core_welcom().initializeEagerSingletons();
     getFragment_com_kamitsoft_client_core().initializeEagerSingletons();
-    getFragment_com_kamitsoft_client_core_soyapassion().initializeEagerSingletons();
     
   }
   

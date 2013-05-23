@@ -1,4 +1,4 @@
-package com.kamitsoft.client.core.verticalmenu;
+package com.kamitsoft.client.core.bars.topbar;
 import com.google.gwt.user.client.Command;
 import com.google.gwt.user.client.ui.MenuItem;
 import com.google.inject.Inject;
@@ -10,19 +10,11 @@ import com.gwtplatform.mvp.client.proxy.PlaceRequest;
 import com.kamitsoft.client.places.NamesTokens;
 
 
-public class VMenuPresenter extends PresenterWidget<VMenuPresenter.Display> {
+public class TopBarPresenter extends PresenterWidget<TopBarPresenter.Display> {
 
   public interface Display extends View {
 
-	public MenuItem getCoordonneesClient();
-
-	public MenuItem getMesureClient();
-
-	public MenuItem getPassionCouture();
 	
-	public MenuItem getTissuBazin();
-	
-	public MenuItem getTissuPercale();
 	  
   }
 
@@ -32,7 +24,7 @@ private Display display;
 private PlaceManager placeManager; 
   
   @Inject
-  public VMenuPresenter(EventBus eventBus, Display view) {
+  public TopBarPresenter(EventBus eventBus, Display view) {
     super(eventBus, view);
    display=view;
     

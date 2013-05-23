@@ -14,8 +14,10 @@ import com.gwtplatform.mvp.client.proxy.RevealRootContentEvent;
 
 import com.kamitsoft.client.places.NamesTokens;
 
+import com.kamitsoft.client.core.bars.bottombar.BottomBarPresenter;
+import com.kamitsoft.client.core.bars.topbar.TopBarPresenter;
 import com.kamitsoft.client.core.login.LoginPresenter;
-import com.kamitsoft.client.core.verticalmenu.VMenuPresenter;;
+import com.kamitsoft.client.core.welcom.WelcomePresenter;
 
 public class MainPagePresenter extends Presenter<MainPagePresenter.Display, MainPagePresenter.Proxy> {
 
@@ -24,17 +26,18 @@ public class MainPagePresenter extends Presenter<MainPagePresenter.Display, Main
 	  @ContentSlot
 	  public static final Type<RevealContentHandler<?>> TYPE_MainContent = new Type<RevealContentHandler<?>>();
 	  @ContentSlot
-	  public static final Type<RevealContentHandler<?>> TYPE_HeaderContent = new Type<RevealContentHandler<?>>();
+	  public static final Type<RevealContentHandler<?>> TYPE_TopBar = new Type<RevealContentHandler<?>>();
 	  @ContentSlot
-	  public static final Type<RevealContentHandler<?>> TYPE_VMenuContent = new Type<RevealContentHandler<?>>();
+	  public static final Type<RevealContentHandler<?>> TYPE_BottomBar = new Type<RevealContentHandler<?>>();
 	  
 	  @ProxyCodeSplit
 	  @NameToken(NamesTokens.main)
 	  public interface Proxy extends ProxyPlace<MainPagePresenter> {}
 	  
 	  
-	  @Inject private VMenuPresenter verticalMenu;
-	  @Inject private LoginPresenter loginPresentee;
+	  @Inject private TopBarPresenter topBar;
+	  @Inject private BottomBarPresenter bottomBar;
+	  @Inject private WelcomePresenter welcom;
 	  
 	  @Inject
 	  public MainPagePresenter(EventBus eventBus, Display view, Proxy proxy) {
@@ -44,10 +47,11 @@ public class MainPagePresenter extends Presenter<MainPagePresenter.Display, Main
 	
 	  @Override
 	  protected void revealInParent() {
-	    RevealRootContentEvent.fire( this, this );
-	    setInSlot(TYPE_VMenuContent, verticalMenu);
-	    setInSlot(TYPE_HeaderContent, loginPresentee);
-	 
+	    RevealRootContentEvent.fire(this, this);
+	    setInSlot(TYPE_TopBar, topBar);
+	    setInSlot(TYPE_BottomBar, bottomBar);
+	    setInSlot(TYPE_MainContent, welcom);
+	    
 	  }
 	
 	  @Override
@@ -57,15 +61,7 @@ public class MainPagePresenter extends Presenter<MainPagePresenter.Display, Main
 		  
 	  }
 
-	protected void displayClientMesures() {
-		// TODO Auto-generated method stub
-		
-	}
 	
-	protected void displayClientCorrdonnees() {
-		// TODO Auto-generated method stub
-		
-	}
 
 
 

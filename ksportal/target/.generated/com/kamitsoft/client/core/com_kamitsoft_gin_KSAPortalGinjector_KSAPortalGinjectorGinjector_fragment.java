@@ -8,19 +8,25 @@ public class com_kamitsoft_gin_KSAPortalGinjector_KSAPortalGinjectorGinjector_fr
     
   }
   
-  public native void com$kamitsoft$client$core$MainPagePresenter_loginPresentee_fieldInjection(com.kamitsoft.client.core.MainPagePresenter injectee, com.kamitsoft.client.core.login.LoginPresenter value) /*-{
-    injectee.@com.kamitsoft.client.core.MainPagePresenter::loginPresentee = value;
+  public native void com$kamitsoft$client$core$MainPagePresenter_bottomBar_fieldInjection(com.kamitsoft.client.core.MainPagePresenter injectee, com.kamitsoft.client.core.bars.bottombar.BottomBarPresenter value) /*-{
+    injectee.@com.kamitsoft.client.core.MainPagePresenter::bottomBar = value;
   }-*/;
   
-  public native void com$kamitsoft$client$core$MainPagePresenter_verticalMenu_fieldInjection(com.kamitsoft.client.core.MainPagePresenter injectee, com.kamitsoft.client.core.verticalmenu.VMenuPresenter value) /*-{
-    injectee.@com.kamitsoft.client.core.MainPagePresenter::verticalMenu = value;
+  public native void com$kamitsoft$client$core$MainPagePresenter_topBar_fieldInjection(com.kamitsoft.client.core.MainPagePresenter injectee, com.kamitsoft.client.core.bars.topbar.TopBarPresenter value) /*-{
+    injectee.@com.kamitsoft.client.core.MainPagePresenter::topBar = value;
+  }-*/;
+  
+  public native void com$kamitsoft$client$core$MainPagePresenter_welcom_fieldInjection(com.kamitsoft.client.core.MainPagePresenter injectee, com.kamitsoft.client.core.welcom.WelcomePresenter value) /*-{
+    injectee.@com.kamitsoft.client.core.MainPagePresenter::welcom = value;
   }-*/;
   
   public void memberInject_Key$type$com$kamitsoft$client$core$MainPagePresenter$_annotation$$none$$(com.kamitsoft.client.core.MainPagePresenter injectee) {
-    injector.getFragment_com_gwtplatform_mvp_client().com$gwtplatform$mvp$client$HandlerContainerImpl_automaticBind_methodInjection__(injectee, injector.getFragment_com_gwtplatform_mvp_client().get_Key$type$com$gwtplatform$mvp$client$AutobindDisable$_annotation$$none$$());
-    com$kamitsoft$client$core$MainPagePresenter_loginPresentee_fieldInjection(injectee, injector.getFragment_com_kamitsoft_client_core_login().get_Key$type$com$kamitsoft$client$core$login$LoginPresenter$_annotation$$none$$());
+    injector.getFragment_com_gwtplatform_mvp_client().com$gwtplatform$mvp$client$HandlerContainerImpl_automaticBind_methodInjection___(injectee, injector.getFragment_com_gwtplatform_mvp_client().get_Key$type$com$gwtplatform$mvp$client$AutobindDisable$_annotation$$none$$());
+    com$kamitsoft$client$core$MainPagePresenter_bottomBar_fieldInjection(injectee, injector.getFragment_com_kamitsoft_client_core_bars_bottombar().get_Key$type$com$kamitsoft$client$core$bars$bottombar$BottomBarPresenter$_annotation$$none$$());
     
-    com$kamitsoft$client$core$MainPagePresenter_verticalMenu_fieldInjection(injectee, injector.getFragment_com_kamitsoft_client_core_verticalmenu().get_Key$type$com$kamitsoft$client$core$verticalmenu$VMenuPresenter$_annotation$$none$$());
+    com$kamitsoft$client$core$MainPagePresenter_topBar_fieldInjection(injectee, injector.getFragment_com_kamitsoft_client_core_bars_topbar().get_Key$type$com$kamitsoft$client$core$bars$topbar$TopBarPresenter$_annotation$$none$$());
+    
+    com$kamitsoft$client$core$MainPagePresenter_welcom_fieldInjection(injectee, injector.getFragment_com_kamitsoft_client_core_welcom().get_Key$type$com$kamitsoft$client$core$welcom$WelcomePresenter$_annotation$$none$$());
     
     
   }

@@ -19,8 +19,8 @@ public class com_kamitsoft_gin_KSAPortalGinjectorImpl implements com.kamitsoft.g
     return fieldcom_kamitsoft_gin_KSAPortalGinjector_KSAPortalGinjectorGinjector.getFragment_com_kamitsoft_client_core().get_Key$type$com$google$gwt$inject$client$AsyncProvider$com$kamitsoft$client$core$MainPagePresenter$$_annotation$$none$$();
   }
   
-  public com.google.gwt.inject.client.AsyncProvider<com.kamitsoft.client.core.soyapassion.PassionCouturePresenter> getPassionCouturePresenter() {
-    return fieldcom_kamitsoft_gin_KSAPortalGinjector_KSAPortalGinjectorGinjector.getFragment_com_kamitsoft_client_core_soyapassion().get_Key$type$com$google$gwt$inject$client$AsyncProvider$com$kamitsoft$client$core$soyapassion$PassionCouturePresenter$$_annotation$$none$$();
+  public com.google.gwt.inject.client.AsyncProvider<com.kamitsoft.client.core.welcom.WelcomePresenter> getPassionCouturePresenter() {
+    return fieldcom_kamitsoft_gin_KSAPortalGinjector_KSAPortalGinjectorGinjector.getFragment_com_kamitsoft_client_core_welcom().get_Key$type$com$google$gwt$inject$client$AsyncProvider$com$kamitsoft$client$core$welcom$WelcomePresenter$$_annotation$$none$$();
   }
   
   public com.gwtplatform.mvp.client.proxy.PlaceManager getPlaceManager() {

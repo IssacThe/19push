@@ -43,8 +43,8 @@ public class MainPagePresenterProxyImpl extends com.gwtplatform.mvp.client.proxy
       
       RevealContentHandler<MainPagePresenter> revealContentHandler = new RevealContentHandler<MainPagePresenter>( eventBus, this );
       getEventBus().addHandler( MainPagePresenter.TYPE_MainContent, revealContentHandler );
-      getEventBus().addHandler( MainPagePresenter.TYPE_HeaderContent, revealContentHandler );
-      getEventBus().addHandler( MainPagePresenter.TYPE_VMenuContent, revealContentHandler );
+      getEventBus().addHandler( MainPagePresenter.TYPE_TopBar, revealContentHandler );
+      getEventBus().addHandler( MainPagePresenter.TYPE_BottomBar, revealContentHandler );
     }
   }
   

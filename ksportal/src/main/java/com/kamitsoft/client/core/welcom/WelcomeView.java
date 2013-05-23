@@ -1,4 +1,4 @@
-package com.kamitsoft.client.core.soyapassion;
+package com.kamitsoft.client.core.welcom;
 
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
@@ -11,17 +11,17 @@ import com.google.inject.Inject;
 import com.gwtplatform.mvp.client.ViewImpl;
 import com.google.gwt.user.client.ui.MenuItem;
 
-public class PassionCoutureView extends ViewImpl implements PassionCouturePresenter.Display {
+public class WelcomeView extends ViewImpl implements WelcomePresenter.Display {
 
 	private final Widget widget;
 
-	public interface Binder extends UiBinder<Widget, PassionCoutureView> {
+	public interface Binder extends UiBinder<Widget, WelcomeView> {
 	}
 
 	@UiField HTMLPanel passionContent;
 	
 	@Inject
-	public PassionCoutureView(final Binder binder) {
+	public WelcomeView(final Binder binder) {
 		widget = binder.createAndBindUi(this);
 
 	}

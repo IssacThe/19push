@@ -34,9 +34,8 @@ public class MainPageView_BinderImpl implements UiBinder<com.google.gwt.user.cli
     com.google.gwt.user.client.ui.HTMLPanel f_HTMLPanel1 = new com.google.gwt.user.client.ui.HTMLPanel(template.html2(domId0, domId1, domId2).asString());
 
     topBar.setStyleName("topbar kamitBox");
-    mainContent.setStyleName("kamitBox background-lightgrey mainpanel");
-    bottomBar.setStyleName("bottombar");
-    f_HTMLPanel1.setStyleName("mainBackground");
+    mainContent.setStyleName("kamitBox background-albatre mainpanel");
+    bottomBar.setStyleName("bottombar kamitBox");
 
     UiBinderUtil.TempAttachment attachRecord0 = UiBinderUtil.attachToDom(f_HTMLPanel1.getElement());
     com.google.gwt.user.client.Element domId0Element = com.google.gwt.dom.client.Document.get().getElementById(domId0).cast();

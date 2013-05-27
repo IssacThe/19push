@@ -9,7 +9,7 @@ public class com_kamitsoft_gin_KSAPortalGinjector_KSAPortalGinjectorGinjector_fr
   }-*/;
   
   public void memberInject_Key$type$com$kamitsoft$client$core$login$LoginPresenter$_annotation$$none$$(com.kamitsoft.client.core.login.LoginPresenter injectee) {
-    injector.getFragment_com_gwtplatform_mvp_client().com$gwtplatform$mvp$client$HandlerContainerImpl_automaticBind_methodInjection(injectee, injector.getFragment_com_gwtplatform_mvp_client().get_Key$type$com$gwtplatform$mvp$client$AutobindDisable$_annotation$$none$$());
+    injector.getFragment_com_gwtplatform_mvp_client().com$gwtplatform$mvp$client$HandlerContainerImpl_automaticBind_methodInjection___(injectee, injector.getFragment_com_gwtplatform_mvp_client().get_Key$type$com$gwtplatform$mvp$client$AutobindDisable$_annotation$$none$$());
     com$kamitsoft$client$core$login$LoginPresenter_placeManager_fieldInjection(injectee, injector.getFragment_com_gwtplatform_mvp_client_proxy().get_Key$type$com$gwtplatform$mvp$client$proxy$PlaceManager$_annotation$$none$$());
     
     

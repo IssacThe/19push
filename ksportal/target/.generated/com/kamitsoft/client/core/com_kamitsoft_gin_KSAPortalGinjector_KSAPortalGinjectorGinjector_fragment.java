@@ -21,7 +21,7 @@ public class com_kamitsoft_gin_KSAPortalGinjector_KSAPortalGinjectorGinjector_fr
   }-*/;
   
   public void memberInject_Key$type$com$kamitsoft$client$core$MainPagePresenter$_annotation$$none$$(com.kamitsoft.client.core.MainPagePresenter injectee) {
-    injector.getFragment_com_gwtplatform_mvp_client().com$gwtplatform$mvp$client$HandlerContainerImpl_automaticBind_methodInjection___(injectee, injector.getFragment_com_gwtplatform_mvp_client().get_Key$type$com$gwtplatform$mvp$client$AutobindDisable$_annotation$$none$$());
+    injector.getFragment_com_gwtplatform_mvp_client().com$gwtplatform$mvp$client$HandlerContainerImpl_automaticBind_methodInjection_____(injectee, injector.getFragment_com_gwtplatform_mvp_client().get_Key$type$com$gwtplatform$mvp$client$AutobindDisable$_annotation$$none$$());
     com$kamitsoft$client$core$MainPagePresenter_bottomBar_fieldInjection(injectee, injector.getFragment_com_kamitsoft_client_core_bars_bottombar().get_Key$type$com$kamitsoft$client$core$bars$bottombar$BottomBarPresenter$_annotation$$none$$());
     
     com$kamitsoft$client$core$MainPagePresenter_topBar_fieldInjection(injectee, injector.getFragment_com_kamitsoft_client_core_bars_topbar().get_Key$type$com$kamitsoft$client$core$bars$topbar$TopBarPresenter$_annotation$$none$$());

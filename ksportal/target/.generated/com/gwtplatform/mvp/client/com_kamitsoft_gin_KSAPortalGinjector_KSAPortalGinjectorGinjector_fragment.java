@@ -24,16 +24,24 @@ public class com_kamitsoft_gin_KSAPortalGinjector_KSAPortalGinjectorGinjector_fr
     invokee.automaticBind(_0);
   }
   
-  public void memberInject_Key$type$com$gwtplatform$mvp$client$RootPresenter$RootView$_annotation$$none$$(com.gwtplatform.mvp.client.RootPresenter.RootView injectee) {
-    
-  }
-  
   public void com$gwtplatform$mvp$client$HandlerContainerImpl_automaticBind_methodInjection____(com.gwtplatform.mvp.client.HandlerContainerImpl invokee, com.gwtplatform.mvp.client.AutobindDisable _0) {
     invokee.automaticBind(_0);
   }
   
+  public void com$gwtplatform$mvp$client$HandlerContainerImpl_automaticBind_methodInjection_____(com.gwtplatform.mvp.client.HandlerContainerImpl invokee, com.gwtplatform.mvp.client.AutobindDisable _0) {
+    invokee.automaticBind(_0);
+  }
+  
+  public void memberInject_Key$type$com$gwtplatform$mvp$client$RootPresenter$RootView$_annotation$$none$$(com.gwtplatform.mvp.client.RootPresenter.RootView injectee) {
+    
+  }
+  
+  public void com$gwtplatform$mvp$client$HandlerContainerImpl_automaticBind_methodInjection______(com.gwtplatform.mvp.client.HandlerContainerImpl invokee, com.gwtplatform.mvp.client.AutobindDisable _0) {
+    invokee.automaticBind(_0);
+  }
+  
   public void memberInject_Key$type$com$gwtplatform$mvp$client$RootPresenter$_annotation$$none$$(com.gwtplatform.mvp.client.RootPresenter injectee) {
-    com$gwtplatform$mvp$client$HandlerContainerImpl_automaticBind_methodInjection____(injectee, get_Key$type$com$gwtplatform$mvp$client$AutobindDisable$_annotation$$none$$());
+    com$gwtplatform$mvp$client$HandlerContainerImpl_automaticBind_methodInjection______(injectee, get_Key$type$com$gwtplatform$mvp$client$AutobindDisable$_annotation$$none$$());
     
   }
   

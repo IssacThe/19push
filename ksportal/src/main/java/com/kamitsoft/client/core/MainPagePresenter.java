@@ -1,6 +1,5 @@
 package com.kamitsoft.client.core;
 import com.google.gwt.event.shared.GwtEvent.Type;
-
 import com.google.inject.Inject;
 import com.google.web.bindery.event.shared.EventBus;
 import com.gwtplatform.mvp.client.Presenter;
@@ -11,13 +10,10 @@ import com.gwtplatform.mvp.client.annotations.ProxyCodeSplit;
 import com.gwtplatform.mvp.client.proxy.ProxyPlace;
 import com.gwtplatform.mvp.client.proxy.RevealContentHandler;
 import com.gwtplatform.mvp.client.proxy.RevealRootContentEvent;
-
-import com.kamitsoft.client.places.NamesTokens;
-
 import com.kamitsoft.client.core.bars.bottombar.BottomBarPresenter;
 import com.kamitsoft.client.core.bars.topbar.TopBarPresenter;
-import com.kamitsoft.client.core.login.LoginPresenter;
 import com.kamitsoft.client.core.welcom.WelcomePresenter;
+import com.kamitsoft.client.places.NamesTokens;
 
 public class MainPagePresenter extends Presenter<MainPagePresenter.Display, MainPagePresenter.Proxy> {
 

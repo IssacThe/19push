@@ -1,12 +1,13 @@
 <!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
 
-<ui:UiBinder xmlns:ui='urn:ui:com.google.gwt.uibinder'   xmlns:g='urn:import:com.google.gwt.user.client.ui'>
+<ui:UiBinder xmlns:ui='urn:ui:com.google.gwt.uibinder'   
+			 xmlns:g='urn:import:com.google.gwt.user.client.ui'>
 
 
 
     
-    	<g:HTMLPanel  >
-	        
+    	<g:HTMLPanel  styleName = "background-argile">
+	        <g:TextBox ui:field ="searchTextBox" styleName = "marginleft50px width-200px roundedborder10px margintop10px paddingleft20px height-20px searchicone" />
     	</g:HTMLPanel> 
     
            

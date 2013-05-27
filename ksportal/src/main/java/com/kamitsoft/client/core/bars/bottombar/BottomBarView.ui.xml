@@ -5,7 +5,7 @@
 
 
     
-    	<g:HTMLPanel  >
+    	<g:HTMLPanel  styleName = "background-albatre">
 	        
     	</g:HTMLPanel> 
     

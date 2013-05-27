@@ -9,6 +9,8 @@ import com.kamitsoft.client.core.bars.bottombar.BottomBarPresenter;
 import com.kamitsoft.client.core.bars.bottombar.BottomBarView;
 import com.kamitsoft.client.core.bars.topbar.TopBarPresenter;
 import com.kamitsoft.client.core.bars.topbar.TopBarView;
+import com.kamitsoft.client.core.bars.topbar.listpopup.PatientListPopupPresenter;
+import com.kamitsoft.client.core.bars.topbar.listpopup.PatientListPopupView;
 import com.kamitsoft.client.core.login.LoginPresenter;
 import com.kamitsoft.client.core.login.LoginView;
 import com.kamitsoft.client.core.welcom.WelcomePresenter;
@@ -29,6 +31,8 @@ public class BinderModule extends AbstractPresenterModule {
 	    bindPresenterWidget(TopBarPresenter.class, TopBarPresenter.Display.class, TopBarView.class);
 	    bindPresenterWidget(BottomBarPresenter.class, BottomBarPresenter.Display.class, BottomBarView.class);
 	    bindPresenterWidget(LoginPresenter.class, LoginPresenter.Display.class, LoginView.class);
-	      
+	    bindPresenterWidget(PatientListPopupPresenter.class, PatientListPopupPresenter.Display.class, PatientListPopupView.class);
+	    
+	    
 	  }
 	}

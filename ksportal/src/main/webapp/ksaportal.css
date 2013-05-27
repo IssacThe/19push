@@ -5,44 +5,61 @@
     margin-right: auto;
     margin-left: auto;
     width:80%;
-    height:500px;
-    margin-top:  80px;
-    margin-bottom: 80px;
+    height:580px;
+    margin-top:  75px;
+    margin-bottom: 75px;
 }
 
+.shadowedbox{
+	border: solid 1px;
+	border-color: grey;
+	box-shadow: 2px 2px 2px 2px  #888888;
+}
 
-.mainBackground{
+.mainbackground{
   background-image: url('images/page_t.jpg');
   background-repeat: repeat;
   background-attachment: scroll;
   
 }
 
+.searchicone{
+ 	background-image: url('images/search.png');
+  	background-repeat: no-repeat;
+  	background-position: right center;
+}
 .designemenuicone{
- background-image: url('images/design.png');
-  background-repeat: no-repeat;
- width:18px;
- height:18px;
- display:inline;
- position: absolute;
+ 	background-image: url('images/design.png');
+  	background-repeat: no-repeat;
+ 	width:18px;
+ 	height:18px;
+ 	display:inline;
+ 	position: absolute;
 }
 
+.zindex1000{
+	z-index:1000;
+}
 .topbar{
     width: 80%;
-    height: 40px;
+    height: 50px;
     margin-left: -40%;
-    top: 10px;
+    top: 2px;
     position: fixed;
     left: 50%;
+    background-color:  #EFEFEF;
+    z-index:500;
 }
 
 .bottombar{
     position:fixed;
-    bottom: 5px;
+    bottom: 4px;
     width: 80%;
-    height: 40px;
+    height: 50px;
     margin-left: -40%;
     left: 50%;
+    background-color: #EFEFEF;
+    z-index:500;
 }
 
 
@@ -73,6 +90,46 @@
 }
 .background-lightgrey {
     background-color: #F0F0F0;
+}
+
+.background-argile{
+	background-color: #EFEFEF;
+}
+
+.background-albatre{
+	background-color: #FBFCFA;
+}
+
+.padding-top-5px {
+    padding-top: 5px;
+}
+
+.padding-top-10px {
+    padding-top: 10px;
+}
+
+.padding-top-15px {
+    padding-top: 15px;
+}
+
+.padding-top-20px {
+    padding-top: 20px;
+}
+
+.padding-bottom-5px {
+    padding-bottom: 5px;
+}
+
+.padding-bottom-10px {
+    padding-bottom: 10px;
+}
+
+.padding-bottom-15px {
+    padding-bottom: 15px;
+}
+
+.padding-bottom-20px {
+    padding-bottom: 20px;
 }
 
 .padding-left-5px {
@@ -167,6 +224,9 @@
     margin-right: 100px;
 }
 
+.margin-top-5px {
+    margin-top: 5px;
+}
 .margin-top-10px {
     margin-top: 10px;
 }
@@ -227,6 +287,32 @@
     width:130px
 }
 
+.width-205px {
+    width: 205px;
+}
+.width-200px{
+    width:200px
+}
+.width-250px{
+    width:250px
+}
+
+.width-300px{
+    width:300px
+}
+
+.width-350px{
+    width:350px
+}
+
+.width-400px{
+    width:400px
+}
+
+.width-600px{
+    width:600px
+}
+
 .height-10px{
     height:10px
 }
@@ -257,16 +343,80 @@
 .height-100px{
     height:100px
 }
+
+.height-105px {
+    height: 105px;
+}
+
 .height-110px{
     height:110px
 }
 .height-120px{
     height:120px
 }
+.height-200px{
+    height:200px
+}
+
+.height-250px{
+    height:250px
+}
+
+.height-300px{
+    height:300px
+}
+
+.heigt-580px{
+	height:580px
+}
+.margintop5px{
+	margin-top:5px;
+	
+}
+.margintop10px{
+	margin-top:10px;
+	
+}
+
+.marginleft5px{
+	margin-left:5px;
+	
+}
+.marginleft10px{
+	margin-left:10px;
+}
+
+.marginleft50px{
+	margin-left:50px;
+}
+
+.paddingleft5px{
+	padding-left:5px;
+}
+
+.paddingleft20px{
+	padding-left:20px;
+}
 
 .centerHorizontal{
     margin-left: auto;
     margin-right: auto; 
+}
+
+.sideCarousel {
+    z-index: 0;
+    border : solid 0.5px;
+}
+
+.centerCarousel {
+    z-index: 1;
+    border:solid;
+}
+
+.roundedborder10px {
+	-webkit-border-radius: 10px;
+	-moz-border-radius: 10px;
+	border-radius: 10px;
 }
 
 /** Most GWT widgets already have a style name defined */

@@ -21,7 +21,6 @@ public class MainPageView extends ViewImpl implements MainPagePresenter.Display 
   
   @UiField SimplePanel topBar;
   @UiField SimplePanel bottomBar;
-
   @UiField HTMLPanel mainContent;
   
 	  @Inject
@@ -57,10 +56,12 @@ public class MainPageView extends ViewImpl implements MainPagePresenter.Display 
   		topBar.add(content);
   	}
 
-  	
-	public Widget asWidget() {
+  	public Widget asWidget() {
 		return widget;
 	}
+
+  	
+	
   
   
 

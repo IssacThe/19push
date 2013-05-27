@@ -1,0 +1,12 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+
+<ui:UiBinder xmlns:ui='urn:ui:com.google.gwt.uibinder'   
+			 xmlns:g='urn:import:com.google.gwt.user.client.ui'>
+ 
+    	<g:PopupPanel styleName = "background-argile width-250px height-300px zindex1000 shadowedbox" autoHideEnabled="true" modal="false" glassEnabled="false" ui:field ="popupPanel">
+	        <g:HTMLPanel ui:field = "unsortedListPanel"/>
+    	</g:PopupPanel> 
+    
+           
+
+</ui:UiBinder> 

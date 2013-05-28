@@ -16,7 +16,7 @@ import com.kamitsoft.client.core.bars.topbar.listpopup.PatientListPopupPresenter
 import com.kamitsoft.client.i18n.MainDictionary;
 import com.kamitsoft.client.ui.ul.ListItem;
 import com.kamitsoft.client.ui.ul.UListWidget;
-import com.kamitsoft.shared.beans.PatientInfo;
+import com.kamitsoft.shared.beans.patient.PatientInfo;
 
 
 public class PatientListPopupView extends PopupViewImpl implements PatientListPopupPresenter.Display {

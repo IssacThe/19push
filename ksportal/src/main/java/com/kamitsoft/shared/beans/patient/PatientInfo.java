@@ -1,4 +1,4 @@
-package com.kamitsoft.shared.beans;
+package com.kamitsoft.shared.beans.patient;
 
 import com.google.gwt.user.client.rpc.IsSerializable;
 

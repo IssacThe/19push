@@ -7,7 +7,7 @@ import com.google.web.bindery.event.shared.EventBus;
 import com.gwtplatform.mvp.client.PopupView;
 import com.gwtplatform.mvp.client.PresenterWidget;
 import com.gwtplatform.mvp.client.proxy.PlaceManager;
-import com.kamitsoft.shared.beans.PatientInfo;
+import com.kamitsoft.shared.beans.patient.PatientInfo;
 
 
 public class PatientListPopupPresenter extends PresenterWidget<PatientListPopupPresenter.Display> {

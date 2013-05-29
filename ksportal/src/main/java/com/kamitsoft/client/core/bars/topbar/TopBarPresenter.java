@@ -1,9 +1,11 @@
 package com.kamitsoft.client.core.bars.topbar;
-import com.google.gwt.event.dom.client.ChangeEvent;
-import com.google.gwt.event.dom.client.ChangeHandler;
+import java.util.ArrayList;
+
+
 import com.google.gwt.event.dom.client.KeyUpEvent;
 import com.google.gwt.event.dom.client.KeyUpHandler;
 import com.google.gwt.user.client.Timer;
+import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.inject.Inject;
 import com.google.web.bindery.event.shared.EventBus;
 import com.gwtplatform.mvp.client.PresenterWidget;
@@ -11,6 +13,10 @@ import com.gwtplatform.mvp.client.View;
 import com.gwtplatform.mvp.client.proxy.PlaceManager;
 import com.gwtplatform.mvp.client.proxy.PlaceRequest;
 import com.kamitsoft.client.core.bars.topbar.listpopup.PatientListPopupPresenter;
+import com.kamitsoft.client.security.UserContext;
+import com.kamitsoft.remote.rpc.PatientAsync;
+import com.kamitsoft.shared.beans.patient.PatientInfo;
+import com.kamitsoft.shared.beans.patient.PatientParameters;
 
 
 public class TopBarPresenter extends PresenterWidget<TopBarPresenter.Display> {
@@ -25,6 +31,7 @@ public class TopBarPresenter extends PresenterWidget<TopBarPresenter.Display> {
 	
 	@Inject private PlaceManager placeManager;
 	@Inject private PatientListPopupPresenter listpopup;
+	@Inject private UserContext context;
 	private Timer timer;
 	@Inject
 	public TopBarPresenter(EventBus eventBus, Display view) {
@@ -46,17 +53,20 @@ public class TopBarPresenter extends PresenterWidget<TopBarPresenter.Display> {
 				}
 				if(timer!=null){
 					timer.cancel();
-				}else{
-					timer = new Timer(){
-						@Override
-						public void run() {
-							searchPatient(getView().getSearchText());
-						}
-						
-					};
-					timer.schedule(500);
+					timer= null;
 				}
+				
+				timer = new Timer(){
+					@Override
+					public void run() {
+						searchPatient(getView().getSearchText());
+					}
+					
+				};
+				
+				timer.schedule(500);
 			}
+			
 
 			
 			
@@ -64,8 +74,24 @@ public class TopBarPresenter extends PresenterWidget<TopBarPresenter.Display> {
 	}
 	
 	protected void searchPatient(String searchText) {
-		System.out.println("calling");
-		listpopup.show();
+		
+		PatientAsync patientAsyn = PatientAsync.Util.getInstance();
+		patientAsyn.searchPatient(context,new PatientParameters(), new AsyncCallback<ArrayList<PatientInfo>>() {
+
+			@Override
+			public void onFailure(Throwable caught) {
+				caught.printStackTrace();
+			}
+
+			@Override
+			public void onSuccess(ArrayList<PatientInfo> result) {
+				listpopup.addPatientList(result);
+				listpopup.show();
+				
+			}
+		   
+		  });
+		
 	}
 
 

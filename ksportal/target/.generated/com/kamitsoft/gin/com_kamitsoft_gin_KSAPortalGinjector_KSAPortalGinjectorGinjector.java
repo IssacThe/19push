@@ -44,6 +44,22 @@ public class com_kamitsoft_gin_KSAPortalGinjector_KSAPortalGinjectorGinjector {
   
   
   /**
+   * Injector fragment for com.kamitsoft.client.security
+   */
+  private com.kamitsoft.client.security.com_kamitsoft_gin_KSAPortalGinjector_KSAPortalGinjectorGinjector_fragment fieldFragment_com$kamitsoft$client$security = null;
+  /**
+   * Getter for injector fragment for com.kamitsoft.client.security
+   */
+  public com.kamitsoft.client.security.com_kamitsoft_gin_KSAPortalGinjector_KSAPortalGinjectorGinjector_fragment getFragment_com_kamitsoft_client_security() {
+    if (fieldFragment_com$kamitsoft$client$security == null) {
+        fieldFragment_com$kamitsoft$client$security = new com.kamitsoft.client.security.com_kamitsoft_gin_KSAPortalGinjector_KSAPortalGinjectorGinjector_fragment(this);
+    }
+    
+    return fieldFragment_com$kamitsoft$client$security;
+  }
+  
+  
+  /**
    * Injector fragment for com.kamitsoft.client.core.bars.topbar.listpopup
    */
   private com.kamitsoft.client.core.bars.topbar.listpopup.com_kamitsoft_gin_KSAPortalGinjector_KSAPortalGinjectorGinjector_fragment fieldFragment_com$kamitsoft$client$core$bars$topbar$listpopup = null;

@@ -15,6 +15,7 @@ public class PatientListPopupPresenter extends PresenterWidget<PatientListPopupP
 	public interface Display extends PopupView {
 		public void addPatient(ArrayList<PatientInfo> patientList );
 		public void setSelectionHandler(PatientSelectionHandler handler);
+		public void setPosition();
 		
 	}
 	public interface PatientSelectionHandler{
@@ -48,7 +49,7 @@ public class PatientListPopupPresenter extends PresenterWidget<PatientListPopupP
 	}
 	
 	protected void display(PatientInfo info) {
-		
+		System.out.println("display "+info.getFirstName());
 	}
 
 	public void addPatientList(ArrayList<PatientInfo> list){
@@ -57,7 +58,7 @@ public class PatientListPopupPresenter extends PresenterWidget<PatientListPopupP
 	}
 	
 	public void show(){
-		getView().setPosition(195,40);
+		getView().setPosition();
 		getView().show();
 	}
 

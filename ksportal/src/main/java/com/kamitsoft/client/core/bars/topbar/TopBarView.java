@@ -47,7 +47,7 @@ public class TopBarView extends ViewImpl implements TopBarPresenter.Display {
 		return searchTextBox.getText();
 	}
 
-
+	
 
 
 }

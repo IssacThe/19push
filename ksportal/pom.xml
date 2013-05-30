@@ -66,6 +66,7 @@
       <classifier>sources</classifier>
       <scope>test</scope>
     </dependency>
+       <!-- Gin -->
     <dependency>
     	<groupId>com.google.gwt.inject</groupId>
     	<artifactId>gin</artifactId>
@@ -162,13 +163,12 @@
       <version>${guice.version}</version>
     </dependency>
 
-    <!-- Gin -->
-    <dependency>
-      <groupId>com.google.gwt.inject</groupId>
-      <artifactId>gin</artifactId>
-      <version>${gin.version}</version>
-      <scope>provided</scope>
-    </dependency>
+ 	<dependency>
+       <groupId>postgresql</groupId>
+       <artifactId>postgresql</artifactId>
+       <version>${psqlVersion}</version>
+	</dependency>
+    
 	
 
    
@@ -202,13 +202,6 @@
                     </goals>
                 </execution>
             </executions>
-            <dependencies>
-	        <dependency>
-	            <groupId>postgresql</groupId>
-	            <artifactId>postgresql</artifactId>
-	            <version>${psqlVersion}</version>
-	        </dependency>
-    </dependencies>
             
         </plugin>
 	

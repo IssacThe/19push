@@ -7,6 +7,8 @@ import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
 
+import com.google.gwt.user.client.DOM;
+import com.google.gwt.user.client.Element;
 import com.google.gwt.user.client.ui.HTMLPanel;
 import com.google.gwt.user.client.ui.Widget;
 import com.google.inject.Inject;
@@ -37,6 +39,7 @@ public class PatientListPopupView extends PopupViewImpl implements PatientListPo
 		widget = binder.createAndBindUi(this);
 		this.dictionary = dictionary;
 		ul = new UListWidget();
+		ul.setStyleName("patientlistul");
 		unsortedListPanel.add(ul);
 	}
 	
@@ -53,18 +56,27 @@ public class PatientListPopupView extends PopupViewImpl implements PatientListPo
 	public void addPatient(ArrayList<PatientInfo> patientList){
 		ArrayList<ListItem> items = new ArrayList<ListItem>();
 		for(final PatientInfo info:patientList){
-			ListItem item = new ListItem(info.getFirstName()); 
+			ListItem item = new ListItem(info.getFirstName()+ " "+info.getLastName()); 
+			item.setStyleName("patientlistil");
 			item.addClickHandler(new ClickHandler(){
 	
 				@Override
 				public void onClick(ClickEvent event) {
 					patientSelectionHandler.onPatientSelect(info);
+					hide();
 				}
 				
 			});
 			items.add(item);
 		}
 		ul.add(items);
+		
+	}
+
+	@Override
+	public void setPosition() {
+		Element sbox = DOM.getElementById("searchboxid");
+		setPosition(sbox.getAbsoluteLeft()+50, sbox.getAbsoluteTop()+35);
 		
 	}
 

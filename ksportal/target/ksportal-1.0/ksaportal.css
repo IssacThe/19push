@@ -50,6 +50,22 @@
     background-color:  #EFEFEF;
     z-index:500;
 }
+.patientlistul{
+	text-indent: 5px;
+	list-style-type: none;
+	padding: 0px;
+}
+.patientlistil{
+	height:50px;
+	border-bottom:solid 1px grey;
+	line-height:40px;
+}
+.patientlistil:hover{ 
+	background-color:yellow;
+	height:50px;
+	border-bottom:solid 1px grey;
+	line-height:40px;
+}
 
 .bottombar{
     position:fixed;
@@ -98,6 +114,10 @@
 
 .background-albatre{
 	background-color: #FBFCFA;
+}
+
+.padding-top-0px {
+    padding-top: 0px;
 }
 
 .padding-top-5px {
@@ -222,6 +242,10 @@
 }
 .margin-right-100px {
     margin-right: 100px;
+}
+
+.margin-top-0px {
+    margin-top: 0px;
 }
 
 .margin-top-5px {

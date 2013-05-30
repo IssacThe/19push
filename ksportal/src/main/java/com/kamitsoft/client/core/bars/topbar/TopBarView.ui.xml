@@ -7,7 +7,9 @@
 
     
     	<g:HTMLPanel  styleName = "background-argile">
-	        <g:TextBox ui:field ="searchTextBox" styleName = "marginleft50px width-200px roundedborder10px margintop10px paddingleft20px height-20px searchicone" />
+    		<div id = "searchboxid">
+	        	<g:TextBox ui:field ="searchTextBox" styleName = "marginleft50px width-200px roundedborder10px margintop10px paddingleft20px height-20px searchicone" />
+    		</div>
     	</g:HTMLPanel> 
     
            

@@ -1,17 +1,16 @@
 --liquibase formatted sql
 
---changeset FadelTOURE:(dbms:postgresql failOnError:true)
-CREATE TABLE student (
-    accountid integer,
-    studentid integer,
-    studentfirstname character varying(35),
-    studentlastname character varying(35),
-    createddate timestamp without time zone DEFAULT NOW(),
-    activeendtime timestamp without time zone
+--changeset FadelTOURE2:(dbms:postgresql failOnError:true)
+CREATE TABLE patient (
+    patientid integer,
+    firstname character varying(35),
+    lastname character varying(35)
 );
-CREATE SEQUENCE student_seq 
+
+CREATE SEQUENCE patient_seq 
   INCREMENT 1
   MINVALUE 1
   NO MAXVALUE
   START 1
   CACHE 1;
+

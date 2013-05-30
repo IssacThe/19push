@@ -54,6 +54,8 @@
 	text-indent: 5px;
 	list-style-type: none;
 	padding: 0px;
+	margin:0px;
+	
 }
 .patientlistil{
 	height:50px;
@@ -61,7 +63,7 @@
 	line-height:40px;
 }
 .patientlistil:hover{ 
-	background-color:yellow;
+	background-color:#CCFFFF;
 	height:50px;
 	border-bottom:solid 1px grey;
 	line-height:40px;

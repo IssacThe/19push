@@ -1,12 +1,21 @@
 package com.kamitsoft.server.core.patient;
 
 import java.util.ArrayList;
+import java.util.List;
+
+import org.hibernate.HibernateException;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
 
 import com.kamitsoft.client.security.UserContext;
+import com.kamitsoft.server.persistent.PersistentManager;
 import com.kamitsoft.shared.beans.patient.PatientInfo;
 import com.kamitsoft.shared.beans.patient.PatientParameters;
 
 public class Patient {
+	
+	private Session persistentSession = PersistentManager.openSession();
 	
 	public ArrayList<Integer> search(PatientParameters searchParams){
 		
@@ -23,20 +32,23 @@ public class Patient {
 		
 		return null;
 	}
-
+	@SuppressWarnings("unchecked")
 	public ArrayList<PatientInfo> searchPatient(UserContext context,PatientParameters params) {
-		ArrayList<PatientInfo> patients = new ArrayList<PatientInfo>();
-		PatientInfo p =  new PatientInfo();
-		p.setFirstName("Fadel");
-		p.setLastName("Toure");
-		patients.add(p);
+		Transaction transaction = persistentSession.beginTransaction();
 		
-		PatientInfo q =  new PatientInfo();
-		q.setFirstName("Issac");
-		q.setLastName("Ndiaye");
-		patients.add(q);
 		
-		return patients;
+		 try { 
+			 	List<PatientInfo> patients = persistentSession.createQuery("FROM PatientInfo").list();
+			 	transaction.commit();
+			 	return new ArrayList<PatientInfo>(patients);
+	        } catch (HibernateException e) {
+	            transaction.rollback();
+	            e.printStackTrace();
+	        } finally {
+	        	persistentSession.close();
+	        }
+		
+		return null;
 	}
 
 }

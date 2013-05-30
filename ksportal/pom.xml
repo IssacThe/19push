@@ -78,6 +78,8 @@
     	<groupId>org.codehaus.mojo</groupId>
     	<artifactId>hibernate3-maven-plugin</artifactId>
     	<version>${hibernateVersion}</version>
+        
+    	
     	<exclusions>
     	<!-- Avoid jetty conflict log  -->
     		<exclusion>
@@ -193,15 +195,8 @@
 				   <password>${db-connection-password}</password>
                    <promptOnNonLocalDatabase>false</promptOnNonLocalDatabase>
                    <contexts>main</contexts>
+                   <skip>true</skip>
              </configuration>
-            <executions>
-                <execution>
-                    <phase>process-resources</phase>
-                    <goals>
-                        <goal>update</goal>
-                    </goals>
-                </execution>
-            </executions>
             
         </plugin>
 	
@@ -210,11 +205,11 @@
 	        <artifactId>maven-jetty-plugin</artifactId>
 	        <version>${jettyVersion}</version>
 	        
-	    <configuration>
+	    <!--configuration>
                 <scanIntervalSeconds>60</scanIntervalSeconds>
                 <stopKey>foo</stopKey>
                 <stopPort>9999</stopPort>
-        </configuration>
+        </configuration-->
         <executions>
                 <execution>
                         <id>start-jetty</id>

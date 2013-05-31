@@ -69,6 +69,7 @@ public class PatientListPopupView extends PopupViewImpl implements PatientListPo
 			});
 			items.add(item);
 		}
+		ul.clear();
 		ul.add(items);
 		
 	}

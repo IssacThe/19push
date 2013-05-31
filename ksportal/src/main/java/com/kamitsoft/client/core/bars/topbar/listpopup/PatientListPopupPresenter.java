@@ -63,4 +63,10 @@ public class PatientListPopupPresenter extends PresenterWidget<PatientListPopupP
 	}
 
 
+	public void hide() {
+		getView().hide();
+		
+	}
+
+
 }

@@ -32,6 +32,7 @@ public class TopBarPresenter extends PresenterWidget<TopBarPresenter.Display> {
 	@Inject private PlaceManager placeManager;
 	@Inject private PatientListPopupPresenter listpopup;
 	@Inject private UserContext context;
+	@Inject private PatientParameters search ;
 	private Timer timer;
 	@Inject
 	public TopBarPresenter(EventBus eventBus, Display view) {
@@ -49,6 +50,7 @@ public class TopBarPresenter extends PresenterWidget<TopBarPresenter.Display> {
 			@Override
 			public void onKeyUp(KeyUpEvent event){
 				if(getView().getSearchText().length()<3){
+					listpopup.hide();
 					return;
 				}
 				if(timer!=null){
@@ -74,9 +76,12 @@ public class TopBarPresenter extends PresenterWidget<TopBarPresenter.Display> {
 	}
 	
 	protected void searchPatient(String searchText) {
+		search.clearParameters();
+		search.setFreeText(searchText);
+		search.setAccountID(context.getAccountID());
 		
 		PatientAsync patientAsyn = PatientAsync.Util.getInstance();
-		patientAsyn.searchPatient(context,new PatientParameters(), new AsyncCallback<ArrayList<PatientInfo>>() {
+		patientAsyn.searchPatient(context,search, new AsyncCallback<ArrayList<PatientInfo>>() {
 
 			@Override
 			public void onFailure(Throwable caught) {

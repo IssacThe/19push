@@ -1,0 +1,2 @@
+serviceClass: com.kamitsoft.remote.rpc.Patient
+path: 46A1230AAC36A6E81659560D314A50A0.gwt.rpc

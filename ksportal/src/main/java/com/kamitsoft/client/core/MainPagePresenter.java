@@ -12,8 +12,10 @@ import com.gwtplatform.mvp.client.proxy.RevealContentHandler;
 import com.gwtplatform.mvp.client.proxy.RevealRootContentEvent;
 import com.kamitsoft.client.core.bars.bottombar.BottomBarPresenter;
 import com.kamitsoft.client.core.bars.topbar.TopBarPresenter;
-import com.kamitsoft.client.core.welcom.WelcomePresenter;
+import com.kamitsoft.client.core.login.welcomelogin.WelcomeLoginPresenter;
+import com.kamitsoft.client.core.welcome.WelcomePresenter;
 import com.kamitsoft.client.places.NamesTokens;
+import com.kamitsoft.client.security.UserContext;
 
 public class MainPagePresenter extends Presenter<MainPagePresenter.Display, MainPagePresenter.Proxy> {
 
@@ -30,10 +32,11 @@ public class MainPagePresenter extends Presenter<MainPagePresenter.Display, Main
 	  @NameToken(NamesTokens.main)
 	  public interface Proxy extends ProxyPlace<MainPagePresenter> {}
 	  
-	  
+	  @Inject private UserContext context;
 	  @Inject private TopBarPresenter topBar;
 	  @Inject private BottomBarPresenter bottomBar;
-	  @Inject private WelcomePresenter welcom;
+	  @Inject private WelcomePresenter welcome;
+	  @Inject private WelcomeLoginPresenter welcomeLogin;
 	  
 	  @Inject
 	  public MainPagePresenter(EventBus eventBus, Display view, Proxy proxy) {
@@ -44,9 +47,14 @@ public class MainPagePresenter extends Presenter<MainPagePresenter.Display, Main
 	  @Override
 	  protected void revealInParent() {
 	    RevealRootContentEvent.fire(this, this);
-	    setInSlot(TYPE_TopBar, topBar);
-	    setInSlot(TYPE_BottomBar, bottomBar);
-	    setInSlot(TYPE_MainContent, welcom);
+	    
+	    if(context.isConnected()){
+	    	setInSlot(TYPE_MainContent, welcome);
+		    setInSlot(TYPE_TopBar, topBar);
+		    setInSlot(TYPE_BottomBar, bottomBar);
+	    }else{
+	    	setInSlot(TYPE_MainContent,welcomeLogin);
+	    }
 	    
 	  }
 	

@@ -39,18 +39,14 @@ public class Patient {
 		persistentSession = PersistentManager.openSession();
 		Transaction transaction = persistentSession.beginTransaction();
 		
-		 try { 
-			 //Query sql = persistentSession.createQuery("FROM PatientInfo WHERE (firstname LIKE '?%') OR (lastname LIKE '?%)" );
-			 
-			 SQLQuery sql = persistentSession.createSQLQuery("SELECT {patient.*} FROM patient {patient}  WHERE (firstname LIKE '?%') OR (lastname LIKE '?%)");
-			 sql.addEntity("patient", PatientInfo.class);
-			 
-			 sql.setString(0, params.getFreeText());
-			 sql.setString(1, params.getFreeText());
-			 												   
-			 	List<PatientInfo> patients = sql.list();											   ;
-			 	transaction.commit();
-			 	return new ArrayList<PatientInfo>(patients);
+		 try{
+			 SQLQuery sql = persistentSession.createSQLQuery("SELECT patient.* FROM patient  "+
+					 										 "WHERE (firstname ILIKE '"+params.getFreeText()+"%') "+
+					 										    "OR (lastname  ILIKE '"+params.getFreeText()+"%') ");
+			 sql.addEntity(PatientInfo.class);		   
+		 	 List<PatientInfo> patients = sql.list();				
+		 	 transaction.commit();
+		 	 return new ArrayList<PatientInfo>(patients);
 	        } catch (HibernateException e) {
 	            transaction.rollback();
 	            e.printStackTrace();

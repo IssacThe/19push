@@ -1,0 +1,29 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+
+<ui:UiBinder xmlns:ui='urn:ui:com.google.gwt.uibinder'   
+             xmlns:g='urn:import:com.google.gwt.user.client.ui'
+			 xmlns:k='urn:import:com.kamitsoft.client.ui.carousel'>
+
+	<g:HTMLPanel styleName ="welcomelogin kamitBox">
+	
+		    	<k:CarouselPanel styleName="centerHorizontal height-200px width-600px kamitBox" ui:field="carousel"/>
+		    
+		    	<g:HTMLPanel ui:field="loginPanel" styleName="" >
+		    		<div>
+			    		<g:Label styleName = "margin-left-20px margin-top-10px" ui:field = "labelAccountID">Account ID:</g:Label> 
+		        		<g:TextBox styleName = " margin-left-50px displayinline" ui:field = "textFieldAccountID" />
+	       		 	</div>
+	       		 	<div>
+			    		<g:Label styleName = "margin-left-20px margin-top-10px">Username:</g:Label>>
+		        		<g:TextBox styleName = " margin-left-50px displayinline" ui:field = "textFieldUsername" />
+	       		 	</div>
+	       		 	
+	       		 	<div>
+		    			<g:Label styleName = "margin-left-20px margin-top-10px ">Password:</g:Label>
+		        		<g:PasswordTextBox styleName = " margin-left-50px displayinline"  ui:field ="textFieldPassword" />
+		    		</div>
+		    	</g:HTMLPanel>
+	
+	</g:HTMLPanel>
+	
+</ui:UiBinder> 

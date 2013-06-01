@@ -7,7 +7,8 @@ import com.google.gwt.inject.client.Ginjector;
 import com.google.web.bindery.event.shared.EventBus;
 import com.gwtplatform.mvp.client.proxy.PlaceManager;
 import com.kamitsoft.client.core.MainPagePresenter;
-import com.kamitsoft.client.core.welcom.WelcomePresenter;
+import com.kamitsoft.client.core.login.welcomelogin.WelcomeLoginPresenter;
+import com.kamitsoft.client.core.welcome.WelcomePresenter;
 
 
 @GinModules({ BinderModule.class })
@@ -16,5 +17,6 @@ public interface KSAPortalGinjector extends Ginjector {
 	  EventBus getEventBus();
 	  AsyncProvider<MainPagePresenter> getMainPagePresenter();
 	  AsyncProvider<WelcomePresenter> getPassionCouturePresenter();
+	  AsyncProvider<WelcomeLoginPresenter> getWelcomeLoginPresenter();
 
 }

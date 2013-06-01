@@ -1,4 +1,4 @@
-package com.kamitsoft.client.core.welcom;
+package com.kamitsoft.client.core.welcome;
 
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
@@ -18,12 +18,11 @@ public class WelcomeView extends ViewImpl implements WelcomePresenter.Display {
 		}
 	
 		@UiField HTMLPanel welcomePanel;
-		@UiField HTMLPanel loginPanel;
-		@UiField CarouselPanel sliderPanel;
+		
+		
 		@Inject
 		public WelcomeView(final Binder binder) {
 			widget = binder.createAndBindUi(this);
-	
 		}
 	
 		@Override
@@ -35,22 +34,11 @@ public class WelcomeView extends ViewImpl implements WelcomePresenter.Display {
 		@Override
 		public void setInSlot(Object slot, Widget content) {
 			
-			if (slot == WelcomePresenter.TYPE_Login) {
-				loginPanel.clear();
-				loginPanel.add(content);
-		    }
+			
 			
 		}
 
-		@Override
-		public void addWidgetToSlider(Widget e){
-			sliderPanel.setWidgetItem(e);
-		}
 		
-		@Override
-		public void startSlider(){
-			sliderPanel.forwardCirculare();
-		}
 	    
 		
 

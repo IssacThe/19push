@@ -11,10 +11,12 @@ import com.kamitsoft.client.core.bars.topbar.TopBarPresenter;
 import com.kamitsoft.client.core.bars.topbar.TopBarView;
 import com.kamitsoft.client.core.bars.topbar.listpopup.PatientListPopupPresenter;
 import com.kamitsoft.client.core.bars.topbar.listpopup.PatientListPopupView;
-import com.kamitsoft.client.core.login.LoginPresenter;
-import com.kamitsoft.client.core.login.LoginView;
-import com.kamitsoft.client.core.welcom.WelcomePresenter;
-import com.kamitsoft.client.core.welcom.WelcomeView;
+import com.kamitsoft.client.core.login.popuplogin.LoginPopupPresenter;
+import com.kamitsoft.client.core.login.popuplogin.LoginPopupView;
+import com.kamitsoft.client.core.login.welcomelogin.WelcomeLoginPresenter;
+import com.kamitsoft.client.core.login.welcomelogin.WelcomeLoginView;
+import com.kamitsoft.client.core.welcome.WelcomePresenter;
+import com.kamitsoft.client.core.welcome.WelcomeView;
 import com.kamitsoft.client.places.KSAPlaceManager;
 
 public class BinderModule extends AbstractPresenterModule {
@@ -26,11 +28,12 @@ public class BinderModule extends AbstractPresenterModule {
 	    // Presenters
 	    bindPresenter(MainPagePresenter.class, MainPagePresenter.Display.class, MainPageView.class,  MainPagePresenter.Proxy.class);
 	    bindPresenter(WelcomePresenter.class, WelcomePresenter.Display.class, WelcomeView.class, WelcomePresenter.Proxy.class);
-	      
+	    bindPresenter(WelcomeLoginPresenter.class, WelcomeLoginPresenter.Display.class, WelcomeLoginView.class, WelcomeLoginPresenter.Proxy.class);
+	    
 	   // widigets
 	    bindPresenterWidget(TopBarPresenter.class, TopBarPresenter.Display.class, TopBarView.class);
 	    bindPresenterWidget(BottomBarPresenter.class, BottomBarPresenter.Display.class, BottomBarView.class);
-	    bindPresenterWidget(LoginPresenter.class, LoginPresenter.Display.class, LoginView.class);
+	    bindPresenterWidget(LoginPopupPresenter.class, LoginPopupPresenter.Display.class, LoginPopupView.class);
 	    bindPresenterWidget(PatientListPopupPresenter.class, PatientListPopupPresenter.Display.class, PatientListPopupView.class);
 	    
 	    

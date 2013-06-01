@@ -3,7 +3,7 @@
 <ui:UiBinder xmlns:ui='urn:ui:com.google.gwt.uibinder'   xmlns:g='urn:import:com.google.gwt.user.client.ui'>
 
     
-    	<g:HTMLPanel styleName="background-lightgrey box width-350px height-105px kamitBox padding-top-10px" >
+    	<g:PopupPanel autoHideEnabled="false" modal="true" glassEnabled="true" styleName="background-lightgrey box width-350px height-105px kamitBox padding-top-10px" >
 	        <div class = "margin-left-20px margin-top-10px"> 
 	        	<span> Username</span>
 	        	<g:TextBox styleName = " margin-left-50px" ui:field = "textFieldUsername" />
@@ -16,7 +16,7 @@
 	    		<g:Button text="Cancel" styleName=".gwt-Button  margin-right-5px" width="93px" height="24px"/>
 	    		<g:Button text="Connect" styleName=".gwt-Button  margin-left-10px" width="93px" height="24px"/>
 	    	</div>
-    	</g:HTMLPanel> 
+    	</g:PopupPanel> 
            
 
 </ui:UiBinder> 

@@ -23,6 +23,14 @@
   
 }
 
+.welcomelogin{
+	width:650px;
+	height:450px;
+	margin-left: auto;
+    margin-right: auto;
+    margin-top:  250px;
+}
+
 .searchicone{
  	background-image: url('images/search.png');
   	background-repeat: no-repeat;

@@ -2,20 +2,47 @@ package com.kamitsoft.shared.beans.patient;
 
 
 
+import java.sql.Timestamp;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
 import com.google.gwt.user.client.rpc.IsSerializable;
+import com.kamitsoft.shared.beans.beanInfo;
 
 @Entity 
 @Table(name="patient")
-public class PatientInfo implements IsSerializable{
-	private String firstName;
-	private String lastName;
+public class PatientInfo extends beanInfo implements IsSerializable{
+	private long accountID;
 	private long patientID;
+	private String firstName;
+	private String middleName;
+	private String lastName;
+	private Timestamp dob;
+	private String    pob;		 
+	private String sex;	       
 
+	
+	public Timestamp getDob() {
+		return dob;
+	}
+	public void setDob(Timestamp dob) {
+		this.dob = dob;
+	}
+	public String getPob() {
+		return pob;
+	}
+	public void setPob(String pob) {
+		this.pob = pob;
+	}
+	public String getSex() {
+		return sex;
+	}
+	public void setSex(String sex) {
+		this.sex = sex;
+	}
 	public String getFirstName() {
 		return firstName;
 	}
@@ -36,5 +63,17 @@ public class PatientInfo implements IsSerializable{
 	}
 	public void setPatientID(long patientID) {
 		this.patientID = patientID;
+	}
+	public long getAccountID() {
+		return accountID;
+	}
+	public void setAccountID(long accountID) {
+		this.accountID = accountID;
+	}
+	public String getMiddleName() {
+		return middleName;
+	}
+	public void setMiddleName(String middleName) {
+		this.middleName = middleName;
 	}
 }

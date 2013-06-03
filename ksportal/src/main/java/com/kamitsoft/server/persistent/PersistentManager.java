@@ -5,6 +5,8 @@ import org.hibernate.classic.Session;
 
 
 import com.kamitsoft.shared.beans.patient.PatientInfo;
+import com.kamitsoft.shared.beans.user.AccountInfo;
+import com.kamitsoft.shared.beans.user.UserInfo;
 
 public class PersistentManager {
 
@@ -13,11 +15,21 @@ public class PersistentManager {
 	 
 	    static {
 	        try {
-	            sessionFactory = new AnnotationConfiguration()
-	                                .configure()
-	                                .addPackage("com.kamitsoft.shared.beans.patient") //the fully qualified package name
-	                                .addAnnotatedClass(PatientInfo.class)
-	                                .buildSessionFactory();
+	        	
+	        	AnnotationConfiguration acfg = new AnnotationConfiguration();
+	           
+                acfg.configure();
+                System.out.println("patientPackage  "+PatientInfo.class.getPackage().getName());
+                acfg.addPackage(PatientInfo.class.getPackage().getName()).addAnnotatedClass(PatientInfo.class);
+                acfg.addPackage(UserInfo.class.getPackage().getName()).addAnnotatedClass(UserInfo.class);
+                acfg.addPackage(AccountInfo.class.getPackage().getName()).addAnnotatedClass(AccountInfo.class);
+                
+                
+                
+                
+                
+                
+	            sessionFactory= acfg.buildSessionFactory();
 	           
 	        } catch (Throwable ex) {
 	            System.err.println("Initial SessionFactory creation failed." + ex);

@@ -28,6 +28,7 @@ public class MainPagePresenter extends Presenter<MainPagePresenter.Display, Main
 	  @ContentSlot
 	  public static final Type<RevealContentHandler<?>> TYPE_BottomBar = new Type<RevealContentHandler<?>>();
 	  
+	  
 	  @ProxyCodeSplit
 	  @NameToken(NamesTokens.main)
 	  public interface Proxy extends ProxyPlace<MainPagePresenter> {}
@@ -47,14 +48,10 @@ public class MainPagePresenter extends Presenter<MainPagePresenter.Display, Main
 	  @Override
 	  protected void revealInParent() {
 	    RevealRootContentEvent.fire(this, this);
+    	setInSlot(TYPE_MainContent, welcome);
+	    setInSlot(TYPE_TopBar, topBar);
+	    setInSlot(TYPE_BottomBar, bottomBar);
 	    
-	    if(context.isConnected()){
-	    	setInSlot(TYPE_MainContent, welcome);
-		    setInSlot(TYPE_TopBar, topBar);
-		    setInSlot(TYPE_BottomBar, bottomBar);
-	    }else{
-	    	setInSlot(TYPE_MainContent,welcomeLogin);
-	    }
 	    
 	  }
 	

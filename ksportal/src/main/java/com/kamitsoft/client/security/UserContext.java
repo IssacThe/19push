@@ -1,6 +1,7 @@
 package com.kamitsoft.client.security;
 
 import com.google.gwt.user.client.rpc.IsSerializable;
+import com.kamitsoft.shared.beans.user.UserInfo;
 
 public class UserContext implements IsSerializable{
 	private long userID;
@@ -24,6 +25,12 @@ public class UserContext implements IsSerializable{
 	}
 	public void setUserID(long userID) {
 		this.userID = userID;
+	}
+	
+	public void init(UserInfo userInfo) {
+		userID = userInfo.getUserID();
+		accountID = userInfo.getAccountID();
+		connected = (userInfo != null) ? true:false;
 	}
 
 }

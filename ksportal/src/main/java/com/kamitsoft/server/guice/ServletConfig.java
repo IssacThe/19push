@@ -19,6 +19,7 @@ import com.google.inject.Injector;
 import com.google.inject.servlet.GuiceServletContextListener;
 import com.google.inject.servlet.ServletModule;
 import com.kamitsoft.server.impl.PatientImpl;
+import com.kamitsoft.server.impl.UserImpl;
 
 
 
@@ -32,6 +33,7 @@ public class ServletConfig extends GuiceServletContextListener {
 		        @Override
 		        protected void configureServlets() {
 		          serve("/ksaportal/patient").with(PatientImpl.class);
+		          serve("/ksaportal/user").with(UserImpl.class);
 		        }
 		        });
 		  }

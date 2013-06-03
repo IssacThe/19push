@@ -6,22 +6,25 @@
 
 	<g:HTMLPanel styleName ="welcomelogin kamitBox">
 	
-		    	<k:CarouselPanel styleName="centerHorizontal height-200px width-600px kamitBox" ui:field="carousel"/>
+		    	<k:CarouselPanel styleName="centerHorizontal height-200px width-600px " ui:field="carousel"/>
 		    
-		    	<g:HTMLPanel ui:field="loginPanel" styleName="" >
-		    		<div>
-			    		<g:Label styleName = "margin-left-20px margin-top-10px" ui:field = "labelAccountID">Account ID:</g:Label> 
-		        		<g:TextBox styleName = " margin-left-50px displayinline" ui:field = "textFieldAccountID" />
-	       		 	</div>
-	       		 	<div>
-			    		<g:Label styleName = "margin-left-20px margin-top-10px">Username:</g:Label>>
-		        		<g:TextBox styleName = " margin-left-50px displayinline" ui:field = "textFieldUsername" />
+		    	<g:HTMLPanel ui:field="loginPanel" styleName="centerHorizontal margin-top-40px width-400px " >
+		    		<g:Label  ui:field = "loginmessage" styleName="centerHorizontal textorange margintop5px"/>
+		    		<div class ="margintop20px">
+			    		<div class ="width35pc floatleft textalignright"><g:Label  ui:field = "labelAccountID">Account ID:</g:Label> </div>
+		        		<div class ="width60pc floatleft "><g:TextBox styleName = "roundedborder2px noShadows margin-left-20px width-200px" ui:field = "textFieldAccountID" /></div>
 	       		 	</div>
 	       		 	
-	       		 	<div>
-		    			<g:Label styleName = "margin-left-20px margin-top-10px ">Password:</g:Label>
-		        		<g:PasswordTextBox styleName = " margin-left-50px displayinline"  ui:field ="textFieldPassword" />
+	       		 	<div class ="margintop10px">
+			    		<div class ="width35pc floatleft textalignright"><g:Label styleName = "margintop10px ">Username:</g:Label></div>
+		        		<div class ="width60pc floatleft"><g:TextBox styleName = "roundedborder2px noShadows margintop10px margin-left-20px width-200px" ui:field = "textFieldUsername" /></div>
+	       		 	</div>
+	       		 	
+	       		 	<div class ="margintop10px">
+		    			<div class ="width35pc floatleft textalignright"><g:Label styleName = "margintop10px ">Password:</g:Label></div>
+		        		<div class ="width60pc floatleft"><g:PasswordTextBox styleName = "roundedborder2px noShadows margintop10px margin-left-20px width-200px"  ui:field ="textFieldPassword" /></div>
 		    		</div>
+		    	
 		    	</g:HTMLPanel>
 	
 	</g:HTMLPanel>

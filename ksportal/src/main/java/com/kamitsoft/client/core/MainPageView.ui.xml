@@ -7,7 +7,7 @@
 		    	<g:SimplePanel ui:field="topBar"  styleName="topbar kamitBox"/>
 		    
 		    	<g:HTMLPanel ui:field="mainContent" styleName="kamitBox background-albatre mainpanel" />
-		    	<g:HTMLPanel ui:field="loginContent" styleName="mainpanel" />
+		    	<g:HTMLPanel ui:field="loginContent" styleName="centerHorizontal" />
 		        
 		        <g:SimplePanel ui:field="bottomBar"  styleName="bottombar kamitBox"/>
 	

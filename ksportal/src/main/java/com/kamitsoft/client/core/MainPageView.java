@@ -19,14 +19,14 @@ public class MainPageView extends ViewImpl implements MainPagePresenter.Display 
 
 
   
-  @UiField SimplePanel topBar;
-  @UiField SimplePanel bottomBar;
-  @UiField HTMLPanel mainContent;
-  
-	  @Inject
-	 public MainPageView(final Binder binder) {
+  	@UiField SimplePanel topBar;
+  	@UiField SimplePanel bottomBar;
+  	@UiField HTMLPanel mainContent;
+  	@UiField HTMLPanel loginContent;
+	@Inject
+	public MainPageView(final Binder binder) {
 		  widget = binder.createAndBindUi(this);
-	 }
+	}
 	  
   	@Override
 	public void setInSlot(Object slot, Widget content) {
@@ -39,8 +39,9 @@ public class MainPageView extends ViewImpl implements MainPagePresenter.Display 
 	    if (slot == MainPagePresenter.TYPE_MainContent) {
 	        setMainContent(content);
 	    }
-    
+	    
 	}
+  	
   	private void setMainContent(Widget content) {
 		mainContent.clear();
 		mainContent.add(content);
@@ -49,6 +50,7 @@ public class MainPageView extends ViewImpl implements MainPagePresenter.Display 
   	private void setBottomBar(Widget content) {
   		bottomBar.clear();
   		bottomBar.add(content);
+  		
 	
   	}
   	private void setTopBar(Widget content) {
@@ -56,6 +58,7 @@ public class MainPageView extends ViewImpl implements MainPagePresenter.Display 
   		topBar.add(content);
   	}
 
+ 	
   	public Widget asWidget() {
 		return widget;
 	}

@@ -1,12 +1,9 @@
 package com.kamitsoft.client.core.login.welcomelogin;
-import java.util.ArrayList;
-
-import com.google.gwt.event.dom.client.KeyCodes;
 import com.google.gwt.event.dom.client.KeyPressEvent;
+import com.google.gwt.event.dom.client.KeyPressHandler;
 import com.google.gwt.event.shared.GwtEvent.Type;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.Image;
-import com.google.gwt.event.dom.client.KeyPressHandler;
 import com.google.gwt.user.client.ui.Widget;
 import com.google.inject.Inject;
 import com.google.web.bindery.event.shared.EventBus;
@@ -20,11 +17,12 @@ import com.gwtplatform.mvp.client.proxy.PlaceRequest;
 import com.gwtplatform.mvp.client.proxy.ProxyPlace;
 import com.gwtplatform.mvp.client.proxy.RevealContentHandler;
 import com.gwtplatform.mvp.client.proxy.RevealRootContentEvent;
-import com.kamitsoft.client.places.KSAPlaceManager;
+import com.kamitsoft.client.event.UserLoginEvent;
 import com.kamitsoft.client.places.NamesTokens;
 import com.kamitsoft.client.security.UserContext;
+import com.kamitsoft.client.ui.loader.AsyncCall;
+import com.kamitsoft.client.ui.loader.LoadIndicator;
 import com.kamitsoft.remote.rpc.UserAsync;
-import com.kamitsoft.shared.beans.patient.PatientInfo;
 import com.kamitsoft.shared.beans.user.UserInfo;
 import com.kamitsoft.shared.beans.user.UserParameters;
 import com.kamitsoft.shared.constants.LoginConstants;
@@ -42,6 +40,7 @@ public class WelcomeLoginPresenter extends Presenter<WelcomeLoginPresenter.Displ
 			public void clearFields();
 			public void addKeyHandler(KeyPressHandler keyPressHandler);
 			public void clearMessage();
+			public void clearCarousel();
 			
 	  };
 	  
@@ -58,10 +57,12 @@ public class WelcomeLoginPresenter extends Presenter<WelcomeLoginPresenter.Displ
 	  
 	  @Inject private PlaceManager placeManager;
 	  @Inject private UserContext context;
+	  private EventBus eventBus;
+	
 	  @Inject
 	  public WelcomeLoginPresenter(EventBus eventBus, Display view, Proxy proxy) {
 	    super(eventBus, view, proxy);
-	  
+	    this.eventBus = eventBus;
 	  }
 	
 	  @Override
@@ -99,40 +100,43 @@ public class WelcomeLoginPresenter extends Presenter<WelcomeLoginPresenter.Displ
 		  
 	  }
 	  
-	protected void tryLogin(String account, String userName,  String userPassword) {
-		UserParameters  params = new UserParameters();
-		params.setAccountName(account);
-		params.setUserName(userName);
-		params.setPassword(userPassword);
-		
-		UserAsync userAsyn = UserAsync.Util.getInstance();
-		userAsyn.login(params, new AsyncCallback<UserInfo>() {
-
-			@Override
-			public void onFailure(Throwable caught) {
-				getView().setLoginMessage(LoginConstants.CREDENTIAL_INCORRECT);
-				caught.printStackTrace();
-			}
-
-			@Override
-			public void onSuccess(UserInfo userInfo) {
-				if(userInfo!=null){
-					context.init(userInfo);
-					PlaceRequest request = new PlaceRequest(NamesTokens.welcome);
-					placeManager.revealPlace(request,true);
+	  protected void tryLogin(String account, String userName,  String userPassword) {
+			UserParameters  params = new UserParameters();
+			params.setAccountName(account);
+			params.setUserName(userName);
+			params.setPassword(userPassword);
+			
+			UserAsync userAsyn = UserAsync.Util.getInstance();
+			userAsyn.login(params, new AsyncCall<UserInfo>() {
+	
+			
+				@Override
+				protected void didFail(Throwable caught) {
+					getView().setLoginMessage(LoginConstants.CREDENTIAL_INCORRECT);
+					caught.printStackTrace();
+					
 				}
-				
-			}
-		   
-		  });
-		
-		
+
+				@Override
+				protected void didSuccess(UserInfo userInfo) {
+					if(userInfo!=null){
+						context.setUserInfo(userInfo);
+						PlaceRequest request = new PlaceRequest(NamesTokens.welcome);
+						placeManager.revealPlace(request,true);
+						eventBus.fireEvent(new UserLoginEvent(userInfo));
+					}
+					
+					
+				}
+			   
+			  });
 		
 	}
 
 	@Override
 	 protected void onReveal() {
 			super.onReveal();
+			getView().clearCarousel();
 			getView().addWidgetToSlider(new Image("http://www.mackoo.com/Mongolie/images/IMGP9640.jpg"));
 			getView().addWidgetToSlider(new Image("http://www.mairie-etampes.fr/images/parcs_pergola1_panoramique.jpg"));
 			getView().addWidgetToSlider(new Image("http://www.anb-immobilier.com/wp-content/uploads/2012/03/P1010594-450x200.jpg"));
@@ -142,6 +146,8 @@ public class WelcomeLoginPresenter extends Presenter<WelcomeLoginPresenter.Displ
 			getView().addWidgetToSlider(new Image("http://nautilus-tours.com/gal/img/cat4/gal0027.jpg"));
 			
 			getView().startSlider();
+			
+			
 	  }
 	
 

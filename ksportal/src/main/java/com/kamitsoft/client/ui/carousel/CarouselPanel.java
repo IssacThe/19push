@@ -22,6 +22,7 @@ public class CarouselPanel extends LayoutPanel {
 	public void clear() {
 		super.clear();
 		litsWidgets.clear();
+		itsCurrentWidget = 0;
 	}
 
     public void setWidgetItem(Widget widget){

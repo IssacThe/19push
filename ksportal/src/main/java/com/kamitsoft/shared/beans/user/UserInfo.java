@@ -1,12 +1,11 @@
-package com.kamitsoft.shared.beans.patient;
-
-
-
-import java.sql.Timestamp;
+package com.kamitsoft.shared.beans.user;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import com.google.gwt.user.client.rpc.IsSerializable;
@@ -14,36 +13,18 @@ import com.kamitsoft.client.ui.person.hasPersonInfo;
 import com.kamitsoft.shared.beans.beanInfo;
 
 @Entity 
-@Table(name="patient")
-public class PatientInfo extends beanInfo implements IsSerializable, hasPersonInfo{
+@Table(name="user_info")
+public class UserInfo extends beanInfo implements IsSerializable, hasPersonInfo{
 	private long accountID;
-	private long patientID;
+	private long userID;
+	private String userName;
 	private String firstName;
 	private String middleName;
 	private String lastName;
-	private Timestamp dob;
-	private String    pob;		 
-	private String sex;	       
-
+	private AccountInfo accountInfo;
 	
-	public Timestamp getDob() {
-		return dob;
-	}
-	public void setDob(Timestamp dob) {
-		this.dob = dob;
-	}
-	public String getPob() {
-		return pob;
-	}
-	public void setPob(String pob) {
-		this.pob = pob;
-	}
-	public String getSex() {
-		return sex;
-	}
-	public void setSex(String sex) {
-		this.sex = sex;
-	}
+	
+
 	public String getFirstName() {
 		return firstName;
 	}
@@ -59,11 +40,18 @@ public class PatientInfo extends beanInfo implements IsSerializable, hasPersonIn
 	}
 	
 	@Id @GeneratedValue
-	public long getPatientID() {
-		return patientID;
+	public long getUserID() {
+		return userID;
 	}
-	public void setPatientID(long patientID) {
-		this.patientID = patientID;
+	public void setUserID(long userID) {
+		this.userID = userID;
+	}
+	
+	public String getUserName() {
+		return userName;
+	}
+	public void setUserName(String userLoginID) {
+		this.userName = userLoginID;
 	}
 	public long getAccountID() {
 		return accountID;
@@ -71,10 +59,21 @@ public class PatientInfo extends beanInfo implements IsSerializable, hasPersonIn
 	public void setAccountID(long accountID) {
 		this.accountID = accountID;
 	}
+	
+	@ManyToOne(fetch=FetchType.EAGER)
+    @JoinColumn(name="accountid")
+    public AccountInfo getAccountInfo(){
+		return accountInfo;
+	}
+	public void setAccountInfo(AccountInfo info){
+		accountInfo = info;
+	}
+	
 	public String getMiddleName() {
 		return middleName;
 	}
 	public void setMiddleName(String middleName) {
 		this.middleName = middleName;
 	}
+	
 }

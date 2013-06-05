@@ -36,6 +36,12 @@
   	background-repeat: no-repeat;
   	background-position: right center;
 }
+
+.logouticone{
+ 	background-image: url('images/logout.png');
+  	background-repeat: no-repeat;
+  	background-position: right center;
+}
 .designemenuicone{
  	background-image: url('images/design.png');
   	background-repeat: no-repeat;
@@ -236,6 +242,11 @@
 .margin-left-100px {
     margin-left: 100px;
 }
+
+.margin-right-3px{
+	 margin-right: 3px;
+}
+
 .margin-right-5px {
     margin-right: 5px;
 }
@@ -288,6 +299,11 @@
 .width-20px{
     width:20px
 }
+
+.width-24px{
+    width:24px
+}
+
 .width-30px{
     width:30px
 }
@@ -354,6 +370,11 @@
 .height-20px{
     height:20px
 }
+
+.height-24px{
+	height:24px
+}
+
 .height-30px{
     height:30px
 }
@@ -436,6 +457,9 @@
 	margin-right:20px;
 }
 
+.marginright50px{
+	margin-right:50px;
+}
 
 .paddingleft5px{
 	padding-left:5px;
@@ -477,10 +501,19 @@
  
 }
 
+.noborder{
+	border:none !important;
+}
 .roundedborder10px {
 	-webkit-border-radius: 10px;
 	-moz-border-radius: 10px;
 	border-radius: 10px;
+}
+
+.roundedborder5px {
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
 }
 
 .roundedborder2px {
@@ -512,6 +545,22 @@
 .textorange{
 	color:orange;
 }
+
+.positionfixedright50px {
+    position: absolute;
+    top: 15px;
+    right: 50px;
+}
+
+.positionfixedright20px {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+}
+.cursorpointer{
+	cursor:pointer;
+}
+
 /** Most GWT widgets already have a style name defined */
 /** Set ids using widget.getElement().setId("idOfElement") */
 

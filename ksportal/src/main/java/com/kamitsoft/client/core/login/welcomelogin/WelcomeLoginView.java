@@ -47,6 +47,10 @@ public class WelcomeLoginView extends ViewImpl implements WelcomeLoginPresenter.
 	public void addWidgetToSlider(Widget e){
   		carousel.setWidgetItem(e);
 	}
+  	@Override
+	public void clearCarousel(){
+  		carousel.clear();
+	}
 	
 	@Override
 	public void startSlider(){
@@ -101,4 +105,6 @@ public class WelcomeLoginView extends ViewImpl implements WelcomeLoginPresenter.
 		loginmessage.setText("");
 		loginmessage.setVisible(false);
 	}
+	
+	
 }

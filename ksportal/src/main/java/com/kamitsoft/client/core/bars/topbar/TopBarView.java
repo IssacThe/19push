@@ -1,21 +1,29 @@
 package com.kamitsoft.client.core.bars.topbar;
 
 import com.google.gwt.event.dom.client.ChangeHandler;
+import com.google.gwt.event.dom.client.HasClickHandlers;
 import com.google.gwt.event.dom.client.KeyUpHandler;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
 
+import com.google.gwt.user.client.ui.Button;
+import com.google.gwt.user.client.ui.Label;
+import com.google.gwt.user.client.ui.SimplePanel;
 import com.google.gwt.user.client.ui.TextBox;
 import com.google.gwt.user.client.ui.Widget;
 import com.google.inject.Inject;
 import com.gwtplatform.mvp.client.ViewImpl;
 import com.google.gwt.user.client.ui.MenuItem;
 import com.kamitsoft.client.i18n.MainDictionary;
+import com.kamitsoft.client.ui.person.PersonneInfoPanel;
+import com.kamitsoft.shared.beans.user.UserInfo;
 
 
 public class TopBarView extends ViewImpl implements TopBarPresenter.Display {
 
 	@UiField TextBox searchTextBox;
+	@UiField PersonneInfoPanel username;
+	@UiField Button logout;
 	private final Widget widget;
 	private MainDictionary dictionary;
 	public interface Binder extends UiBinder<Widget, TopBarView> {	}
@@ -47,7 +55,15 @@ public class TopBarView extends ViewImpl implements TopBarPresenter.Display {
 		return searchTextBox.getText();
 	}
 
-	
+	@Override
+	public void setUserInfo(UserInfo userInfo) {
+		username.setInfo(userInfo);
+	}
+
+	@Override
+	public HasClickHandlers getLogoutClick(){
+		return logout;
+	}
 
 
 }

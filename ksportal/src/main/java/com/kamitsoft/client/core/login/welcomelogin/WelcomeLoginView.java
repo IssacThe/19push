@@ -1,5 +1,6 @@
 package com.kamitsoft.client.core.login.welcomelogin;
 
+import com.google.gwt.event.dom.client.KeyDownHandler;
 import com.google.gwt.event.dom.client.KeyPressHandler;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
@@ -95,10 +96,10 @@ public class WelcomeLoginView extends ViewImpl implements WelcomeLoginPresenter.
 	}
 	
 	@Override
-	public void addKeyHandler(KeyPressHandler keyPressHandler){
-		textFieldUsername.addKeyPressHandler(keyPressHandler);
-		textFieldAccountID.addKeyPressHandler(keyPressHandler);
-		textFieldPassword.addKeyPressHandler(keyPressHandler);
+	public void addKeyHandler(KeyDownHandler keyDownHandler){
+		textFieldUsername.addKeyDownHandler(keyDownHandler);
+		textFieldAccountID.addKeyDownHandler(keyDownHandler);
+		textFieldPassword.addKeyDownHandler(keyDownHandler);
 	}
 	@Override
 	public void clearMessage(){

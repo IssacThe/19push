@@ -4,18 +4,23 @@
 
     
     	<g:PopupPanel autoHideEnabled="false" modal="true" glassEnabled="true" styleName="background-lightgrey box width-350px height-105px kamitBox padding-top-10px" >
-	        <div class = "margin-left-20px margin-top-10px"> 
-	        	<span> Username</span>
-	        	<g:TextBox styleName = " margin-left-50px" ui:field = "textFieldUsername" />
-	        </div>
-	    	<div class = "margin-left-20px margin-top-5px"> 
-	    		<span>Password</span>
-	        	<g:PasswordTextBox styleName = " margin-left-51px"  ui:field ="textFieldPassword" />
-	    	</div>
-	    	<div class ="width-250px margin-top-10px centerHorizontal" > 
-	    		<g:Button text="Cancel" styleName=".gwt-Button  margin-right-5px" width="93px" height="24px"/>
-	    		<g:Button text="Connect" styleName=".gwt-Button  margin-left-10px" width="93px" height="24px"/>
-	    	</div>
+	      <g:HTMLPanel>
+	      		<g:Label ui:field = "loginmessage" styleName ="smalltextred"/>
+		        <g:HTMLPanel styleName = "margin-left-20px margin-top-10px"> 
+		        	<g:Label ui:field = "username" styleName = "width35pc alignleft"/> :
+		        	<g:TextBox styleName = "  width30pc alignleft margin-left-130px" ui:field = "textFieldUsername" />
+		        </g:HTMLPanel>
+		    	<g:HTMLPanel styleName = "margin-left-20px margin-top-10px"> 
+		    		<g:Label ui:field = "password" styleName = "width35pc alignleft"/> :
+		        	<g:PasswordTextBox styleName = " width30pc alignleft margin-left-130px"  ui:field ="textFieldPassword" />
+		    	</g:HTMLPanel>
+	    
+	    	
+		    	<g:HTMLPanel styleName ="width-205px margin-top-10px centerHorizontal" > 
+		    		<g:Button ui:field = "cancel" text="Cancel" styleName=".gwt-Button  margin-right-5px" width="93px" height="24px"/>
+		    		<g:Button ui:field = "connect" text="Connect" styleName=".gwt-Button  margin-left-10px" width="93px" height="24px"/>
+		    	</g:HTMLPanel>
+	    	</g:HTMLPanel>
     	</g:PopupPanel> 
            
 

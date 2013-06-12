@@ -1,4 +1,4 @@
-package com.kamitsoft.client.core.welcome;
+package com.kamitsoft.client.core.patient;
 
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
@@ -9,19 +9,23 @@ import com.google.inject.Inject;
 import com.gwtplatform.mvp.client.ViewImpl;
 import com.kamitsoft.client.core.MainPagePresenter;
 import com.kamitsoft.client.ui.carousel.CarouselPanel;
+import com.kamitsoft.client.ui.person.PersonInfoPanel;
+import com.kamitsoft.shared.beans.patient.PatientInfo;
 
-public class WelcomeView extends ViewImpl implements WelcomePresenter.Display {
+public class PatientView extends ViewImpl implements PatientPresenter.Display {
 
+		@UiField HTMLPanel contentPanel;
+		@UiField PersonInfoPanel personalInfoPanel;
 		private final Widget widget;
 	
-		public interface Binder extends UiBinder<Widget, WelcomeView> {
+		public interface Binder extends UiBinder<Widget, PatientView> {
 		}
 	
-		@UiField HTMLPanel welcomePanel;
+		
 		
 		
 		@Inject
-		public WelcomeView(final Binder binder) {
+		public PatientView(final Binder binder) {
 			widget = binder.createAndBindUi(this);
 		}
 	
@@ -38,7 +42,10 @@ public class WelcomeView extends ViewImpl implements WelcomePresenter.Display {
 			
 		}
 
-		
+		@Override
+		public void setPatient(PatientInfo patientInfo){
+			personalInfoPanel.setInfo(patientInfo);
+		}
 	    
 		
 

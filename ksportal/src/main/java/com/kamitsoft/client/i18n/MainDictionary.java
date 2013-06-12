@@ -18,4 +18,23 @@ public interface MainDictionary extends Messages{
 
 	 @DefaultMessage("Le mot de passe saisi est trop cours Il faut au moins 4 caracteres")
 	 String passwordTooShort();
+
+	 @DefaultMessage("Gerer Patients")
+	 String editPatient();
+	 
+	 @DefaultMessage("Gerer Usagers")
+	 String editUser();
+	 
+	 @DefaultMessage("Gerer Roles")
+	 String editRole();
+
+	 @DefaultMessage("Nom d''utilisateur")
+	 String userName();
+	 
+	 @DefaultMessage("Mot de passe")
+	 String password();
+
+	 @DefaultMessage("Deconnexion pour cause d''inactivite")
+     String timeout();
+	
 }

@@ -15,7 +15,7 @@ public class CarouselPanel extends LayoutPanel {
     private ArrayList<Widget> litsWidgets =  new ArrayList<Widget>();
     private HandlerRegistration itsRightHandler;
 	private boolean isCircular;
-    
+    private Timer t;
     
   
     @Override
@@ -133,15 +133,19 @@ public class CarouselPanel extends LayoutPanel {
 	public void forwardCirculare(){
 		isCircular = true;
 		itsCurrentWidget = 0;
-		 setCenter(getWidgetInCarousel(itsCurrentWidget),true);
+		setCenter(getWidgetInCarousel(itsCurrentWidget),true);
 		setRight(getWidgetInCarousel(itsCurrentWidget+1),true);
-		Timer t = new Timer(){
-			@Override
-			public void run() {
-				scrollRight();
-			}
-			
-		};
+		if(t!=null){
+			t.cancel();
+		}else{
+			t = new Timer(){
+				@Override
+				public void run() {
+					scrollRight();
+				}
+				
+			};
+		}
 		t.scheduleRepeating(3000);
 	}
 	
@@ -150,13 +154,17 @@ public class CarouselPanel extends LayoutPanel {
 		itsCurrentWidget = 0;
 		setCenter(getWidgetInCarousel(itsCurrentWidget),true);
 		setRight(getWidgetInCarousel(itsCurrentWidget-1),true);
-		Timer t = new Timer(){
-			@Override
-			public void run() {
-				scrollLeft();
-			}
+		if(t!=null){
+			t.cancel();
+		}else{
+			t = new Timer(){
+				@Override
+				public void run() {
+					scrollLeft();
+				}
 			
-		};
+			};
+		}
 		t.scheduleRepeating(3000);
 	}
 	

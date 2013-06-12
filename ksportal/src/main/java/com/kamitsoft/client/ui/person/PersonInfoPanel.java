@@ -10,7 +10,7 @@ import com.google.gwt.user.client.ui.LayoutPanel;
 
 
 
-public class PersonneInfoPanel extends FlowPanel implements HasClickHandlers{
+public class PersonInfoPanel extends FlowPanel implements HasClickHandlers{
 	
     private Label title;
     private Label firstName;

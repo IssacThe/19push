@@ -7,13 +7,14 @@ import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.event.dom.client.HasClickHandlers;
 import com.google.gwt.event.shared.HandlerRegistration;
+import com.google.gwt.user.client.ui.FlowPanel;
 import com.google.gwt.user.client.ui.SimplePanel;
 import com.google.gwt.user.client.ui.Widget;
 
 
 public class ListItem extends SimplePanel implements HasClickHandlers{
-    
-    public ListItem(){
+  
+	public ListItem(){
         super((Element) Document.get().createLIElement().cast());
     }
  
@@ -23,6 +24,7 @@ public class ListItem extends SimplePanel implements HasClickHandlers{
      */
     public ListItem(String s){
         this();
+       
         getElement().setInnerText(s);
     }
  

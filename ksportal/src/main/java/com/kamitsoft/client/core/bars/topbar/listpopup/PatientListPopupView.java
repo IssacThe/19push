@@ -16,6 +16,7 @@ import com.google.web.bindery.event.shared.EventBus;
 import com.gwtplatform.mvp.client.PopupViewImpl;
 import com.kamitsoft.client.core.bars.topbar.listpopup.PatientListPopupPresenter.PatientSelectionHandler;
 import com.kamitsoft.client.i18n.MainDictionary;
+import com.kamitsoft.client.ui.person.PatientItemListWidget;
 import com.kamitsoft.client.ui.ul.ListItem;
 import com.kamitsoft.client.ui.ul.UListWidget;
 import com.kamitsoft.shared.beans.patient.PatientInfo;
@@ -56,7 +57,8 @@ public class PatientListPopupView extends PopupViewImpl implements PatientListPo
 	public void addPatient(ArrayList<PatientInfo> patientList){
 		ArrayList<ListItem> items = new ArrayList<ListItem>();
 		for(final PatientInfo info:patientList){
-			ListItem item = new ListItem(info.getFirstName()+ " "+info.getLastName()); 
+			ListItem item = new ListItem(); 
+			item.add(new PatientItemListWidget(info));
 			item.setStyleName("patientlistil");
 			item.addClickHandler(new ClickHandler(){
 	

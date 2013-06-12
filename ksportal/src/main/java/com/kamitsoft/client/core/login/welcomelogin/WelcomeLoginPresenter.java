@@ -1,7 +1,10 @@
 package com.kamitsoft.client.core.login.welcomelogin;
+import com.google.gwt.event.dom.client.KeyDownEvent;
+import com.google.gwt.event.dom.client.KeyDownHandler;
 import com.google.gwt.event.dom.client.KeyPressEvent;
 import com.google.gwt.event.dom.client.KeyPressHandler;
 import com.google.gwt.event.shared.GwtEvent.Type;
+import com.google.gwt.user.client.Timer;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.Image;
 import com.google.gwt.user.client.ui.Widget;
@@ -18,6 +21,8 @@ import com.gwtplatform.mvp.client.proxy.ProxyPlace;
 import com.gwtplatform.mvp.client.proxy.RevealContentHandler;
 import com.gwtplatform.mvp.client.proxy.RevealRootContentEvent;
 import com.kamitsoft.client.event.UserLoginEvent;
+import com.kamitsoft.client.event.UserLoginEventHandler;
+import com.kamitsoft.client.event.UserLogoutEvent;
 import com.kamitsoft.client.places.NamesTokens;
 import com.kamitsoft.client.security.UserContext;
 import com.kamitsoft.client.ui.loader.AsyncCall;
@@ -38,7 +43,7 @@ public class WelcomeLoginPresenter extends Presenter<WelcomeLoginPresenter.Displ
 			public String getPassword();
 			public void setLoginMessage(int msgCode);
 			public void clearFields();
-			public void addKeyHandler(KeyPressHandler keyPressHandler);
+			public void addKeyHandler(KeyDownHandler keyDownHandler);
 			public void clearMessage();
 			public void clearCarousel();
 			
@@ -59,6 +64,7 @@ public class WelcomeLoginPresenter extends Presenter<WelcomeLoginPresenter.Displ
 	  @Inject private UserContext context;
 	  private EventBus eventBus;
 	
+	  
 	  @Inject
 	  public WelcomeLoginPresenter(EventBus eventBus, Display view, Proxy proxy) {
 	    super(eventBus, view, proxy);
@@ -73,12 +79,11 @@ public class WelcomeLoginPresenter extends Presenter<WelcomeLoginPresenter.Displ
 	  @Override
 	  public void onBind(){
 		  super.onBind();
-		  getView().addKeyHandler(new KeyPressHandler(){
+		  getView().addKeyHandler(new KeyDownHandler(){
 		
 					@Override
-					public void onKeyPress(KeyPressEvent event) {
-						
-						if (event.getUnicodeCharCode() == 0) {
+					public void onKeyDown(KeyDownEvent event) {
+						if (event.getNativeKeyCode() == 13) {
 							getView().clearMessage();
 							if(getView().getAccountName().length()<=5){
 								getView().setLoginMessage(LoginConstants.ACCOUNTID_TO_SMALL);
@@ -97,6 +102,8 @@ public class WelcomeLoginPresenter extends Presenter<WelcomeLoginPresenter.Displ
 						
 					}
 		  	});
+		  
+
 		  
 	  }
 	  
@@ -121,17 +128,19 @@ public class WelcomeLoginPresenter extends Presenter<WelcomeLoginPresenter.Displ
 				protected void didSuccess(UserInfo userInfo) {
 					if(userInfo!=null){
 						context.setUserInfo(userInfo);
-						PlaceRequest request = new PlaceRequest(NamesTokens.welcome);
+						PlaceRequest request = new PlaceRequest(NamesTokens.main);
 						placeManager.revealPlace(request,true);
 						eventBus.fireEvent(new UserLoginEvent(userInfo));
+						
 					}
-					
-					
 				}
 			   
 			  });
+			
 		
 	}
+
+		
 
 	@Override
 	 protected void onReveal() {

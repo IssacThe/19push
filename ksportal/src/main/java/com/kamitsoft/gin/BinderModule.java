@@ -7,6 +7,7 @@ import com.kamitsoft.client.core.MainPagePresenter;
 import com.kamitsoft.client.core.MainPageView;
 import com.kamitsoft.client.core.bars.bottombar.BottomBarPresenter;
 import com.kamitsoft.client.core.bars.bottombar.BottomBarView;
+
 import com.kamitsoft.client.core.bars.topbar.TopBarPresenter;
 import com.kamitsoft.client.core.bars.topbar.TopBarView;
 import com.kamitsoft.client.core.bars.topbar.listpopup.PatientListPopupPresenter;
@@ -15,8 +16,8 @@ import com.kamitsoft.client.core.login.popuplogin.LoginPopupPresenter;
 import com.kamitsoft.client.core.login.popuplogin.LoginPopupView;
 import com.kamitsoft.client.core.login.welcomelogin.WelcomeLoginPresenter;
 import com.kamitsoft.client.core.login.welcomelogin.WelcomeLoginView;
-import com.kamitsoft.client.core.welcome.WelcomePresenter;
-import com.kamitsoft.client.core.welcome.WelcomeView;
+import com.kamitsoft.client.core.patient.PatientPresenter;
+import com.kamitsoft.client.core.patient.PatientView;
 import com.kamitsoft.client.places.KSAPlaceManager;
 
 public class BinderModule extends AbstractPresenterModule {
@@ -27,14 +28,16 @@ public class BinderModule extends AbstractPresenterModule {
 	    
 	    // Presenters
 	    bindPresenter(MainPagePresenter.class, MainPagePresenter.Display.class, MainPageView.class,  MainPagePresenter.Proxy.class);
-	    bindPresenter(WelcomePresenter.class, WelcomePresenter.Display.class, WelcomeView.class, WelcomePresenter.Proxy.class);
+	    bindPresenter(PatientPresenter.class, PatientPresenter.Display.class, PatientView.class, PatientPresenter.Proxy.class);
 	    bindPresenter(WelcomeLoginPresenter.class, WelcomeLoginPresenter.Display.class, WelcomeLoginView.class, WelcomeLoginPresenter.Proxy.class);
 	    
-	   // widigets
+	    
+	    // widigets
 	    bindPresenterWidget(TopBarPresenter.class, TopBarPresenter.Display.class, TopBarView.class);
 	    bindPresenterWidget(BottomBarPresenter.class, BottomBarPresenter.Display.class, BottomBarView.class);
 	    bindPresenterWidget(LoginPopupPresenter.class, LoginPopupPresenter.Display.class, LoginPopupView.class);
 	    bindPresenterWidget(PatientListPopupPresenter.class, PatientListPopupPresenter.Display.class, PatientListPopupView.class);
+	   
 	    
 	    
 	  }

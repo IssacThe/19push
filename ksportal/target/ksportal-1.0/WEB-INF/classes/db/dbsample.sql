@@ -17,7 +17,12 @@ INSERT INTO patient (accountid, firstname,middlename, lastname, dob, pob, sex, c
 	(1,'Isaac','','NDIAYE','1992-12-16 12:21:13','Saint-Louis','M',now(), 'Testers' ),
 	(1,'Alain','','BA','1990-12-16 12:21:13','Thies','M',now(), 'Testers' ),
 	(1,'Joosephine','','NDIAYE','1985-12-16 12:21:13','Dakar','M',now(), 'Testers' ),
-	(2,'Edem','','KODJO','1994-12-16 18:21:13','Lome','M',now(), 'Testers' );
+	(2,'Edem','','KODJO','1994-12-16 18:21:13','Lome','M',now(), 'Testers' ),
+	(1,'Mahmoudou','','TOURE','1975-12-16 12:21:13','Kaedi','M',now(), 'Testers' ),
+	(1,'Mamadou','','TOURE','1970-12-16 12:21:13','Kaedi','M',now(), 'Testers' ),
+	(1,'Ibra','','TOURE','1965-12-16 12:21:13','Kaedi','M',now(), 'Testers' ),
+	(1,'Marieme','','TOURE','1968-12-16 12:21:13','Kaedi','F',now(), 'Testers' ),
+	(1,'Fadel','','TOURE','1986-10-07 12:21:13','Kaedi','M',now(), 'Testers' );
 
 
 	

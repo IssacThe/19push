@@ -13,7 +13,7 @@ import com.gwtplatform.mvp.client.proxy.RevealRootContentEvent;
 import com.kamitsoft.client.core.bars.bottombar.BottomBarPresenter;
 import com.kamitsoft.client.core.bars.topbar.TopBarPresenter;
 import com.kamitsoft.client.core.login.welcomelogin.WelcomeLoginPresenter;
-import com.kamitsoft.client.core.welcome.WelcomePresenter;
+import com.kamitsoft.client.core.patient.PatientPresenter;
 import com.kamitsoft.client.places.NamesTokens;
 import com.kamitsoft.client.security.UserContext;
 
@@ -36,7 +36,6 @@ public class MainPagePresenter extends Presenter<MainPagePresenter.Display, Main
 	  @Inject private UserContext context;
 	  @Inject private TopBarPresenter topBar;
 	  @Inject private BottomBarPresenter bottomBar;
-	  @Inject private WelcomePresenter welcome;
 	  @Inject private WelcomeLoginPresenter welcomeLogin;
 	  
 	  @Inject
@@ -48,7 +47,6 @@ public class MainPagePresenter extends Presenter<MainPagePresenter.Display, Main
 	  @Override
 	  protected void revealInParent() {
 	    RevealRootContentEvent.fire(this, this);
-    	setInSlot(TYPE_MainContent, welcome);
 	    setInSlot(TYPE_TopBar, topBar);
 	    setInSlot(TYPE_BottomBar, bottomBar);
 	    
@@ -59,11 +57,11 @@ public class MainPagePresenter extends Presenter<MainPagePresenter.Display, Main
 	  public void onBind(){
 		  super.onBind();
 		  
-		  
+		 
 	  }
 
 	
-
+	  
 
 
 }

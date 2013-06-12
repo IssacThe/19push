@@ -1,19 +1,26 @@
 package com.kamitsoft.client.security;
 
+import java.util.ArrayList;
+
+import com.google.gwt.user.client.Timer;
 import com.google.gwt.user.client.rpc.IsSerializable;
 import com.google.inject.Singleton;
+import com.kamitsoft.client.core.bars.bottombar.MenuItem;
 import com.kamitsoft.shared.beans.user.UserInfo;
 @Singleton
 public class UserContext implements IsSerializable{
+	
 	private long userID;
 	private long accountID;
 	private boolean connected;
 	private UserInfo userInfo;
+	private ArrayList<Integer> allowedItems = new ArrayList<Integer>();
 	
 	public void setAccountID(long accountID) {
 		this.accountID = accountID;
 	}
 	public void setConnected(boolean connected) {
+	
 		this.connected = connected;
 	}
 	public long getAccountID() {
@@ -43,7 +50,12 @@ public class UserContext implements IsSerializable{
 		accountID = 0;
 		connected = false;
 		userInfo = null;
+		allowedItems.clear();
 		
+	}
+	public boolean isAllowedItem(MenuItem item) {
+		// TODO Auto-generated method stub
+		return true;
 	}
 
 }

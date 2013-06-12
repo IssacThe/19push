@@ -7,6 +7,8 @@ import com.google.web.bindery.event.shared.EventBus;
 import com.gwtplatform.mvp.client.PopupView;
 import com.gwtplatform.mvp.client.PresenterWidget;
 import com.gwtplatform.mvp.client.proxy.PlaceManager;
+import com.gwtplatform.mvp.client.proxy.PlaceRequest;
+import com.kamitsoft.client.places.NamesTokens;
 import com.kamitsoft.shared.beans.patient.PatientInfo;
 
 
@@ -49,7 +51,9 @@ public class PatientListPopupPresenter extends PresenterWidget<PatientListPopupP
 	}
 	
 	protected void display(PatientInfo info) {
-		System.out.println("display "+info.getFirstName());
+		PlaceRequest request = new PlaceRequest(NamesTokens.patient);
+		request = request.with("patientID", String.valueOf(info.getPatientID()));
+		placeManager.revealPlace(request);
 	}
 
 	public void addPatientList(ArrayList<PatientInfo> list){

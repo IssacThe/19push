@@ -10,12 +10,12 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 import com.google.gwt.user.client.rpc.IsSerializable;
-import com.kamitsoft.client.ui.person.hasPersonInfo;
-import com.kamitsoft.shared.beans.beanInfo;
+import com.kamitsoft.client.ui.person.HasPersonInfo;
+import com.kamitsoft.shared.beans.BeanInfo;
 
 @Entity 
 @Table(name="patient")
-public class PatientInfo extends beanInfo implements IsSerializable, hasPersonInfo{
+public class PatientInfo extends BeanInfo implements IsSerializable, HasPersonInfo{
 	private long accountID;
 	private long patientID;
 	private String firstName;

@@ -12,20 +12,20 @@ import com.kamitsoft.client.ui.carousel.CarouselPanel;
 import com.kamitsoft.client.ui.person.PersonInfoPanel;
 import com.kamitsoft.shared.beans.patient.PatientInfo;
 
-public class PatientView extends ViewImpl implements PatientPresenter.Display {
+public class PatientMainView extends ViewImpl implements PatientMainPresenter.Display {
 
 		@UiField HTMLPanel contentPanel;
 		@UiField PersonInfoPanel personalInfoPanel;
 		private final Widget widget;
 	
-		public interface Binder extends UiBinder<Widget, PatientView> {
+		public interface Binder extends UiBinder<Widget, PatientMainView> {
 		}
 	
 		
 		
 		
 		@Inject
-		public PatientView(final Binder binder) {
+		public PatientMainView(final Binder binder) {
 			widget = binder.createAndBindUi(this);
 		}
 	
@@ -35,12 +35,7 @@ public class PatientView extends ViewImpl implements PatientPresenter.Display {
 		}
 		
 		
-		@Override
-		public void setInSlot(Object slot, Widget content) {
-			
-			
-			
-		}
+		
 
 		@Override
 		public void setPatient(PatientInfo patientInfo){

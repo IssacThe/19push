@@ -22,6 +22,7 @@ public abstract class AsyncCall<T> implements AsyncCallback<T>
     }
     /** the failure method needed to be overwritte */   
     protected abstract void didFail(Throwable caught);  
+    
     /** overwritte to do something with result */
     protected abstract void didSuccess(T result); 
 }

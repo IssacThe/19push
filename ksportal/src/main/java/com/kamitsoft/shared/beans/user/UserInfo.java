@@ -9,12 +9,12 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import com.google.gwt.user.client.rpc.IsSerializable;
-import com.kamitsoft.client.ui.person.hasPersonInfo;
-import com.kamitsoft.shared.beans.beanInfo;
+import com.kamitsoft.client.ui.person.HasPersonInfo;
+import com.kamitsoft.shared.beans.BeanInfo;
 
 @Entity 
 @Table(name="user_info")
-public class UserInfo extends beanInfo implements IsSerializable, hasPersonInfo{
+public class UserInfo extends BeanInfo implements IsSerializable, HasPersonInfo{
 	private long accountID;
 	private long userID;
 	private String userName;

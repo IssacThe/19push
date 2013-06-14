@@ -16,8 +16,8 @@ import com.kamitsoft.client.core.login.popuplogin.LoginPopupPresenter;
 import com.kamitsoft.client.core.login.popuplogin.LoginPopupView;
 import com.kamitsoft.client.core.login.welcomelogin.WelcomeLoginPresenter;
 import com.kamitsoft.client.core.login.welcomelogin.WelcomeLoginView;
-import com.kamitsoft.client.core.patient.PatientPresenter;
-import com.kamitsoft.client.core.patient.PatientView;
+import com.kamitsoft.client.core.patient.PatientMainPresenter;
+import com.kamitsoft.client.core.patient.PatientMainView;
 import com.kamitsoft.client.places.KSAPlaceManager;
 
 public class BinderModule extends AbstractPresenterModule {
@@ -28,7 +28,7 @@ public class BinderModule extends AbstractPresenterModule {
 	    
 	    // Presenters
 	    bindPresenter(MainPagePresenter.class, MainPagePresenter.Display.class, MainPageView.class,  MainPagePresenter.Proxy.class);
-	    bindPresenter(PatientPresenter.class, PatientPresenter.Display.class, PatientView.class, PatientPresenter.Proxy.class);
+	    bindPresenter(PatientMainPresenter.class, PatientMainPresenter.Display.class, PatientMainView.class, PatientMainPresenter.Proxy.class);
 	    bindPresenter(WelcomeLoginPresenter.class, WelcomeLoginPresenter.Display.class, WelcomeLoginView.class, WelcomeLoginPresenter.Proxy.class);
 	    
 	    

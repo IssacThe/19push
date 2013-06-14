@@ -23,7 +23,7 @@ public class MainPageView extends ViewImpl implements MainPagePresenter.Display 
   	@UiField SimplePanel topBar;
   	@UiField SimplePanel bottomBar;
   	@UiField HTMLPanel mainContent;
-  	@UiField HTMLPanel loginContent;
+  
 	@Inject
 	public MainPageView(final Binder binder) {
 		  widget = binder.createAndBindUi(this);

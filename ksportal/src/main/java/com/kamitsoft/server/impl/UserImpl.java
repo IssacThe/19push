@@ -15,6 +15,7 @@ public class UserImpl extends RemoteServiceServlet implements com.kamitsoft.remo
 	 */
 	private static final long serialVersionUID = 1L;
 	@Inject private User user;
+	
 	@Override
 	public UserInfo login(UserParameters params) throws Exception {
 

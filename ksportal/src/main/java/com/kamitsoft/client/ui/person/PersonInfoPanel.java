@@ -18,7 +18,7 @@ public class PersonInfoPanel extends FlowPanel implements HasClickHandlers{
     private Label laststName;
     
 
-	public void setInfo(hasPersonInfo info){
+	public void setInfo(HasPersonInfo info){
 		  this.clear();
 		  title = new Label();
 		  title.setText("Dr ");

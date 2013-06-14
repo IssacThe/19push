@@ -21,7 +21,7 @@ import com.kamitsoft.remote.rpc.PatientAsync;
 import com.kamitsoft.shared.beans.patient.PatientInfo;
 
 
-public class PatientPresenter extends Presenter<PatientPresenter.Display, PatientPresenter.Proxy> {
+public class PatientMainPresenter extends Presenter<PatientMainPresenter.Display, PatientMainPresenter.Proxy> {
 
 	  public interface Display extends View {
 
@@ -30,21 +30,24 @@ public class PatientPresenter extends Presenter<PatientPresenter.Display, Patien
 	
 		  
 	  };
-	  //@ContentSlot
-	  //public static final Type<RevealContentHandler<?>> TYPE_Login = new Type<RevealContentHandler<?>>();
+	  
 	  
 	  @ProxyCodeSplit
 	  @NameToken(NamesTokens.patient)
-	  public interface Proxy extends ProxyPlace<PatientPresenter> {}
+	  public interface Proxy extends ProxyPlace<PatientMainPresenter> {}
+	  
 	  private Display display;
 	  @Inject private UserContext context;
+	  private EventBus eventBus;
+	  
 	 
 	  
 	  
 	  @Inject
-	  public PatientPresenter(EventBus eventBus, Display view, Proxy proxy) {
+	  public PatientMainPresenter(EventBus eventBus, Display view, Proxy proxy) {
 		   super(eventBus, view, proxy);
 		   display=view;
+		   this.eventBus= eventBus;
 		  
 	  }
 	
@@ -52,7 +55,7 @@ public class PatientPresenter extends Presenter<PatientPresenter.Display, Patien
 	  @Override
 	  public void onBind(){
 		  super.onBind();
-		  
+		 
 			  
 	  }
 	
@@ -89,7 +92,7 @@ public class PatientPresenter extends Presenter<PatientPresenter.Display, Patien
 	  }
 
 
-	@Override
+	  @Override
 	  protected void revealInParent() {
 		RevealContentEvent.fire(this, MainPagePresenter.TYPE_MainContent, this);
 		

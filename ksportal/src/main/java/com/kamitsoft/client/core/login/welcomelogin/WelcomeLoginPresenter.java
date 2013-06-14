@@ -51,10 +51,6 @@ public class WelcomeLoginPresenter extends Presenter<WelcomeLoginPresenter.Displ
 	  
 	 
 	  
-	  @ContentSlot
-	  public static final Type<RevealContentHandler<?>> TYPE_Banner = new Type<RevealContentHandler<?>>();
-	  
-	  
 	  
 	  @ProxyCodeSplit
 	  @NameToken(NamesTokens.welcomelogin)
@@ -108,43 +104,43 @@ public class WelcomeLoginPresenter extends Presenter<WelcomeLoginPresenter.Displ
 	  }
 	  
 	  protected void tryLogin(String account, String userName,  String userPassword) {
-			UserParameters  params = new UserParameters();
-			params.setAccountName(account);
-			params.setUserName(userName);
-			params.setPassword(userPassword);
-			
-			UserAsync userAsyn = UserAsync.Util.getInstance();
-			userAsyn.login(params, new AsyncCall<UserInfo>() {
-	
-			
-				@Override
-				protected void didFail(Throwable caught) {
-					getView().setLoginMessage(LoginConstants.CREDENTIAL_INCORRECT);
-					caught.printStackTrace();
+		UserParameters  params = new UserParameters();
+		params.setAccountName(account);
+		params.setUserName(userName);
+		params.setPassword(userPassword);
+		
+		UserAsync userAsyn = UserAsync.Util.getInstance();
+		userAsyn.login(params, new AsyncCall<UserInfo>() {
+
+		
+			@Override
+			protected void didFail(Throwable caught) {
+				getView().setLoginMessage(LoginConstants.CREDENTIAL_INCORRECT);
+				caught.printStackTrace();
+				
+			}
+
+			@Override
+			protected void didSuccess(UserInfo userInfo) {
+				if(userInfo!=null){
+					context.setUserInfo(userInfo);
+					PlaceRequest request = new PlaceRequest(NamesTokens.main);
+					placeManager.revealPlace(request,true);
+					eventBus.fireEvent(new UserLoginEvent(userInfo));
 					
 				}
-
-				@Override
-				protected void didSuccess(UserInfo userInfo) {
-					if(userInfo!=null){
-						context.setUserInfo(userInfo);
-						PlaceRequest request = new PlaceRequest(NamesTokens.main);
-						placeManager.revealPlace(request,true);
-						eventBus.fireEvent(new UserLoginEvent(userInfo));
-						
-					}
-				}
-			   
-			  });
-			
-		
-	}
+			}
+		   
+		  });
+	
+	  }
 
 		
 
 	@Override
-	 protected void onReveal() {
+	protected void onReveal() {
 			super.onReveal();
+			getView().clearFields();
 			getView().clearCarousel();
 			getView().addWidgetToSlider(new Image("http://www.mackoo.com/Mongolie/images/IMGP9640.jpg"));
 			getView().addWidgetToSlider(new Image("http://www.mairie-etampes.fr/images/parcs_pergola1_panoramique.jpg"));
@@ -153,11 +149,8 @@ public class WelcomeLoginPresenter extends Presenter<WelcomeLoginPresenter.Displ
 			getView().addWidgetToSlider(new Image("http://www.gesves-tourisme.be/fr/images/2.jpg"));
 			getView().addWidgetToSlider(new Image("http://www.anb-immobilier.com/wp-content/uploads/2012/05/DSC_00024-450x200.jpg"));
 			getView().addWidgetToSlider(new Image("http://nautilus-tours.com/gal/img/cat4/gal0027.jpg"));
-			
 			getView().startSlider();
-			
-			
-	  }
+	 }
 	
 
 	 

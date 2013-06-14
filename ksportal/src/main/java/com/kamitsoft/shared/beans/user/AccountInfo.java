@@ -7,12 +7,12 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import com.google.gwt.user.client.rpc.IsSerializable;
-import com.kamitsoft.shared.beans.beanInfo;
+import com.kamitsoft.shared.beans.BeanInfo;
 
 
 @Entity 
 @Table(name="account")
-public class AccountInfo extends beanInfo implements IsSerializable{
+public class AccountInfo extends BeanInfo implements IsSerializable{
 	
 	
 	private long accountID;

@@ -13,7 +13,7 @@ import com.gwtplatform.mvp.client.proxy.RevealRootContentEvent;
 import com.kamitsoft.client.core.bars.bottombar.BottomBarPresenter;
 import com.kamitsoft.client.core.bars.topbar.TopBarPresenter;
 import com.kamitsoft.client.core.login.welcomelogin.WelcomeLoginPresenter;
-import com.kamitsoft.client.core.patient.PatientPresenter;
+import com.kamitsoft.client.core.patient.PatientMainPresenter;
 import com.kamitsoft.client.places.NamesTokens;
 import com.kamitsoft.client.security.UserContext;
 

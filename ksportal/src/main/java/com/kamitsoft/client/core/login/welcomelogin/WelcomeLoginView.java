@@ -24,14 +24,16 @@ public class WelcomeLoginView extends ViewImpl implements WelcomeLoginPresenter.
 	 private final Widget widget;
 
 	 public interface Binder extends UiBinder<Widget, WelcomeLoginView> {	}
+	 
   	 @UiField CarouselPanel carousel;
   	 @UiField PasswordTextBox textFieldPassword;
 	 @UiField TextBox textFieldUsername;
 	 @UiField TextBox textFieldAccountID;
 	 @UiField Label loginmessage;
 	 private MainDictionary dictionary;
+	 
 	 @Inject
-	 public WelcomeLoginView(final Binder binder,MainDictionary dictionary) {
+	 public WelcomeLoginView(final Binder binder, MainDictionary dictionary) {
 		  widget = binder.createAndBindUi(this);
 		  this.dictionary = dictionary;
 		  loginmessage.setText("");
@@ -39,7 +41,7 @@ public class WelcomeLoginView extends ViewImpl implements WelcomeLoginPresenter.
 	  
   	
   
-
+	@Override
   	public Widget asWidget() {
 		return widget;
 	}

@@ -2,7 +2,7 @@ package com.kamitsoft.client.security;
 
 import java.util.ArrayList;
 
-import com.google.gwt.user.client.Timer;
+
 import com.google.gwt.user.client.rpc.IsSerializable;
 import com.google.inject.Singleton;
 import com.kamitsoft.client.core.bars.bottombar.MenuItem;
@@ -54,7 +54,7 @@ public class UserContext implements IsSerializable{
 		
 	}
 	public boolean isAllowedItem(MenuItem item) {
-		// TODO Auto-generated method stub
+		
 		return true;
 	}
 

@@ -4,7 +4,7 @@ import java.sql.Timestamp;
 
 import com.google.gwt.user.client.rpc.IsSerializable;
 
-public class beanInfo implements IsSerializable{
+public class BeanInfo implements IsSerializable{
 	private Timestamp created;
 	private String createdBy;
 	private Timestamp lastUpdated;

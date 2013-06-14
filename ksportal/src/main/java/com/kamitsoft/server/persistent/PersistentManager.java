@@ -19,7 +19,7 @@ public class PersistentManager {
 	        	AnnotationConfiguration acfg = new AnnotationConfiguration();
 	           
                 acfg.configure();
-                System.out.println("patientPackage  "+PatientInfo.class.getPackage().getName());
+               
                 acfg.addPackage(PatientInfo.class.getPackage().getName()).addAnnotatedClass(PatientInfo.class);
                 acfg.addPackage(UserInfo.class.getPackage().getName()).addAnnotatedClass(UserInfo.class);
                 acfg.addPackage(AccountInfo.class.getPackage().getName()).addAnnotatedClass(AccountInfo.class);

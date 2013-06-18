@@ -7,12 +7,12 @@
 	      <g:HTMLPanel>
 	      		<g:Label ui:field = "loginmessage" styleName ="smalltextred"/>
 		        <g:HTMLPanel styleName = "margin-left-20px margin-top-10px"> 
-		        	<g:Label ui:field = "username" styleName = "width35pc alignleft"/> :
-		        	<g:TextBox styleName = "  width30pc alignleft margin-left-130px" ui:field = "textFieldUsername" />
+		        	<g:Label ui:field = "username" styleName = "width35pc alignleft10"/> :
+		        	<g:TextBox styleName = "  width30pc alignleft10 margin-left-130px" ui:field = "textFieldUsername" />
 		        </g:HTMLPanel>
 		    	<g:HTMLPanel styleName = "margin-left-20px margin-top-10px"> 
-		    		<g:Label ui:field = "password" styleName = "width35pc alignleft"/> :
-		        	<g:PasswordTextBox styleName = " width30pc alignleft margin-left-130px"  ui:field ="textFieldPassword" />
+		    		<g:Label ui:field = "password" styleName = "width35pc alignleft10"/> :
+		        	<g:PasswordTextBox styleName = " width30pc alignleft10 margin-left-130px"  ui:field ="textFieldPassword" />
 		    	</g:HTMLPanel>
 	    
 	    	

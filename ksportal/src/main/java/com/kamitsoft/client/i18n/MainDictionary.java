@@ -36,5 +36,14 @@ public interface MainDictionary extends Messages{
 
 	 @DefaultMessage("Deconnexion pour cause d''inactivite")
      String timeout();
+	 
+	 @DefaultMessage("Infos")
+	 String info();
+	 
+	 @DefaultMessage("Antecedents Sociaux")
+	 String social();
+	 
+	 @DefaultMessage("Medications")
+	 String medication();
 	
 }

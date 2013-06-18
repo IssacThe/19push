@@ -48,8 +48,9 @@ public class TopBarPresenter extends PresenterWidget<TopBarPresenter.Display> {
 	@Inject private UserContext context;
 	@Inject private PatientParameters search ;
 	private Timer timer;
-	private final int TIMEOUT = 1*60*1000;
 	private Timer loggintimer;
+	private final int TIMEOUT = 5*60*1000;
+	
 	
 	protected UserInfo userInfo;
 

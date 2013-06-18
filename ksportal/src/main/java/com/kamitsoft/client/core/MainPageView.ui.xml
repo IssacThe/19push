@@ -4,12 +4,12 @@
              xmlns:g='urn:import:com.google.gwt.user.client.ui'>
 
 	<g:HTMLPanel>
-		    	<g:SimplePanel ui:field="topBar"  styleName="topbar kamitBox"/>
+		    	<g:SimplePanel ui:field="topBar"  styleName="topbar kamitBox "/>
 		    
-		    	<g:HTMLPanel ui:field="mainContent" styleName="kamitBox background-albatre mainpanel" />
+		    	<g:HTMLPanel ui:field="mainContent" styleName="kamitBox background-albatre mainpanel " />
 		    	
 		        
-		        <g:SimplePanel ui:field="bottomBar"  styleName="bottombar kamitBox"/>
+		        <g:SimplePanel ui:field="bottomBar"  styleName="bottombar kamitBox "/>
 	
 	</g:HTMLPanel>
 	

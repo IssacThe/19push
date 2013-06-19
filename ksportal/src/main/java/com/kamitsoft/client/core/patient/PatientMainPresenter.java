@@ -63,7 +63,14 @@ public class PatientMainPresenter extends Presenter<PatientMainPresenter.Display
 
 				@Override
 				public void onTabClicked(TabItem item) {
-					// TODO Auto-generated method stub
+					switch(item){
+					case patientInfo: gotoPatientInfo();
+						break;
+					case  patientSocial:gotoPatientSocial();
+						break;
+					case patientMedication:gotoPatientMedication();
+						break;
+					}
 					
 				}});
 		   
@@ -74,7 +81,25 @@ public class PatientMainPresenter extends Presenter<PatientMainPresenter.Display
 	  }
 	
 	 
-	  @Override
+	  protected void gotoPatientMedication() {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+	protected void gotoPatientSocial() {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+	protected void gotoPatientInfo() {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+	@Override
 	  public void onBind(){
 		  super.onBind();
 		  

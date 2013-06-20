@@ -1,32 +1,25 @@
 <!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
 
 <ui:UiBinder xmlns:ui='urn:ui:com.google.gwt.uibinder'   
-             xmlns:g='urn:import:com.google.gwt.user.client.ui'
-			 xmlns:k='urn:import:com.kamitsoft.client.ui.carousel'>
+            xmlns:g='urn:import:com.google.gwt.user.client.ui'
+            xmlns:k='urn:import:com.kamitsoft.client.ui.carousel'>
 
-	<g:HTMLPanel styleName ="welcomelogin kamitBox">
-	
-		    	<k:CarouselPanel styleName="centerHorizontal height-200px width-600px " ui:field="carousel"/>
-		    
-		    	<g:HTMLPanel ui:field="loginPanel" styleName="centerHorizontal margin-top-40px width-400px " >
-		    		<g:Label  ui:field = "loginmessage" styleName="centerHorizontal textorange margintop5px"/>
-		    		<div class ="margintop20px">
-			    		<div class ="width35pc floatleft textalignright"><g:Label  ui:field = "labelAccountID">Account ID:</g:Label> </div>
-		        		<div class ="width60pc floatleft "><g:TextBox styleName = "roundedborder2px noShadows margin-left-20px width-200px" ui:field = "textFieldAccountID" /></div>
-	       		 	</div>
-	       		 	
-	       		 	<div class ="margintop10px">
-			    		<div class ="width35pc floatleft textalignright"><g:Label styleName = "margintop10px ">Username:</g:Label></div>
-		        		<div class ="width60pc floatleft"><g:TextBox styleName = "roundedborder2px noShadows margintop10px margin-left-20px width-200px" ui:field = "textFieldUsername" /></div>
-	       		 	</div>
-	       		 	
-	       		 	<div class ="margintop10px">
-		    			<div class ="width35pc floatleft textalignright"><g:Label styleName = "margintop10px ">Password:</g:Label></div>
-		        		<div class ="width60pc floatleft"><g:PasswordTextBox styleName = "roundedborder2px noShadows margintop10px margin-left-20px width-200px"  ui:field ="textFieldPassword" /></div>
-		    		</div>
-		    	
-		    	</g:HTMLPanel>
-	
-	</g:HTMLPanel>
-	
+<g:HTMLPanel styleName ="welcomelogin kamitBox">
+    <k:CarouselPanel styleName="centerHorizontal height-200px width-600px " ui:field="carousel"/>
+    <g:HTMLPanel ui:field="loginPanel" styleName="centerHorizontal margin-top-40px width-400px " >
+        <g:Label  ui:field = "loginmessage" styleName="centerHorizontal textorange margintop5px"/>
+        <div class ="margintop20px">
+            <div class ="width35pc floatleft textalignright"><g:Label  ui:field = "labelAccountID">Account ID:</g:Label> </div>
+            <div class ="width60pc floatleft "><g:TextBox styleName = "roundedborder2px noShadows margin-left-20px width-200px" ui:field = "textFieldAccountID" /></div>
+        </div>
+        <div class ="margintop10px">
+            <div class ="width35pc floatleft textalignright"><g:Label styleName = "margintop10px ">Username:</g:Label></div>
+            <div class ="width60pc floatleft"><g:TextBox styleName = "roundedborder2px noShadows margintop10px margin-left-20px width-200px" ui:field = "textFieldUsername" /></div>
+        </div>
+        <div class ="margintop10px">
+            <div class ="width35pc floatleft textalignright"><g:Label styleName = "margintop10px ">Password:</g:Label></div>
+            <div class ="width60pc floatleft"><g:PasswordTextBox styleName = "roundedborder2px noShadows margintop10px margin-left-20px width-200px"  ui:field ="textFieldPassword" /></div>
+        </div>
+    </g:HTMLPanel>
+</g:HTMLPanel>
 </ui:UiBinder> 

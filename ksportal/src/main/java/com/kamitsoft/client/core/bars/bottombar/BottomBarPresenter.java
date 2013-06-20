@@ -17,67 +17,55 @@ import com.kamitsoft.client.security.UserContext;
 
 public class BottomBarPresenter extends PresenterWidget<BottomBarPresenter.Display> {
 
-	public interface Display extends View {
-		void setItemClickHandler(MenuItemClickHandler handler) ;
-		void addItems( ArrayList<MenuItem> items) ;
-	}
-	
-	public interface MenuItemClickHandler{
-		void onMenuItemClicked(MenuItem item);
-	}
-	
-  	private Display display;
+    public interface Display extends View {
+        void setItemClickHandler(MenuItemClickHandler handler) ;
+        void addItems( ArrayList<MenuItem> items) ;
+    }
+    
+    public interface MenuItemClickHandler{
+        void onMenuItemClicked(MenuItem item);
+    }
+    
+    private Display display;
+    
+    @Inject private PlaceManager placeManager;
+    
+    private UserContext context;
 
-	@Inject private PlaceManager placeManager;
+    @Inject
+    public BottomBarPresenter(EventBus eventBus, Display view, UserContext context, MainDictionary dictionary) {
+        super(eventBus, view);
+        display=view;
+        this.context = context;
+        MenuItem.dictionary = dictionary;
+        addMenuItems();
+        
+    }
 
-	private UserContext context;
-	
-  
-	@Inject
-	public BottomBarPresenter(EventBus eventBus, Display view, UserContext context, MainDictionary dictionary) {
-	    super(eventBus, view);
-	    display=view;
-	    this.context = context;
-	    
-	    MenuItem.dictionary = dictionary;
-	    addMenuItems();
-	    
-	}
-
- 
     private void addMenuItems() {
-    	ArrayList<MenuItem> items = new ArrayList<MenuItem>();
-	    for(MenuItem item :MenuItem.values()){
-	    	if(context.isAllowedItem(item)){
-	    		items.add(item);
-	    	}
-	    }
-	    getView().addItems(items);
-		
-	}
-
+        ArrayList<MenuItem> items = new ArrayList<MenuItem>();
+        for(MenuItem item :MenuItem.values()){
+            if(context.isAllowedItem(item)){
+                items.add(item);
+            }
+        }
+        getView().addItems(items);
+    }
 
 	@Override
     public void onBind(){
-	  super.onBind();
-	  getView().setItemClickHandler(new MenuItemClickHandler(){
+      super.onBind();
+      getView().setItemClickHandler(new MenuItemClickHandler(){
+        @Override
+        public void onMenuItemClicked(MenuItem item) {
+        }
 
-		@Override
-		public void onMenuItemClicked(MenuItem item) {
-			// TODO Auto-generated method stub
-			
-		}
-		  
-	  });
-
-	  
+      });
     }
 
     protected void displayPlace(String  place) {
-		PlaceRequest pr = new PlaceRequest(place);
-		placeManager.revealPlace(pr);
-		
+        PlaceRequest pr = new PlaceRequest(place);
+        placeManager.revealPlace(pr);
     }
-
 
 }

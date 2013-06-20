@@ -14,45 +14,35 @@ import com.kamitsoft.client.security.UserContext;
 
 
 public class PatientInfoPresenter extends PresenterWidget<PatientInfoPresenter.Display> {
+    public interface Display extends View {};
+    
+    private  TabItem  tabItem = TabItem.patientInfo;
+    private Display display;
+    @Inject private PlaceManager placeManager;
+    private UserContext context;
 
-	public interface Display extends View {};
-	
-	
-	private  TabItem  tabItem = TabItem.patientInfo;
-  	private Display display;
-	@Inject private PlaceManager placeManager;
-	private UserContext context;
-	
-  
-	@Inject
-	public PatientInfoPresenter(EventBus eventBus, Display view, UserContext context, MainDictionary dictionary) {
-	    super(eventBus, view);
-	    display=view;
-	    this.context = context;
-	    
-	    
-	}
+    @Inject
+    public PatientInfoPresenter(EventBus eventBus, Display view, UserContext context, MainDictionary dictionary) {
+        super(eventBus, view);
+        display=view;
+        this.context = context;
+        
+        
+    }
 
- 
-   
-
-
-	@Override
+    @Override
     public void onBind(){
-	  super.onBind();
-	  
-
-	  
+        super.onBind();
     }
 
     protected void displayPlace(String  place) {
-		PlaceRequest pr = new PlaceRequest(place);
-		placeManager.revealPlace(pr);
-		
+        PlaceRequest pr = new PlaceRequest(place);
+        placeManager.revealPlace(pr);
+
     }
     
     public TabItem getTabItem(){
-    	return tabItem;
+        return tabItem;
     }
 
 }

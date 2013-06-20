@@ -24,69 +24,56 @@ import com.kamitsoft.shared.beans.patient.PatientInfo;
 
 public class PatientListPopupView extends PopupViewImpl implements PatientListPopupPresenter.Display {
 
-	@UiField HTMLPanel unsortedListPanel;
-	private final Widget widget;
-	private MainDictionary dictionary;
-	private UListWidget ul;
-	private PatientSelectionHandler patientSelectionHandler;
-	public interface Binder extends UiBinder<Widget, PatientListPopupView> {	}
-
-	
-
-  
-	@Inject
-	public PatientListPopupView(final Binder binder, EventBus eventBus,MainDictionary dictionary) {
-		super(eventBus);
-		widget = binder.createAndBindUi(this);
-		this.dictionary = dictionary;
-		ul = new UListWidget();
-		ul.setStyleName("patientlistul");
-		unsortedListPanel.add(ul);
-	}
-	
-	public Widget asWidget() {
-		 return  widget;
-	}
-	
-	@Override
-	public void setSelectionHandler(PatientSelectionHandler handler){
-		 patientSelectionHandler = handler;
-	}
-	
-	@Override
-	public void addPatient(ArrayList<PatientInfo> patientList){
-		ArrayList<ListItem> items = new ArrayList<ListItem>();
-		for(final PatientInfo info:patientList){
-			ListItem item = new ListItem(); 
-			item.add(new PatientItemListWidget(info));
-			item.setStyleName("patientlistil");
-			item.addClickHandler(new ClickHandler(){
-	
-				@Override
-				public void onClick(ClickEvent event) {
-					patientSelectionHandler.onPatientSelect(info);
-					hide();
-				}
-				
-			});
-			items.add(item);
-		}
-		ul.clear();
-		ul.add(items);
-		
-	}
-
-	@Override
-	public void setPosition() {
-		Element sbox = DOM.getElementById("searchboxid");
-		setPosition(sbox.getAbsoluteLeft()+50, sbox.getAbsoluteTop()+35);
-		
-	}
-
-
-
-
-
-
+    @UiField HTMLPanel unsortedListPanel;
+    private final Widget widget;
+    private MainDictionary dictionary;
+    private UListWidget ul;
+    private PatientSelectionHandler patientSelectionHandler;
+    public interface Binder extends UiBinder<Widget, PatientListPopupView> {}
+    
+    @Inject
+    public PatientListPopupView(final Binder binder, EventBus eventBus,MainDictionary dictionary) {
+        super(eventBus);
+        widget = binder.createAndBindUi(this);
+        this.dictionary = dictionary;
+        ul = new UListWidget();
+        ul.setStyleName("patientlistul");
+        unsortedListPanel.add(ul);
+    }
+    
+    public Widget asWidget() {
+        return  widget;
+    }
+    
+    @Override
+    public void setSelectionHandler(PatientSelectionHandler handler){
+        patientSelectionHandler = handler;
+    }
+    
+    @Override
+    public void addPatient(ArrayList<PatientInfo> patientList){
+        ArrayList<ListItem> items = new ArrayList<ListItem>();
+        for(final PatientInfo info:patientList){
+            ListItem item = new ListItem(); 
+            item.add(new PatientItemListWidget(info));
+            item.setStyleName("patientlistil");
+            item.addClickHandler(new ClickHandler(){
+                @Override
+                public void onClick(ClickEvent event) {
+                    patientSelectionHandler.onPatientSelect(info);
+                    hide();
+                }
+            });
+            items.add(item);
+        }
+        ul.clear();
+        ul.add(items);
+    }
+    
+    @Override
+    public void setPosition() {
+        Element sbox = DOM.getElementById("searchboxid");
+        setPosition(sbox.getAbsoluteLeft()+50, sbox.getAbsoluteTop()+35);
+    }
 
 }

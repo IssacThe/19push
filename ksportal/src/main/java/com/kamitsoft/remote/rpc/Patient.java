@@ -11,9 +11,9 @@ import com.kamitsoft.shared.beans.patient.PatientParameters;
 
 @RemoteServiceRelativePath("patient")
 public interface Patient extends RemoteService {
-	
-	public ArrayList<Integer> search(UserContext context,PatientParameters params) throws Exception;
-	public ArrayList<PatientInfo> getFromIDs(UserContext context, ArrayList<Integer> ids) throws Exception;
-	public ArrayList<PatientInfo> searchPatient(UserContext context,PatientParameters params) throws Exception;
-	
+    
+    public ArrayList<Integer> search(UserContext context,PatientParameters params) throws Exception;
+    public ArrayList<PatientInfo> getFromIDs(UserContext context, ArrayList<Integer> ids) throws Exception;
+    public ArrayList<PatientInfo> searchPatient(UserContext context,PatientParameters params) throws Exception;
+
 }

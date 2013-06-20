@@ -6,13 +6,12 @@ xmlns:k='urn:import:com.kamitsoft.client.ui.tooglebutton'>
 
 
     
-    	<g:HTMLPanel  styleName = "background-albatre">
-	       
-	       <k:ToogleMenu ui:field = "toogleMenu" styleName = "kamitBox width-170px lineheight30px height-30px cursorpointer floatleft fontsize12px"/> 
-	       <g:HTMLPanel ui:field = "unsortedListPanel"  styleName = "background-argile width-170px  zindex1000 shadowedbox kamitBox positionfixedbottom40px" />
-	       
-    	</g:HTMLPanel> 
+    <g:HTMLPanel  styleName = "background-albatre">
+       
+       <k:ToogleMenu ui:field = "toogleMenu" styleName = "kamitBox width-170px lineheight30px height-30px cursorpointer floatleft fontsize12px"/> 
+       <g:HTMLPanel ui:field = "unsortedListPanel"  styleName = "background-argile width-170px  zindex1000 shadowedbox kamitBox positionfixedbottom40px" />
+       
+    </g:HTMLPanel> 
     
-           
 
 </ui:UiBinder> 

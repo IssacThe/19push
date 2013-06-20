@@ -16,42 +16,36 @@ import com.kamitsoft.shared.beans.patient.PatientInfo;
 
 
 public class TabPanel extends FlowPanel implements HasClickHandlers{
-	
    
 
     private SimplePanel icone;
     private Label title;
     
     
-	public TabPanel(){
-		   super();
-	}
-
-	public TabPanel(TabItem tab){
-		super();
-		this.clear();
-		icone = new SimplePanel();
-		title = new Label();
-		title.setText(tab.getItemTitle());
-		decorate();
-		add(icone);
-		add(title);
-		  
-		  
+    public TabPanel(){
+        super();
     }
 
-	private void decorate() {
-		 setStyleName("height-40px norightborder  margin-top-5px cursorpointer");
-		 title.setStyleName("lineheight40px textaligncenter");
-		
-	}
+    public TabPanel(TabItem tab){
+        super();
+        this.clear();
+        icone = new SimplePanel();
+        title = new Label();
+        title.setText(tab.getItemTitle());
+        decorate();
+        add(icone);
+        add(title);
+    }
 
-	@Override
-	public HandlerRegistration addClickHandler(ClickHandler handler) {
-		
-	        return addDomHandler(handler, ClickEvent.getType());
-	        
-	}
+    private void decorate() {
+        setStyleName("height-40px norightborder  margin-top-5px cursorpointer");
+        title.setStyleName("lineheight40px textaligncenter");
+    }
+
+    @Override
+    public HandlerRegistration addClickHandler(ClickHandler handler) {
+        return addDomHandler(handler, ClickEvent.getType());
+    }
 
 
 

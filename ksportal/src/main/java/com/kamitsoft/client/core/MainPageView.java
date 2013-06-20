@@ -20,53 +20,45 @@ public class MainPageView extends ViewImpl implements MainPagePresenter.Display 
 
 
   
-  	@UiField SimplePanel topBar;
-  	@UiField SimplePanel bottomBar;
-  	@UiField HTMLPanel mainContent;
-  
-	@Inject
-	public MainPageView(final Binder binder) {
-		  widget = binder.createAndBindUi(this);
-	}
-	  
-  	@Override
-	public void setInSlot(Object slot, Widget content) {
-	    if (slot == MainPagePresenter.TYPE_TopBar) {
-	        setTopBar(content);
-	    }
-	    if (slot == MainPagePresenter.TYPE_BottomBar) {
-	        setBottomBar(content);
-	    }
-	    if (slot == MainPagePresenter.TYPE_MainContent) {
-	        setMainContent(content);
-	    }
-	    
-	}
-  	
-  	private void setMainContent(Widget content) {
-		mainContent.clear();
-		mainContent.add(content);
-  	}
-  
-  	private void setBottomBar(Widget content) {
-  		bottomBar.clear();
-  		bottomBar.add(content);
-  		
-	
-  	}
-  	private void setTopBar(Widget content) {
-  		topBar.clear();
-  		topBar.add(content);
-  	}
+@UiField SimplePanel topBar;
+@UiField SimplePanel bottomBar;
+@UiField HTMLPanel mainContent;
 
- 	
-  	public Widget asWidget() {
-		return widget;
-	}
+    @Inject
+    public MainPageView(final Binder binder) {
+        widget = binder.createAndBindUi(this);
+    }
+  
+    @Override
+    public void setInSlot(Object slot, Widget content) {
+        if (slot == MainPagePresenter.TYPE_TopBar) {
+            setTopBar(content);
+        }
+        if (slot == MainPagePresenter.TYPE_BottomBar) {
+            setBottomBar(content);
+        }
+        if (slot == MainPagePresenter.TYPE_MainContent) {
+            setMainContent(content);
+        }
+    
+    }
 
-  	
-	
+    private void setMainContent(Widget content) {
+        mainContent.clear();
+        mainContent.add(content);
+    }
   
-  
+    private void setBottomBar(Widget content) {
+        bottomBar.clear();
+        bottomBar.add(content);
+    }
+    private void setTopBar(Widget content) {
+        topBar.clear();
+        topBar.add(content);
+    }
+
+    public Widget asWidget() {
+        return widget;
+    }
 
 }

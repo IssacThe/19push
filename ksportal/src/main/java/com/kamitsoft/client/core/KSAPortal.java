@@ -9,12 +9,10 @@ import com.kamitsoft.gin.KSAPortalGinjector;
  * Entry point classes define <code>onModuleLoad()</code>.
  */
 public class KSAPortal implements EntryPoint {
-	 public final KSAPortalGinjector ginjector = GWT.create(KSAPortalGinjector.class);
-
-	  public void onModuleLoad() {
-
-	    DelayedBindRegistry.bind(ginjector);
-	    
-	    ginjector.getPlaceManager().revealDefaultPlace();    
-	  }
+    public final KSAPortalGinjector ginjector = GWT.create(KSAPortalGinjector.class);
+    
+    public void onModuleLoad() {
+        DelayedBindRegistry.bind(ginjector);
+        ginjector.getPlaceManager().revealDefaultPlace();    
+    }
 }

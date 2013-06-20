@@ -18,78 +18,59 @@ import com.kamitsoft.client.ui.ul.UListWidget;
 
 public class BottomBarView extends ViewImpl implements BottomBarPresenter.Display {
 
-	private final Widget widget;
-	
-	@UiField ToogleMenu toogleMenu;
-	@UiField HTMLPanel unsortedListPanel;
-	
-	private MenuItemClickHandler itemClickHandler;
-	
-	public interface Binder extends UiBinder<Widget, BottomBarView> {	
-		
-	}
-
- 
-
+    private final Widget widget;
+    
+    @UiField ToogleMenu toogleMenu;
+    @UiField HTMLPanel unsortedListPanel;
+    
+    private MenuItemClickHandler itemClickHandler;
+    
+    public interface Binder extends UiBinder<Widget, BottomBarView> {
+    }
   
-	@Inject
-	public BottomBarView(final Binder binder) {
-		widget = binder.createAndBindUi(this);
-		
-		unsortedListPanel.setVisible(false);
-		toogleMenu.addClickHandler(new ClickHandler() {
-			
-			@Override
-			public void onClick(ClickEvent event) {
-				if(unsortedListPanel.isVisible()){
-					unsortedListPanel.setVisible(false);
-				}else{
-					unsortedListPanel.setVisible(true);
-				}
-				
-			}});
-		
-	}
+    @Inject
+    public BottomBarView(final Binder binder) {
+        widget = binder.createAndBindUi(this);
+        unsortedListPanel.setVisible(false);
+        toogleMenu.addClickHandler(new ClickHandler() {
+            @Override
+            public void onClick(ClickEvent event) {
+                if(unsortedListPanel.isVisible()){
+                    unsortedListPanel.setVisible(false);
+                }else{
+                    unsortedListPanel.setVisible(true);
+                }
+            }});
+    }
 
+    public Widget asWidget() {
+        return  widget;  
+    }
 
-	public Widget asWidget() {
-		return  widget;  
-	}
+    @Override
+    public void setItemClickHandler(MenuItemClickHandler handler) {
+    	itemClickHandler = handler;
+    	
+    }
 
-
-
-	
-	
-	@Override
-	public void setItemClickHandler(MenuItemClickHandler handler) {
-		itemClickHandler = handler;
-		
-	}
-
-	@Override
-	public void addItems(ArrayList<MenuItem> items) {
-		UListWidget ul= new UListWidget();
-		ul.setStyleName("patientlistul");
-		for(final MenuItem item :items){
-			ListItem i = new ListItem(item.getItemTitle()); 
-			
-			i.addClickHandler(new ClickHandler(){
-	
-				@Override
-				public void onClick(ClickEvent event) {
-					itemClickHandler.onMenuItemClicked(item);
-					unsortedListPanel.setVisible(false);
-					toogleMenu.click();
-					
-				}
-				
-			});
-			i.addStyleName("adminmenuitem cursorpointer padding-left-10px");
-			ul.add(i);
-		}
-		unsortedListPanel.add(ul);
-		
-	}
-
+    @Override
+    public void addItems(ArrayList<MenuItem> items) {
+        UListWidget ul= new UListWidget();
+        ul.setStyleName("patientlistul");
+        for(final MenuItem item :items){
+            ListItem i = new ListItem(item.getItemTitle()); 
+            i.addClickHandler(new ClickHandler(){
+                @Override
+                public void onClick(ClickEvent event) {
+                    itemClickHandler.onMenuItemClicked(item);
+                    unsortedListPanel.setVisible(false);
+                    toogleMenu.click();
+                }
+            });
+            i.addStyleName("adminmenuitem cursorpointer padding-left-10px");
+            ul.add(i);
+        }
+        unsortedListPanel.add(ul);
+    }
 
 }

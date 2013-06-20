@@ -28,135 +28,115 @@ import com.kamitsoft.shared.beans.patient.PatientInfo;
 
 
 public class PatientMainPresenter extends Presenter<PatientMainPresenter.Display, PatientMainPresenter.Proxy> {
+    public interface Display extends View {
+        void setTabClickHandler(TabClickHandler handler) ;
+        void addTab(TabItem tab);
+    };
+    
+    public interface TabClickHandler{
+        void onTabClicked(TabItem item);
+    }
+    @ProxyCodeSplit
+    @NameToken(NamesTokens.patient)
+    public interface Proxy extends ProxyPlace<PatientMainPresenter> {};
 
-	  public interface Display extends View {
-		void setTabClickHandler(TabClickHandler handler) ;
-		void addTab(TabItem tab);
-	  };
-	  
-	  public interface TabClickHandler{
-			void onTabClicked(TabItem item);
-		}
-	  
-	  @ProxyCodeSplit
-	  @NameToken(NamesTokens.patient)
-	  public interface Proxy extends ProxyPlace<PatientMainPresenter> {};
-	 
-	  @ContentSlot
-	  public static final Type<RevealContentHandler<?>> TYPE_TabsContentPanel = new Type<RevealContentHandler<?>>();
-	
+    @ContentSlot
+    public static final Type<RevealContentHandler<?>> TYPE_TabsContentPanel = new Type<RevealContentHandler<?>>();
+    
+    
+    private Display display;
+    @Inject private UserContext context;
+    @Inject private PatientInfoPresenter patientInfoPresenter;
+    private EventBus eventBus;
 
-	  private Display display;
-	  @Inject private UserContext context;
-	  @Inject private PatientInfoPresenter patientInfoPresenter;
-	  private EventBus eventBus;
-	  
-	 
-	  
-	  
-	  @Inject
-	  public PatientMainPresenter(EventBus eventBus, Display view, Proxy proxy, MainDictionary dictionary) {
-		   super(eventBus, view, proxy);
-		   display=view;
-		   this.eventBus= eventBus;
-		   getView().setTabClickHandler(new TabClickHandler(){
+    @Inject
+    public PatientMainPresenter(EventBus eventBus, Display view, Proxy proxy, MainDictionary dictionary) {
+        super(eventBus, view, proxy);
+        display=view;
+        this.eventBus= eventBus;
+        getView().setTabClickHandler(new TabClickHandler(){
+        
+            @Override
+            public void onTabClicked(TabItem item) {
+                switch(item){
+                case patientInfo: gotoPatientInfo();
+                    break;
+                case  patientSocial:gotoPatientSocial();
+                    break;
+                case patientMedication:gotoPatientMedication();
+                    break;
+                }
+            }});
+           
+         for(TabItem tab:TabItem.values()){
+           getView().addTab(tab);
+         }
+    }
+    
+     
+    protected void gotoPatientMedication() {
 
-				@Override
-				public void onTabClicked(TabItem item) {
-					switch(item){
-					case patientInfo: gotoPatientInfo();
-						break;
-					case  patientSocial:gotoPatientSocial();
-						break;
-					case patientMedication:gotoPatientMedication();
-						break;
-					}
-					
-				}});
-		   
-		   for(TabItem tab:TabItem.values()){
-			   getView().addTab(tab);
-		   }
-		   
-	  }
-	
-	 
-	  protected void gotoPatientMedication() {
-		// TODO Auto-generated method stub
-		
-	}
+    }
+    
+    
+    protected void gotoPatientSocial() {
 
+    }
+    
+    
+    protected void gotoPatientInfo() {
 
-	protected void gotoPatientSocial() {
-		// TODO Auto-generated method stub
-		
-	}
+      }
+    
+    
+    @Override
+    public void onBind(){
+        super.onBind();
+    }
+    
+    
+    @Override
+    public void prepareFromRequest(PlaceRequest request) {
+        super.prepareFromRequest(request);
+        int patientID = Integer.parseInt(request.getParameter("patientID", "0"));
+        int tabID = Integer.parseInt(request.getParameter("tabID", "0"));
+        retrievePatient(patientID);
+    }
 
-
-	protected void gotoPatientInfo() {
-		// TODO Auto-generated method stub
-		
-	}
-
-
-	@Override
-	  public void onBind(){
-		  super.onBind();
-		  
-			  
-	  }
-	
-	
-	  @Override
-	  public void prepareFromRequest(PlaceRequest request) {
-		super.prepareFromRequest(request);
-		int patientID = Integer.parseInt(request.getParameter("patientID", "0"));
-		int tabID = Integer.parseInt(request.getParameter("tabID", "0"));
-		retrievePatient(patientID);
-	  }
-
-
-	  private void retrievePatient(int patientID) {
-		  ArrayList<Integer> ids = new ArrayList<Integer>();
-		  ids.add(patientID);
-		  PatientAsync patientAsyn = PatientAsync.Util.getInstance();
-		  patientAsyn.getFromIDs(context, ids,  new AsyncCall<ArrayList<PatientInfo>>() {
-
-				@Override
-				protected void didFail(Throwable caught) {
-					
-				}
-
-				@Override
-				protected void didSuccess(ArrayList<PatientInfo> result) {
-					//getView().setPatient(result.get(0));
-					
-				}
-
-		 });
-		  
-		
-		
-	  }
-
-
-	  @Override
-	  protected void revealInParent() {
-		RevealContentEvent.fire(this, MainPagePresenter.TYPE_MainContent, this);
-		setInSlot(TYPE_TabsContentPanel, patientInfoPresenter);
-		
-	
-	  }
-
-
-	  @Override
-	  protected void onReveal() {
-		super.onReveal();
-		
-	  }
-
-
-
-
+    private void retrievePatient(int patientID) {
+        ArrayList<Integer> ids = new ArrayList<Integer>();
+        ids.add(patientID);
+        PatientAsync patientAsyn = PatientAsync.Util.getInstance();
+        patientAsyn.getFromIDs(context, ids,  new AsyncCall<ArrayList<PatientInfo>>() {
+    
+            @Override
+            protected void didFail(Throwable caught) {
+            	
+            }
+            
+            @Override
+            protected void didSuccess(ArrayList<PatientInfo> result) {
+            	//getView().setPatient(result.get(0));
+            	
+            }
+        });
+        
+      }
+    
+    
+      @Override
+      protected void revealInParent() {
+          RevealContentEvent.fire(this, MainPagePresenter.TYPE_MainContent, this);
+          setInSlot(TYPE_TabsContentPanel, patientInfoPresenter);
+    	
+    
+      }
+    
+    
+      @Override
+      protected void onReveal() {
+    	super.onReveal();
+    	
+      }
 
 }

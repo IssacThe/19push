@@ -19,49 +19,39 @@ import com.kamitsoft.client.security.UserContext;
 
 public class MainPagePresenter extends Presenter<MainPagePresenter.Display, MainPagePresenter.Proxy> {
 
-	  public interface Display extends View {};
-	  
-	  @ContentSlot
-	  public static final Type<RevealContentHandler<?>> TYPE_MainContent = new Type<RevealContentHandler<?>>();
-	  @ContentSlot
-	  public static final Type<RevealContentHandler<?>> TYPE_TopBar = new Type<RevealContentHandler<?>>();
-	  @ContentSlot
-	  public static final Type<RevealContentHandler<?>> TYPE_BottomBar = new Type<RevealContentHandler<?>>();
-	  
-	  
-	  @ProxyCodeSplit
-	  @NameToken(NamesTokens.main)
-	  public interface Proxy extends ProxyPlace<MainPagePresenter> {}
-	  
-	  @Inject private UserContext context;
-	  @Inject private TopBarPresenter topBar;
-	  @Inject private BottomBarPresenter bottomBar;
-	  @Inject private WelcomeLoginPresenter welcomeLogin;
-	  
-	  @Inject
-	  public MainPagePresenter(EventBus eventBus, Display view, Proxy proxy) {
-	    super(eventBus, view, proxy);
-	  
-	  }
-	
-	  @Override
-	  protected void revealInParent() {
-	    RevealRootContentEvent.fire(this, this);
-	    setInSlot(TYPE_TopBar, topBar);
-	    setInSlot(TYPE_BottomBar, bottomBar);
-	    
-	    
-	  }
-	
-	  @Override
-	  public void onBind(){
-		  super.onBind();
-		  
-		 
-	  }
-
-	
-	  
-
+    public interface Display extends View {};
+    
+    @ContentSlot
+    public static final Type<RevealContentHandler<?>> TYPE_MainContent = new Type<RevealContentHandler<?>>();
+    @ContentSlot
+    public static final Type<RevealContentHandler<?>> TYPE_TopBar = new Type<RevealContentHandler<?>>();
+    @ContentSlot
+    public static final Type<RevealContentHandler<?>> TYPE_BottomBar = new Type<RevealContentHandler<?>>();
+    
+    
+    @ProxyCodeSplit
+    @NameToken(NamesTokens.main)
+    public interface Proxy extends ProxyPlace<MainPagePresenter> {}
+    @Inject private UserContext context;
+    @Inject private TopBarPresenter topBar;
+    @Inject private BottomBarPresenter bottomBar;
+    @Inject private WelcomeLoginPresenter welcomeLogin;
+      
+    @Inject
+    public MainPagePresenter(EventBus eventBus, Display view, Proxy proxy) {
+        super(eventBus, view, proxy);
+    }
+    
+    @Override
+    protected void revealInParent() {
+        RevealRootContentEvent.fire(this, this);
+        setInSlot(TYPE_TopBar, topBar);
+        setInSlot(TYPE_BottomBar, bottomBar);
+    }
+    
+    @Override
+     public void onBind(){
+        super.onBind();
+    }
 
 }

@@ -11,26 +11,25 @@ import com.google.gwt.user.client.ui.LayoutPanel;
 import com.google.gwt.user.client.ui.Widget;
 
 public class CarouselPanel extends LayoutPanel {
-	int itsCurrentWidget = 0;
+    int itsCurrentWidget = 0;
     private ArrayList<Widget> litsWidgets =  new ArrayList<Widget>();
     private HandlerRegistration itsRightHandler;
-	private boolean isCircular;
+    private boolean isCircular;
     private Timer t;
-    
-  
+
     @Override
-	public void clear() {
-		super.clear();
-		litsWidgets.clear();
-		itsCurrentWidget = 0;
-	}
+    public void clear() {
+        super.clear();
+        litsWidgets.clear();
+        itsCurrentWidget = 0;
+    }
 
     public void setWidgetItem(Widget widget){
-    	  if(!litsWidgets.contains(widget)){
-          	litsWidgets.add(widget);
-    	  }
+        if(!litsWidgets.contains(widget)){
+            litsWidgets.add(widget);
+        }
     }
-	public void setCenter(Widget widget, boolean newWidget) {
+    public void setCenter(Widget widget, boolean newWidget) {
         if (widget != null) {
             if (newWidget){
                 add(widget);
@@ -54,7 +53,7 @@ public class CarouselPanel extends LayoutPanel {
             widget.setStylePrimaryName("sideCarousel");
             if (itsRightHandler != null)
                 itsRightHandler.removeHandler();
-            	itsRightHandler = widget.addDomHandler(new ClickHandler() {
+                itsRightHandler = widget.addDomHandler(new ClickHandler() {
                 public void onClick(final ClickEvent event) {
                     scrollRight();
                 }
@@ -73,7 +72,7 @@ public class CarouselPanel extends LayoutPanel {
             widget.setStylePrimaryName("sideCarousel");
             if (itsRightHandler != null)
                 itsRightHandler.removeHandler();
-            	itsRightHandler = widget.addDomHandler(new ClickHandler() {
+                itsRightHandler = widget.addDomHandler(new ClickHandler() {
                 public void onClick(final ClickEvent event) {
                     scrollLeft();
                 }
@@ -83,7 +82,7 @@ public class CarouselPanel extends LayoutPanel {
     
     public void scrollRight() {
         if (!isCircular && itsCurrentWidget > getWidgetCountInCarousel()){
-        	return;
+            return;
         }
         
         Widget hideWidget = getWidgetInCarousel(itsCurrentWidget-1);
@@ -92,7 +91,6 @@ public class CarouselPanel extends LayoutPanel {
         Widget leftWidget = getWidgetInCarousel(itsCurrentWidget);
         Widget centerWidget = getWidgetInCarousel(++itsCurrentWidget);
         Widget rightWidget = getWidgetInCarousel(itsCurrentWidget+1);
-        
         
         setLeft(leftWidget, false);
         setCenter(centerWidget, false);
@@ -103,8 +101,9 @@ public class CarouselPanel extends LayoutPanel {
     }
     
     public void scrollLeft() {
-        if (!isCircular &&  itsCurrentWidget <= 0)
+        if (!isCircular &&  itsCurrentWidget <= 0){
             return;
+        }
         
         Widget hideWidget = getWidgetInCarousel(0);
         remove(hideWidget);
@@ -119,53 +118,51 @@ public class CarouselPanel extends LayoutPanel {
         animate(500);
     }
 
-	private Widget getWidgetInCarousel(int idx) {
-		if(isCircular){
-			idx = idx < 0 ? (litsWidgets.size()-1):(idx % litsWidgets.size());
-		}
-		return litsWidgets.get(idx);
-	}
+    private Widget getWidgetInCarousel(int idx) {
+        if(isCircular){
+            idx = idx < 0 ? (litsWidgets.size()-1):(idx % litsWidgets.size());
+        }
+        return litsWidgets.get(idx);
+    }
 
-	private int getWidgetCountInCarousel() {
-		return litsWidgets.size();
-	}
-	
-	public void forwardCirculare(){
-		isCircular = true;
-		itsCurrentWidget = 0;
-		setCenter(getWidgetInCarousel(itsCurrentWidget),true);
-		setRight(getWidgetInCarousel(itsCurrentWidget+1),true);
-		if(t!=null){
-			t.cancel();
-		}else{
-			t = new Timer(){
-				@Override
-				public void run() {
-					scrollRight();
-				}
-				
-			};
-		}
-		t.scheduleRepeating(3000);
-	}
-	
-	public void rewindCirculare(){
-		isCircular = true;
-		itsCurrentWidget = 0;
-		setCenter(getWidgetInCarousel(itsCurrentWidget),true);
-		setRight(getWidgetInCarousel(itsCurrentWidget-1),true);
-		if(t!=null){
-			t.cancel();
-		}else{
-			t = new Timer(){
-				@Override
-				public void run() {
-					scrollLeft();
-				}
-			
-			};
-		}
-		t.scheduleRepeating(3000);
-	}
-	
+    private int getWidgetCountInCarousel() {
+        return litsWidgets.size();
+    }
+    
+    public void forwardCirculare(){
+        isCircular = true;
+        itsCurrentWidget = 0;
+        setCenter(getWidgetInCarousel(itsCurrentWidget),true);
+        setRight(getWidgetInCarousel(itsCurrentWidget+1),true);
+        if(t!=null){
+            t.cancel();
+        }else{
+            t = new Timer(){
+                @Override
+                public void run() {
+                	scrollRight();
+                }
+            };
+        }
+        t.scheduleRepeating(3000);
+    }
+    
+    public void rewindCirculare(){
+        isCircular = true;
+        itsCurrentWidget = 0;
+        setCenter(getWidgetInCarousel(itsCurrentWidget),true);
+        setRight(getWidgetInCarousel(itsCurrentWidget-1),true);
+        if(t!=null){
+        	t.cancel();
+        }else{
+            t = new Timer(){
+                @Override
+                public void run() {
+                    scrollLeft();
+                }
+            };
+        }
+        t.scheduleRepeating(3000);
+    }
+
 }

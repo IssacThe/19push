@@ -24,18 +24,15 @@ import com.kamitsoft.server.impl.UserImpl;
 
 
 public class ServletConfig extends GuiceServletContextListener {
+    @Override
+    protected Injector getInjector() {
+        return Guice.createInjector(new ServletModule(){
+            @Override
+            protected void configureServlets() {
+              serve("/ksaportal/patient").with(PatientImpl.class);
+              serve("/ksaportal/user").with(UserImpl.class);
+            }
+        });
+    }
 
-
-		  @Override
-		  protected Injector getInjector() {
-		    return Guice.createInjector(new ServletModule(){
-
-		        @Override
-		        protected void configureServlets() {
-		          serve("/ksaportal/patient").with(PatientImpl.class);
-		          serve("/ksaportal/user").with(UserImpl.class);
-		        }
-		        });
-		  }
-		  
 }

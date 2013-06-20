@@ -1,19 +1,14 @@
 <!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
 
-<ui:UiBinder xmlns:ui='urn:ui:com.google.gwt.uibinder'   
-			 xmlns:g='urn:import:com.google.gwt.user.client.ui'
-			 xmlns:k='urn:import:com.kamitsoft.client.ui.person'>
-
-
-
+<ui:UiBinder xmlns:ui='urn:ui:com.google.gwt.uibinder'
+             xmlns:g='urn:import:com.google.gwt.user.client.ui'
+             xmlns:k='urn:import:com.kamitsoft.client.ui.person'>
     
-    	<g:HTMLPanel  styleName = "background-argile">
-    		<div id = "searchboxid"/>
-	        <g:TextBox ui:field ="searchTextBox" styleName = "marginleft50px width-200px roundedborder10px margintop5px padding-left-10px height-20px searchicone" />
-    		<k:PersonInfoPanel ui:field = "username" styleName ="positionfixedright50px"/>
-    		<g:Button ui:field ="logout" styleName = "width-24px height-24px positionfixedright20px logouticone roundedborder5px cursorpointer"/>
-    	</g:HTMLPanel> 
-    
-           
+        <g:HTMLPanel  styleName = "background-argile">
+            <div id = "searchboxid"/>
+            <g:TextBox ui:field ="searchTextBox" styleName = "marginleft50px width-200px roundedborder10px margintop5px padding-left-10px height-20px searchicone" />
+            <k:PersonInfoPanel ui:field = "username" styleName ="positionfixedright50px"/>
+            <g:Button ui:field ="logout" styleName = "width-24px height-24px positionfixedright20px logouticone roundedborder5px cursorpointer"/>
+        </g:HTMLPanel> 
 
 </ui:UiBinder> 

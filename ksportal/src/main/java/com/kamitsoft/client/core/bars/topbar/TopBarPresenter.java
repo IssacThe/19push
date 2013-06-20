@@ -32,184 +32,161 @@ import com.kamitsoft.shared.beans.user.UserInfo;
 
 public class TopBarPresenter extends PresenterWidget<TopBarPresenter.Display> {
 
-	public interface Display extends View {
-		void setSearchBoxChangeHandler(KeyUpHandler handler);
-		String  getSearchText();
-		void setUserInfo(UserInfo userInfo);
-		HasClickHandlers getLogoutClick();
-		
-	}
+    public interface Display extends View {
+        void setSearchBoxChangeHandler(KeyUpHandler handler);
+        String  getSearchText();
+        void setUserInfo(UserInfo userInfo);
+        HasClickHandlers getLogoutClick();
+    }
 
-	private Display display;
-	
-	@Inject private PlaceManager placeManager;
-	@Inject private PatientListPopupPresenter listpopup;
-	@Inject private LoginPopupPresenter loginPopupPresenter;
-	@Inject private UserContext context;
-	@Inject private PatientParameters search ;
-	private Timer timer;
-	private Timer loggintimer;
-	private final int TIMEOUT = 5*60*1000;
-	
-	
-	protected UserInfo userInfo;
+    private Display display;
+    
+    @Inject private PlaceManager placeManager;
+    @Inject private PatientListPopupPresenter listpopup;
+    @Inject private LoginPopupPresenter loginPopupPresenter;
+    @Inject private UserContext context;
+    @Inject private PatientParameters search ;
+    private Timer timer;
+    private Timer loggintimer;
+    private final int TIMEOUT = 5*60*1000;
 
-	private EventBus eventBus;
+    protected UserInfo userInfo;
+    
+    private EventBus eventBus;
 
-	
-	@Inject
-	public TopBarPresenter(EventBus eventBus, Display view) {
-	   super(eventBus, view);
-	   display=view;
-	   this.eventBus = eventBus;
-	   
-	}
-	
-	 
-	@Override
-	public void onBind(){
-		super.onBind();
-		
-		
-		getView().setSearchBoxChangeHandler(new KeyUpHandler(){
+    @Inject
+    public TopBarPresenter(EventBus eventBus, Display view) {
+       super(eventBus, view);
+       display=view;
+       this.eventBus = eventBus;
+       
+    }
+     
+    @Override
+    public void onBind(){
+        super.onBind();
+        
+        
+        getView().setSearchBoxChangeHandler(new KeyUpHandler(){
+            
+            @Override
+            public void onKeyUp(KeyUpEvent event){
+                if(getView().getSearchText().length()<3){
+                    listpopup.hide();
+                    return;
+                }
+                if(timer!=null){
+                    timer.cancel();
+                    timer= null;
+                }
+                
+                timer = new Timer(){
+                    @Override
+                    public void run() {
+                        searchPatient(getView().getSearchText());
+                    }
+                };
+                
+                timer.schedule(500);
+            }
+    
+        });
+        
+        //once this presenter init
+        registerHandler(getEventBus().addHandler(UserLoginEvent.TYPE, new UserLoginEventHandler(){
+                @Override
+                public void userDidLogged(UserLoginEvent event) {
+                    userInfo = event.getUserInfo();
+                    getView().setUserInfo(context.getUserInfo());;
+                    setTimeout();
+                }
+                  
+              }));
+        
+        getView().getLogoutClick().addClickHandler(new ClickHandler(){
+            @Override
+            public void onClick(ClickEvent event) {
+                eventBus.fireEvent(new UserLogoutEvent(context.getUserInfo()));
+            }
+        });
+        
+        //once this presenter init
+        registerHandler(getEventBus().addHandler(UserLogoutEvent.TYPE, new UserLogoutEventHandler(){
+                @Override
+                public void userDidLoggedOut(UserLogoutEvent event) {
+                	logout();
+                }
+              }));
+    
+        Event.addNativePreviewHandler(new Event.NativePreviewHandler() { 
+            public void onPreviewNativeEvent(NativePreviewEvent event) {
+                loggintimer.schedule(TIMEOUT);
+            }
+    
+        });
 
-			@Override
-			public void onKeyUp(KeyUpEvent event){
-				if(getView().getSearchText().length()<3){
-					listpopup.hide();
-					return;
-				}
-				if(timer!=null){
-					timer.cancel();
-					timer= null;
-				}
-				
-				timer = new Timer(){
-					@Override
-					public void run() {
-						searchPatient(getView().getSearchText());
-					}
-					
-				};
-				
-				timer.schedule(500);
-			}
-			
-		});
-		
-		//once this presenter init
-		registerHandler(getEventBus().addHandler(UserLoginEvent.TYPE, new UserLoginEventHandler(){
-
-				@Override
-				public void userDidLogged(UserLoginEvent event) {
-					userInfo = event.getUserInfo();
-					getView().setUserInfo(context.getUserInfo());;
-					setTimeout();
-				}
-				  
-			  }));
-	
-		getView().getLogoutClick().addClickHandler(new ClickHandler(){
-
-			@Override
-			public void onClick(ClickEvent event) {
-				eventBus.fireEvent(new UserLogoutEvent(context.getUserInfo()));
-				
-			}
-			
-		});
-		
-		//once this presenter init
-		registerHandler(getEventBus().addHandler(UserLogoutEvent.TYPE, new UserLogoutEventHandler(){
-	
-				@Override
-				public void userDidLoggedOut(UserLogoutEvent event) {
-					logout();
-				}
-				  
-			  }));
-		
-		Event.addNativePreviewHandler(new Event.NativePreviewHandler() { 
-	        public void onPreviewNativeEvent(NativePreviewEvent event) {
-	        	loggintimer.schedule(TIMEOUT);
-	        }
-
-			
-		});
-		
-	}
-	
-
-	protected void setTimeout() {
-		if(loggintimer !=null){
-			loggintimer.cancel();
-			
-		}else{
-			loggintimer = new Timer(){
-
-				@Override
-				public void run() {
-					//eventBus.fireEvent(new UserLogoutEvent(context.getUserInfo()));
-					loginPopupPresenter.show();
-					loggintimer.cancel();
-				}
-				
-			};
-		}
-		loggintimer.schedule(TIMEOUT);
-	}
-
-	protected void logout() {
-		context.reset();
-		if(loggintimer!=null){
-			loggintimer.cancel();
-		}
-		placeManager.revealDefaultPlace();
-		
-	}
-
-
-	protected void searchPatient(String searchText) {
-		search.clearParameters();
-		search.setFreeText(searchText);
-		search.setAccountID(context.getAccountID());
-		
-		PatientAsync patientAsyn = PatientAsync.Util.getInstance();
-		patientAsyn.searchPatient(context,search, new AsyncCallback<ArrayList<PatientInfo>>() {
-
-			@Override
-			public void onFailure(Throwable caught) {
-				caught.printStackTrace();
-			}
-
-			@Override
-			public void onSuccess(ArrayList<PatientInfo> result) {
-				listpopup.addPatientList(result);
-				listpopup.show();
-				
-			}
-		   
-		  });
-		
-	}
-
-	
-
-	@Override
-	protected void onReveal() {
-		super.onReveal();
-		setTimeout();
-		getView().setUserInfo(context.getUserInfo());
-		
-	}
-
-
-
-	protected void displayPlace(String  place) {
-		PlaceRequest pr = new PlaceRequest(place);
-		placeManager.revealPlace(pr);
-		
-	}
+    }
+    
+    
+    protected void setTimeout() {
+        if(loggintimer !=null){
+            loggintimer.cancel();
+        }else{
+            loggintimer = new Timer(){
+                @Override
+                public void run() {
+                    //eventBus.fireEvent(new UserLogoutEvent(context.getUserInfo()));
+                    loginPopupPresenter.show();
+                    loggintimer.cancel();
+                }
+            };
+        }
+        loggintimer.schedule(TIMEOUT);
+    }
+    
+    protected void logout() {
+        context.reset();
+        if(loggintimer!=null){
+            loggintimer.cancel();
+        }
+        placeManager.revealDefaultPlace();
+    }
+    
+    
+    protected void searchPatient(String searchText) {
+        search.clearParameters();
+        search.setFreeText(searchText);
+        search.setAccountID(context.getAccountID());
+        
+        PatientAsync patientAsyn = PatientAsync.Util.getInstance();
+        patientAsyn.searchPatient(context,search, new AsyncCallback<ArrayList<PatientInfo>>() {
+            @Override
+            public void onFailure(Throwable caught) {
+                caught.printStackTrace();
+            }
+            
+            @Override
+            public void onSuccess(ArrayList<PatientInfo> result) {
+                listpopup.addPatientList(result);
+                listpopup.show();
+            }
+           
+          });
+    }
+    
+    
+    
+    @Override
+    protected void onReveal() {
+        super.onReveal();
+        setTimeout();
+        getView().setUserInfo(context.getUserInfo());
+    }
+    
+    protected void displayPlace(String  place) {
+        PlaceRequest pr = new PlaceRequest(place);
+        placeManager.revealPlace(pr);
+    }
 
 
 }

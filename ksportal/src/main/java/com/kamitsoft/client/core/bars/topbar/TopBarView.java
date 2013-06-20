@@ -16,49 +16,45 @@ import com.kamitsoft.shared.beans.user.UserInfo;
 
 public class TopBarView extends ViewImpl implements TopBarPresenter.Display {
 
-	@UiField TextBox searchTextBox;
-	@UiField PersonInfoPanel username;
-	@UiField Button logout;
-	private final Widget widget;
-	private MainDictionary dictionary;
-	public interface Binder extends UiBinder<Widget, TopBarView> {	}
+    @UiField TextBox searchTextBox;
+    @UiField PersonInfoPanel username;
+    @UiField Button logout;
+    private final Widget widget;
+    private MainDictionary dictionary;
+    public interface Binder extends UiBinder<Widget, TopBarView> {	}
+    
 
- 
-
-  
-	@Inject
-	public TopBarView(final Binder binder, MainDictionary dictionary) {
-		  widget = binder.createAndBindUi(this);
-		  this.dictionary = dictionary;
-		  searchTextBox.getElement().setAttribute("placeHolder", dictionary.patientSearchPlaceHolder());
-	}
-	
-	public Widget asWidget() {
-		 return  widget;
-	}
-	  
-	
-	@Override
-	  public void setSearchBoxChangeHandler(KeyUpHandler handler){
-		
-		searchTextBox.addKeyUpHandler(handler);
-	}
-
-
-	@Override
-	public String getSearchText() {
-		return searchTextBox.getText();
-	}
-
-	@Override
-	public void setUserInfo(UserInfo userInfo) {
-		username.setInfo(userInfo);
-	}
-
-	@Override
-	public HasClickHandlers getLogoutClick(){
-		return logout;
-	}
-
+    @Inject
+    public TopBarView(final Binder binder, MainDictionary dictionary) {
+          widget = binder.createAndBindUi(this);
+          this.dictionary = dictionary;
+          searchTextBox.getElement().setAttribute("placeHolder", dictionary.patientSearchPlaceHolder());
+    }
+    
+    public Widget asWidget() {
+        return  widget;
+    }
+      
+    
+    @Override
+    public void setSearchBoxChangeHandler(KeyUpHandler handler){
+        searchTextBox.addKeyUpHandler(handler);
+    }
+    
+    
+    @Override
+    public String getSearchText() {
+        return searchTextBox.getText();
+    }
+    
+    @Override
+    public void setUserInfo(UserInfo userInfo) {
+        username.setInfo(userInfo);
+    }
+    
+    @Override
+    public HasClickHandlers getLogoutClick(){
+        return logout;
+    }
 
 }

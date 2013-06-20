@@ -13,11 +13,10 @@ import com.kamitsoft.client.core.patient.PatientMainPresenter;
 
 @GinModules({ BinderModule.class })
 public interface KSAPortalGinjector extends Ginjector {
-	  PlaceManager getPlaceManager();
-	  EventBus getEventBus();
-	  AsyncProvider<MainPagePresenter> getMainPagePresenter();
-	  AsyncProvider<PatientMainPresenter> getPatientPresenter();
-	  AsyncProvider<WelcomeLoginPresenter> getWelcomeLoginPresenter();
-	  
+    PlaceManager getPlaceManager();
+    EventBus getEventBus();
+    AsyncProvider<MainPagePresenter> getMainPagePresenter();
+    AsyncProvider<PatientMainPresenter> getPatientPresenter();
+    AsyncProvider<WelcomeLoginPresenter> getWelcomeLoginPresenter();
 
 }

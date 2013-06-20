@@ -14,63 +14,54 @@ import com.kamitsoft.shared.beans.patient.PatientInfo;
 
 public class PatientListPopupPresenter extends PresenterWidget<PatientListPopupPresenter.Display> {
 
-	public interface Display extends PopupView {
-		public void addPatient(ArrayList<PatientInfo> patientList );
-		public void setSelectionHandler(PatientSelectionHandler handler);
-		public void setPosition();
-		
-	}
-	public interface PatientSelectionHandler{
-		public void onPatientSelect(PatientInfo info);
-	}
-	private Display display;
-	
-	@Inject
-	private PlaceManager placeManager; 
-	
-	@Inject
-	public PatientListPopupPresenter(EventBus eventBus, Display view) {
-	   super(eventBus, view);
-	   display=view;	    
-	}
-	
-	 
-	@Override
-	public void onBind(){
-		super.onBind();
-		getView().setSelectionHandler(new PatientSelectionHandler(){
+    public interface Display extends PopupView {
+        public void addPatient(ArrayList<PatientInfo> patientList );
+        public void setSelectionHandler(PatientSelectionHandler handler);
+        public void setPosition();
+    }
+    public interface PatientSelectionHandler{
+    	public void onPatientSelect(PatientInfo info);
+    }
+    private Display display;
+    
+    @Inject
+    private PlaceManager placeManager; 
+    
+    @Inject
+    public PatientListPopupPresenter(EventBus eventBus, Display view) {
+       super(eventBus, view);
+       display=view;
+    }
+    
+     
+    @Override
+    public void onBind(){
+        super.onBind();
+        getView().setSelectionHandler(new PatientSelectionHandler(){
+            @Override
+            public void onPatientSelect(PatientInfo info) {
+                display(info);
+            }
+        });
+    
+    }
+    
+    protected void display(PatientInfo info) {
+        PlaceRequest request = new PlaceRequest(NamesTokens.patient);
+        request = request.with("patientID", String.valueOf(info.getPatientID()));
+        placeManager.revealPlace(request);
+    }
 
-			@Override
-			public void onPatientSelect(PatientInfo info) {
-				display(info);
-			}
-			
-		});
-		
-	
-	}
-	
-	protected void display(PatientInfo info) {
-		PlaceRequest request = new PlaceRequest(NamesTokens.patient);
-		request = request.with("patientID", String.valueOf(info.getPatientID()));
-		placeManager.revealPlace(request);
-	}
-
-	public void addPatientList(ArrayList<PatientInfo> list){
-		
-		getView().addPatient(list);
-	}
-	
-	public void show(){
-		getView().setPosition();
-		getView().show();
-	}
-
-
-	public void hide() {
-		getView().hide();
-		
-	}
-
-
+    public void addPatientList(ArrayList<PatientInfo> list){
+        getView().addPatient(list);
+    }
+    
+    public void show(){
+        getView().setPosition();
+        getView().show();
+    }
+    
+    public void hide() {
+        getView().hide();
+    }
 }

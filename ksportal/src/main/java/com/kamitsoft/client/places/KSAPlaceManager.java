@@ -9,17 +9,15 @@ import com.gwtplatform.mvp.client.proxy.TokenFormatter;
 
 public class KSAPlaceManager extends PlaceManagerImpl {
 
-	  @Inject
-	  public KSAPlaceManager( EventBus eventBus,  TokenFormatter tokenFormatter ) {
-	    super(eventBus, tokenFormatter);
-	    
-	  }
+    @Inject
+    public KSAPlaceManager( EventBus eventBus,  TokenFormatter tokenFormatter ) {
+        super(eventBus, tokenFormatter);
+    }
 
-	 
-	  public  void revealDefaultPlace(){
-	    // Using false as a second parameter ensures that the URL in the browser bar
-	    // is not updated, so the user is able to leave the application using the
-	    // browser's back navigation button.
-	    revealPlace( new PlaceRequest(NamesTokens.welcomelogin), false );
-	  }
-	}
+    public  void revealDefaultPlace(){
+        // Using false as a second parameter ensures that the URL in the browser bar
+        // is not updated, so the user is able to leave the application using the
+        // browser's back navigation button.
+        revealPlace( new PlaceRequest(NamesTokens.welcomelogin), false );
+    }
+}

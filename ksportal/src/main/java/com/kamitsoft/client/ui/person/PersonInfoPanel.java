@@ -11,49 +11,41 @@ import com.google.gwt.user.client.ui.LayoutPanel;
 
 
 public class PersonInfoPanel extends FlowPanel implements HasClickHandlers{
-	
     private Label title;
     private Label firstName;
     private Label middleName;
     private Label laststName;
     
 
-	public void setInfo(HasPersonInfo info){
-		  this.clear();
-		  title = new Label();
-		  title.setText("Dr ");
-		  title.setStyleName("displayinline margin-right-3px");
-		  
-		  firstName = new Label();
-		  firstName.setText(info.getFirstName());
-		  firstName.setStyleName("displayinline margin-right-3px");
-		  
-		  middleName = new Label();
-		  middleName.setText(info.getMiddleName());
-		  middleName.setStyleName("displayinline margin-right-3px");
-		  
-		  laststName = new Label();
-		  laststName.setText(info.getLastName());
-		  laststName.setStyleName("displayinline margin-right-3px");
-		  
-		  add(title);
-		  add(firstName);
-		  add(middleName);
-		  add(laststName);
-		  this.removeStyleName("cursorpointer");
-		  this.addStyleName("cursorpointer");
+    public void setInfo(HasPersonInfo info){
+      this.clear();
+      title = new Label();
+      title.setText("Dr ");
+      title.setStyleName("displayinline margin-right-3px");
+      
+      firstName = new Label();
+      firstName.setText(info.getFirstName());
+      firstName.setStyleName("displayinline margin-right-3px");
+      
+      middleName = new Label();
+      middleName.setText(info.getMiddleName());
+      middleName.setStyleName("displayinline margin-right-3px");
+      
+      laststName = new Label();
+      laststName.setText(info.getLastName());
+      laststName.setStyleName("displayinline margin-right-3px");
+      
+      add(title);
+      add(firstName);
+      add(middleName);
+      add(laststName);
+      this.removeStyleName("cursorpointer");
+      this.addStyleName("cursorpointer");
     }
 
-	@Override
-	public HandlerRegistration addClickHandler(ClickHandler handler) {
-		
-	        return addDomHandler(handler, ClickEvent.getType());
-	        
-	}
+    @Override
+    public HandlerRegistration addClickHandler(ClickHandler handler) {
+        return addDomHandler(handler, ClickEvent.getType());
+    }
 
-
-
-	
-    
-	
 }

@@ -10,17 +10,16 @@ import com.kamitsoft.shared.beans.user.UserParameters;
 @Singleton
 public class UserImpl extends RemoteServiceServlet implements com.kamitsoft.remote.rpc.User{
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
-	@Inject private User user;
-	
-	@Override
-	public UserInfo login(UserParameters params) throws Exception {
-
-		return user.login(params.getAccountName(), params.getUserName(), params.getPassword());
-	}
+    /**
+     * 
+     */
+    private static final long serialVersionUID = 1L;
+    @Inject private User user;
+    
+    @Override
+    public UserInfo login(UserParameters params) throws Exception {
+        return user.login(params.getAccountName(), params.getUserName(), params.getPassword());
+    }
 
 }
 

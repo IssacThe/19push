@@ -12,34 +12,23 @@ import com.kamitsoft.client.ui.tooglebutton.ToogleMenu;
 
 public class PatientInfoView extends ViewImpl implements PatientInfoPresenter.Display {
 
-	private final Widget widget;
-	
-	@UiField ToogleMenu toogleMenu;
-	@UiField HTMLPanel unsortedListPanel;
-	
-	
-	
-	public interface Binder extends UiBinder<Widget, PatientInfoView> {	
-		
-	}
+    private final Widget widget;
+    @UiField ToogleMenu toogleMenu;
+    @UiField HTMLPanel unsortedListPanel;
+    
+    
+    
+    public interface Binder extends UiBinder<Widget, PatientInfoView> {}
 
- 
-
-  
-	@Inject
-	public PatientInfoView(final Binder binder) {
-		widget = binder.createAndBindUi(this);
-		
-		
-	}
+    @Inject
+    public PatientInfoView(final Binder binder) {
+        widget = binder.createAndBindUi(this);
+    }
 
 
-	public Widget asWidget() {
-		return  widget;  
-	}
-
-
-
+    public Widget asWidget() {
+        return  widget;
+    }
 
 
 }

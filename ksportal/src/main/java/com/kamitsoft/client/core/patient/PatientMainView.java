@@ -12,6 +12,7 @@ import com.gwtplatform.mvp.client.ViewImpl;
 import com.kamitsoft.client.core.MainPagePresenter;
 import com.kamitsoft.client.core.patient.PatientMainPresenter.TabClickHandler;
 import com.kamitsoft.client.core.patient.tab.TabItem;
+import com.kamitsoft.client.core.share.KSTabPresenter;
 import com.kamitsoft.client.i18n.MainDictionary;
 import com.kamitsoft.client.ui.person.PersonInfoPanel;
 import com.kamitsoft.client.ui.tabitem.TabPanel;
@@ -51,6 +52,7 @@ public class PatientMainView extends ViewImpl implements PatientMainPresenter.Di
         if (slot == PatientMainPresenter.TYPE_TabsContentPanel) {
             tabsContentPanel.clear();
             tabsContentPanel.add(content);
+            
         }
     }
     
@@ -62,13 +64,19 @@ public class PatientMainView extends ViewImpl implements PatientMainPresenter.Di
             @Override
             public void onClick(ClickEvent event) {
                 for(int i=0;i<tabsPanel.getWidgetCount(); i++){
-                	tabsPanel.getWidget(i).removeStyleName("positionrelative");
+                	tabsPanel.getWidget(i).removeStyleName("activeTab");
                 }
-                tab.addStyleName("positionrelative");
+                tab.addStyleName("activeTab");
                 tabClickHandler.onTabClicked(tabItem);
             }
         });
         tabsPanel.add(tab);
+    }
+
+    @Override
+    public void setCurrentTable(TabItem currentTab) {
+        tabsPanel.getWidget(currentTab.ordinal()).addStyleName("activeTab");
+        
     }
 
 }

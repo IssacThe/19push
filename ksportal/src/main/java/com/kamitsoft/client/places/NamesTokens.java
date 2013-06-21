@@ -5,5 +5,6 @@ public class NamesTokens {
     public static final String patient = "!patient";
     public static final String login = "!login";
     public static final String welcomelogin = "!welcomelogin";
+    public static final String patientInfo = "!patientInfo";
 
 }

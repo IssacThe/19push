@@ -1,39 +1,54 @@
 package com.kamitsoft.client.core.patient.tab.info;
 
 
+import java.util.ArrayList;
+
 import com.google.inject.Inject;
 import com.google.web.bindery.event.shared.EventBus;
+import com.gwtplatform.mvp.client.Presenter;
 import com.gwtplatform.mvp.client.PresenterWidget;
 import com.gwtplatform.mvp.client.View;
+import com.gwtplatform.mvp.client.annotations.NameToken;
+import com.gwtplatform.mvp.client.annotations.ProxyCodeSplit;
 import com.gwtplatform.mvp.client.proxy.PlaceManager;
 import com.gwtplatform.mvp.client.proxy.PlaceRequest;
+import com.gwtplatform.mvp.client.proxy.ProxyPlace;
+import com.gwtplatform.mvp.client.proxy.RevealContentEvent;
+import com.kamitsoft.client.core.MainPagePresenter;
+import com.kamitsoft.client.core.patient.PatientMainPresenter;
 import com.kamitsoft.client.core.patient.tab.TabItem;
+import com.kamitsoft.client.core.share.KSTabPresenter;
 import com.kamitsoft.client.i18n.MainDictionary;
+import com.kamitsoft.client.places.NamesTokens;
 import com.kamitsoft.client.security.UserContext;
+import com.kamitsoft.client.ui.loader.AsyncCall;
+import com.kamitsoft.remote.rpc.PatientAsync;
+import com.kamitsoft.shared.beans.patient.PatientInfo;
 
 
 
-public class PatientInfoPresenter extends PresenterWidget<PatientInfoPresenter.Display> {
+public class PatientInfoPresenter extends KSTabPresenter<PatientInfoPresenter.Display, PatientInfoPresenter.Proxy> {
     public interface Display extends View {};
     
-    private  TabItem  tabItem = TabItem.patientInfo;
+    
     private Display display;
     @Inject private PlaceManager placeManager;
     private UserContext context;
 
+    @ProxyCodeSplit
+    @NameToken(NamesTokens.patientInfo)
+    public interface Proxy extends ProxyPlace<PatientInfoPresenter> {};
+    
     @Inject
-    public PatientInfoPresenter(EventBus eventBus, Display view, UserContext context, MainDictionary dictionary) {
-        super(eventBus, view);
+    public PatientInfoPresenter(EventBus eventBus, Display view, UserContext context, MainDictionary dictionary, Proxy proxy) {
+        super(eventBus, view, proxy);
         display=view;
         this.context = context;
         
         
     }
 
-    @Override
-    public void onBind(){
-        super.onBind();
-    }
+ 
 
     protected void displayPlace(String  place) {
         PlaceRequest pr = new PlaceRequest(place);
@@ -41,8 +56,50 @@ public class PatientInfoPresenter extends PresenterWidget<PatientInfoPresenter.D
 
     }
     
+    @Override
     public TabItem getTabItem(){
-        return tabItem;
+        return TabItem.patientInfo;
     }
+
+    @Override
+    public void prepareFromRequest(PlaceRequest request) {
+        super.prepareFromRequest(request);
+        int patientID = Integer.parseInt(request.getParameter("patientID", "0"));
+        int tabID = Integer.parseInt(request.getParameter("tabID", "0"));
+        retrievePatient(patientID);
+    }
+    
+    @Override
+    public void onBind(){
+        super.onBind();
+    }
+
+    @Override
+    protected void revealInParent() {
+        PatientMainPresenter.setCurrentItem(TabItem.patientInfo);
+        RevealContentEvent.fire(this, PatientMainPresenter.TYPE_TabsContentPanel, this);
+       
+    }
+    
+    private void retrievePatient(int patientID) {
+        ArrayList<Integer> ids = new ArrayList<Integer>();
+        ids.add(patientID);
+        PatientAsync patientAsyn = PatientAsync.Util.getInstance();
+        patientAsyn.getFromIDs(context, ids,  new AsyncCall<ArrayList<PatientInfo>>() {
+    
+            @Override
+            protected void didFail(Throwable caught) {
+                
+            }
+            
+            @Override
+            protected void didSuccess(ArrayList<PatientInfo> result) {
+                //getView().setPatient(result.get(0));
+                
+            }
+        });
+        
+      }
+    
 
 }

@@ -13,8 +13,7 @@ import com.kamitsoft.client.ui.tooglebutton.ToogleMenu;
 public class PatientInfoView extends ViewImpl implements PatientInfoPresenter.Display {
 
     private final Widget widget;
-    @UiField ToogleMenu toogleMenu;
-    @UiField HTMLPanel unsortedListPanel;
+   
     
     
     

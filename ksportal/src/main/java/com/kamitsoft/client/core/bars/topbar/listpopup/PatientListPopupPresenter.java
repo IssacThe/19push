@@ -47,7 +47,7 @@ public class PatientListPopupPresenter extends PresenterWidget<PatientListPopupP
     }
     
     protected void display(PatientInfo info) {
-        PlaceRequest request = new PlaceRequest(NamesTokens.patient);
+        PlaceRequest request = new PlaceRequest(NamesTokens.patientInfo);
         request = request.with("patientID", String.valueOf(info.getPatientID()));
         placeManager.revealPlace(request);
     }

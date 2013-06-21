@@ -2,9 +2,9 @@
 
 <ui:UiBinder xmlns:ui='urn:ui:com.google.gwt.uibinder'   
              xmlns:g='urn:import:com.google.gwt.user.client.ui'>
-    <g:HTMLPanel  styleName="" ui:field="contentPanel">
+    <g:HTMLPanel  styleName="margin-top-5px margin-bottom-5px" ui:field="contentPanel">
         <g:HTMLPanel ui:field="tabsPanel"  styleName = "margin-left-20px width-180px  floatleft height-580px padding-top-10px"/>
-        <g:SimplePanel ui:field="tabsContentPanel"  styleName = "width-950px  box marginleft-1px floatleft height-580px"/>
+        <g:SimplePanel ui:field="tabsContentPanel"  styleName = "width-950px  marginleft-1px floatleft height-570px background-argile shadowedbox"/>
     </g:HTMLPanel>
 
 </ui:UiBinder> 

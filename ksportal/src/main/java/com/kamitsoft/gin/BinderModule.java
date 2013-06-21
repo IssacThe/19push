@@ -32,14 +32,14 @@ public class BinderModule extends AbstractPresenterModule {
         bindPresenter(MainPagePresenter.class, MainPagePresenter.Display.class, MainPageView.class,  MainPagePresenter.Proxy.class);
         bindPresenter(PatientMainPresenter.class, PatientMainPresenter.Display.class, PatientMainView.class, PatientMainPresenter.Proxy.class);
         bindPresenter(WelcomeLoginPresenter.class, WelcomeLoginPresenter.Display.class, WelcomeLoginView.class, WelcomeLoginPresenter.Proxy.class);
-
+        bindPresenter(PatientInfoPresenter.class, PatientInfoPresenter.Display.class, PatientInfoView.class,PatientInfoPresenter.Proxy.class);
 
         // widigets
         bindPresenterWidget(TopBarPresenter.class, TopBarPresenter.Display.class, TopBarView.class);
         bindPresenterWidget(BottomBarPresenter.class, BottomBarPresenter.Display.class, BottomBarView.class);
         bindPresenterWidget(LoginPopupPresenter.class, LoginPopupPresenter.Display.class, LoginPopupView.class);
         bindPresenterWidget(PatientListPopupPresenter.class, PatientListPopupPresenter.Display.class, PatientListPopupView.class);
-        bindPresenterWidget(PatientInfoPresenter.class, PatientInfoPresenter.Display.class, PatientInfoView.class);
+        
 
     }
 }

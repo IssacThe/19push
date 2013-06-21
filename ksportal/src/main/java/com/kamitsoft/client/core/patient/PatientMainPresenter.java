@@ -27,10 +27,12 @@ import com.kamitsoft.remote.rpc.PatientAsync;
 import com.kamitsoft.shared.beans.patient.PatientInfo;
 
 
+
 public class PatientMainPresenter extends Presenter<PatientMainPresenter.Display, PatientMainPresenter.Proxy> {
     public interface Display extends View {
         void setTabClickHandler(TabClickHandler handler) ;
         void addTab(TabItem tab);
+        void setCurrentTable(TabItem currentTab);
     };
     
     public interface TabClickHandler{
@@ -43,7 +45,7 @@ public class PatientMainPresenter extends Presenter<PatientMainPresenter.Display
     @ContentSlot
     public static final Type<RevealContentHandler<?>> TYPE_TabsContentPanel = new Type<RevealContentHandler<?>>();
     
-    
+    private static TabItem currentTab;
     private Display display;
     @Inject private UserContext context;
     @Inject private PatientInfoPresenter patientInfoPresenter;
@@ -58,6 +60,7 @@ public class PatientMainPresenter extends Presenter<PatientMainPresenter.Display
         
             @Override
             public void onTabClicked(TabItem item) {
+                currentTab = item;
                 switch(item){
                 case patientInfo: gotoPatientInfo();
                     break;
@@ -98,45 +101,25 @@ public class PatientMainPresenter extends Presenter<PatientMainPresenter.Display
     @Override
     public void prepareFromRequest(PlaceRequest request) {
         super.prepareFromRequest(request);
-        int patientID = Integer.parseInt(request.getParameter("patientID", "0"));
-        int tabID = Integer.parseInt(request.getParameter("tabID", "0"));
-        retrievePatient(patientID);
     }
 
-    private void retrievePatient(int patientID) {
-        ArrayList<Integer> ids = new ArrayList<Integer>();
-        ids.add(patientID);
-        PatientAsync patientAsyn = PatientAsync.Util.getInstance();
-        patientAsyn.getFromIDs(context, ids,  new AsyncCall<ArrayList<PatientInfo>>() {
-    
-            @Override
-            protected void didFail(Throwable caught) {
-            	
-            }
-            
-            @Override
-            protected void didSuccess(ArrayList<PatientInfo> result) {
-            	//getView().setPatient(result.get(0));
-            	
-            }
-        });
-        
-      }
     
     
-      @Override
-      protected void revealInParent() {
-          RevealContentEvent.fire(this, MainPagePresenter.TYPE_MainContent, this);
-          setInSlot(TYPE_TabsContentPanel, patientInfoPresenter);
-    	
-    
-      }
+    @Override
+    protected void revealInParent() {
+        RevealContentEvent.fire(this, MainPagePresenter.TYPE_MainContent, this);
+    }
     
     
-      @Override
-      protected void onReveal() {
-    	super.onReveal();
-    	
-      }
+    @Override
+    protected void onReveal() {
+        super.onReveal();
+        if(currentTab!=null){
+            getView().setCurrentTable(currentTab);
+        }
+    }
 
+    public static void setCurrentItem(TabItem tab){
+        currentTab = tab;
+    }
 }

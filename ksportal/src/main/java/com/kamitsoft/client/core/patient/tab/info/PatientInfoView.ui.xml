@@ -3,9 +3,9 @@
 <ui:UiBinder xmlns:ui='urn:ui:com.google.gwt.uibinder'   
 xmlns:g='urn:import:com.google.gwt.user.client.ui'
 xmlns:k='urn:import:com.kamitsoft.client.ui.editable'>
-
+<g:HorizontalPanel>
     <g:HTMLPanel  >
-        <g:HTMLPanel  styleName= "width-450px height-250px  background-white  shadowed1 roundedborder2px margin-10px">
+        <g:HTMLPanel  styleName= "width-450px height-270px  background-white  shadowed1 roundedborder2px margin-10px">
         <g:HTMLPanel styleName = "textaligncenter boldtext borderbottom margin-top-10px textlightgrey">
             <ui:msg description="patientIdentification" >Identification du Patient</ui:msg>
         </g:HTMLPanel>
@@ -22,6 +22,27 @@ xmlns:k='urn:import:com.kamitsoft.client.ui.editable'>
        
         </g:HTMLPanel> 
        
-    </g:HTMLPanel> 
+       <g:HTMLPanel  styleName= "width-450px height-270px  background-white  shadowed1 roundedborder2px margin-10px">
+	        <g:HTMLPanel styleName = "textaligncenter boldtext borderbottom margin-top-10px textlightgrey">
+	            <ui:msg description="patientContact" >Contact du Patient</ui:msg>
+	        </g:HTMLPanel>
+            <g:HTMLPanel  styleName=" padding-10px">
+            
+            </g:HTMLPanel>
+        </g:HTMLPanel> 
+        
+      
+   
+   </g:HTMLPanel> 
+   
+     <g:HTMLPanel  styleName= "width-505px height-550px  background-white  shadowed1 roundedborder2px margin-10px floatright">
+            <g:HTMLPanel styleName = "textaligncenter boldtext borderbottom margin-top-10px textlightgrey">
+                <ui:msg description="patienthealthstate" >Resume de l'Etat de Sante du Patient</ui:msg>
+            </g:HTMLPanel>
+            <g:HTMLPanel  styleName=" padding-10px">
+            
+            </g:HTMLPanel>
+        </g:HTMLPanel> 
+</g:HorizontalPanel>
 
 </ui:UiBinder> 

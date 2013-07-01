@@ -64,9 +64,9 @@ public class PatientMainView extends ViewImpl implements PatientMainPresenter.Di
             @Override
             public void onClick(ClickEvent event) {
                 for(int i=0;i<tabsPanel.getWidgetCount(); i++){
-                	tabsPanel.getWidget(i).removeStyleName("activeTab");
+                	tabsPanel.getWidget(i).removeStyleName("activetab");
                 }
-                tab.addStyleName("activeTab");
+                tab.addStyleName("activetab");
                 tabClickHandler.onTabClicked(tabItem);
             }
         });
@@ -75,7 +75,10 @@ public class PatientMainView extends ViewImpl implements PatientMainPresenter.Di
 
     @Override
     public void setCurrentTable(TabItem currentTab) {
-        tabsPanel.getWidget(currentTab.ordinal()).addStyleName("activeTab");
+        for(int i=0;i<tabsPanel.getWidgetCount(); i++){
+            tabsPanel.getWidget(i).removeStyleName("activetab");
+        }
+        tabsPanel.getWidget(currentTab.ordinal()).addStyleName("activetab");
         
     }
 

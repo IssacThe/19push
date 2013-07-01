@@ -49,7 +49,9 @@ public class Patient {
     public ArrayList<PatientInfo> searchPatient(UserContext context,PatientParameters params) {
         persistentSession = PersistentManager.openSession();
         Transaction transaction = persistentSession.beginTransaction();
-        
+        if(params.getFreeText()!=null){
+            params.setFreeText(params.getFreeText().replaceAll("'",""));
+        }
          try{
             SQLQuery sql = persistentSession.createSQLQuery(" SELECT patient.* FROM patient  "+
                                                              " WHERE accountid = "+context.getAccountID()+

@@ -28,7 +28,9 @@ import com.kamitsoft.shared.beans.patient.PatientInfo;
 
 
 public class PatientInfoPresenter extends KSTabPresenter<PatientInfoPresenter.Display, PatientInfoPresenter.Proxy> {
-    public interface Display extends View {};
+    public interface Display extends View {
+        void setPatient(PatientInfo patientInfo);
+    };
     
     
     private Display display;
@@ -64,8 +66,6 @@ public class PatientInfoPresenter extends KSTabPresenter<PatientInfoPresenter.Di
     @Override
     public void prepareFromRequest(PlaceRequest request) {
         super.prepareFromRequest(request);
-        int patientID = Integer.parseInt(request.getParameter("patientID", "0"));
-        int tabID = Integer.parseInt(request.getParameter("tabID", "0"));
         retrievePatient(patientID);
     }
     
@@ -76,7 +76,6 @@ public class PatientInfoPresenter extends KSTabPresenter<PatientInfoPresenter.Di
 
     @Override
     protected void revealInParent() {
-        PatientMainPresenter.setCurrentItem(TabItem.patientInfo);
         RevealContentEvent.fire(this, PatientMainPresenter.TYPE_TabsContentPanel, this);
        
     }
@@ -94,7 +93,7 @@ public class PatientInfoPresenter extends KSTabPresenter<PatientInfoPresenter.Di
             
             @Override
             protected void didSuccess(ArrayList<PatientInfo> result) {
-                //getView().setPatient(result.get(0));
+                getView().setPatient(result.get(0));
                 
             }
         });

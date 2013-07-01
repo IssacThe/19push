@@ -47,6 +47,7 @@ CREATE TABLE user_info(
     lastname   varchar(35) NOT NULL,
     sex	   	   varchar(1),
     
+    
     CONSTRAINT user_pk PRIMARY KEY(accountid,userid)
 )INHERITS (base);
   
@@ -60,7 +61,7 @@ CREATE TABLE patient (
     dob		   date,
     pob		   varchar(35),
     sex	       varchar(1),
-    
+    pictureurl text,
     CONSTRAINT patient_pk PRIMARY KEY(accountid,patientid)
 )INHERITS (base);
 

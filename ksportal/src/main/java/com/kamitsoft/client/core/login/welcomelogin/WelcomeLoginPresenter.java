@@ -112,16 +112,17 @@ public class WelcomeLoginPresenter extends Presenter<WelcomeLoginPresenter.Displ
     @Override
     protected void onReveal() {
         super.onReveal();
-        getView().clearFields();
+        getView().clearFields();/*
         getView().clearCarousel();
-        getView().addWidgetToSlider(new Image("http://www.mackoo.com/Mongolie/images/IMGP9640.jpg"));
+        getView().addWidgetToSlider(new Image("http://www.mackoo.com/Mongolie/images/IMGP9640.jpg"));/*
         getView().addWidgetToSlider(new Image("http://www.mairie-etampes.fr/images/parcs_pergola1_panoramique.jpg"));
         getView().addWidgetToSlider(new Image("http://www.anb-immobilier.com/wp-content/uploads/2012/03/P1010594-450x200.jpg"));
         getView().addWidgetToSlider(new Image("http://www.cncbaviron.com/wp-content/uploads/2010/04/rando_lac_villeret.jpg"));
         getView().addWidgetToSlider(new Image("http://www.gesves-tourisme.be/fr/images/2.jpg"));
         getView().addWidgetToSlider(new Image("http://www.anb-immobilier.com/wp-content/uploads/2012/05/DSC_00024-450x200.jpg"));
         getView().addWidgetToSlider(new Image("http://nautilus-tours.com/gal/img/cat4/gal0027.jpg"));
-            getView().startSlider();
-        }
+        getView().addWidgetToSlider(new Image("images/kamit.png"));
+            getView().startSlider();*/
+    }
 
 }

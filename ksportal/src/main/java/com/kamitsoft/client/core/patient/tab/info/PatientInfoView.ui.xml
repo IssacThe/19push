@@ -2,10 +2,25 @@
 
 <ui:UiBinder xmlns:ui='urn:ui:com.google.gwt.uibinder'   
 xmlns:g='urn:import:com.google.gwt.user.client.ui'
-xmlns:k='urn:import:com.kamitsoft.client.ui.tooglebutton'>
+xmlns:k='urn:import:com.kamitsoft.client.ui.editable'>
 
     <g:HTMLPanel  >
+        <g:HTMLPanel  styleName= "width-450px height-250px  background-white  shadowed1 roundedborder2px margin-10px">
+        <g:HTMLPanel styleName = "textaligncenter boldtext borderbottom margin-top-10px textlightgrey">
+            <ui:msg description="patientIdentification" >Identification du Patient</ui:msg>
+        </g:HTMLPanel>
+        <g:Image ui:field = "patientPicture" styleName = "width-90px height-100px floatright margin-right-10px margin-top-10px shadowed1"></g:Image>
+	    <g:HTMLPanel  styleName=" padding-10px">
+	        <k:EditableText ui:field = "patientID" ui:editable ="false" styleName ="margin-top-5px" />
+	        <k:EditableText ui:field = "editableFirstName" ui:editable ="true" styleName ="margin-top-5px" />
+	        <k:EditableText ui:field = "editableMiddleName" ui:editable ="true" styleName ="margin-top-5px" />
+	        <k:EditableText ui:field = "editableLastName" ui:editable ="true" styleName ="margin-top-5px" />
+	        <k:EditableDate ui:field = "dob" ui:editable ="true" styleName ="margin-top-5px" />
+	        <k:EditableText ui:field = "pob" ui:editable ="true" styleName ="margin-top-5px" />
+	        <k:EditableSelectBox ui:field = "sex" ui:editable ="true" styleName ="margin-top-5px" />
+        </g:HTMLPanel>
        
+        </g:HTMLPanel> 
        
     </g:HTMLPanel> 
 

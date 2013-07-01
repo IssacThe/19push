@@ -32,14 +32,16 @@ public class TabPanel extends FlowPanel implements HasClickHandlers{
         icone = new SimplePanel();
         title = new Label();
         title.setText(tab.getItemTitle());
-        decorate();
+        decorate(tab.getIcone());
         add(icone);
         add(title);
     }
 
-    private void decorate() {
+    private void decorate(String iconeStyle) {
         setStyleName("height-40px norightborder  margin-top-5px cursorpointer");
-        title.setStyleName("lineheight40px textaligncenter");
+        icone.setStyleName("floatleft width-24px height-24px margin-top-8px  margin-left-7px  "+iconeStyle);
+        title.setStyleName("lineheight40px margin-left-40px");
+        
     }
 
     @Override

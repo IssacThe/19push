@@ -3,8 +3,10 @@ package com.kamitsoft.client.core.login.welcomelogin;
 import com.google.gwt.event.dom.client.KeyDownHandler;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
+import com.google.gwt.user.client.ui.Image;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.PasswordTextBox;
+import com.google.gwt.user.client.ui.SimplePanel;
 import com.google.gwt.user.client.ui.TextBox;
 import com.google.gwt.user.client.ui.Widget;
 import com.google.inject.Inject;
@@ -21,7 +23,8 @@ public class WelcomeLoginView extends ViewImpl implements WelcomeLoginPresenter.
 
     public interface Binder extends UiBinder<Widget, WelcomeLoginView> {	}
      
-    @UiField CarouselPanel carousel;
+    //@UiField CarouselPanel carousel;
+    @UiField SimplePanel image;
     @UiField PasswordTextBox textFieldPassword;
     @UiField TextBox textFieldUsername;
     @UiField TextBox textFieldAccountID;
@@ -33,6 +36,7 @@ public class WelcomeLoginView extends ViewImpl implements WelcomeLoginPresenter.
         widget = binder.createAndBindUi(this);
         this.dictionary = dictionary;
         loginmessage.setText("");
+        image.add(new Image("images/kamit.png"));
     }
   
     @Override
@@ -42,16 +46,16 @@ public class WelcomeLoginView extends ViewImpl implements WelcomeLoginPresenter.
     
     @Override
     public void addWidgetToSlider(Widget e){
-        carousel.setWidgetItem(e);
+       // carousel.setWidgetItem(e);
     }
     @Override
     public void clearCarousel(){
-        carousel.clear();
+       // carousel.clear();
     }
     
     @Override
     public void startSlider(){
-        carousel.forwardCirculare();
+       // carousel.forwardCirculare();
     }
     
     @Override

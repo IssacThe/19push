@@ -8,7 +8,7 @@
             <div id = "searchboxid"/>
             <g:TextBox ui:field ="searchTextBox" styleName = "marginleft50px width-200px roundedborder10px margintop5px padding-left-10px height-20px searchicone" />
             <k:PersonInfoPanel ui:field = "username" styleName ="positionfixedright50px"/>
-            <g:Button ui:field ="logout" styleName = "width-24px height-24px positionfixedright20px logouticone roundedborder5px cursorpointer"/>
+            <g:Button ui:field ="logout" styleName = "width-24px height-24px positionfixedright20px logouticone  cursorpointer"/>
         </g:HTMLPanel> 
 
 </ui:UiBinder> 

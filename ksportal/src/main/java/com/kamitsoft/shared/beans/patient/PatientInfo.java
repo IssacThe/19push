@@ -24,7 +24,7 @@ public class PatientInfo extends BeanInfo implements IsSerializable, HasPersonIn
     private Timestamp dob;
     private String    pob;		 
     private String sex;	       
-    
+    private String pictureUrl;
     
     public Timestamp getDob() {
         return dob;
@@ -76,5 +76,11 @@ public class PatientInfo extends BeanInfo implements IsSerializable, HasPersonIn
     }
     public void setMiddleName(String middleName) {
         this.middleName = middleName;
+    }
+    public String getPictureUrl() {
+        return pictureUrl;
+    }
+    public void setPictureUrl(String pictureUrl) {
+        this.pictureUrl = pictureUrl;
     }
 }

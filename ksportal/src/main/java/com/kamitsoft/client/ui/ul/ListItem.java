@@ -23,7 +23,6 @@ public class ListItem extends SimplePanel implements HasClickHandlers{
      */
     public ListItem(String s){
         this();
-       
         getElement().setInnerText(s);
     }
  

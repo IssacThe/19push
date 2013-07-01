@@ -5,7 +5,8 @@
             xmlns:k='urn:import:com.kamitsoft.client.ui.carousel'>
 
 <g:HTMLPanel styleName ="welcomelogin kamitBox">
-    <k:CarouselPanel styleName="centerHorizontal height-200px width-600px " ui:field="carousel"/>
+    <!-- k:CarouselPanel styleName="centerHorizontal height-200px width-600px " ui:field="carousel"/-->
+    <g:SimplePanel styleName = "centerHorizontal height-113px width-500px padding-top-100px" ui:field="image"/>
     <g:HTMLPanel ui:field="loginPanel" styleName="centerHorizontal margin-top-40px width-400px " >
         <g:Label  ui:field = "loginmessage" styleName="centerHorizontal textorange margintop5px"/>
         <div class ="margintop20px">

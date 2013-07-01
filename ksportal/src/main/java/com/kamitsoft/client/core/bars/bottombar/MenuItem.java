@@ -6,9 +6,11 @@ import com.kamitsoft.client.i18n.MainDictionary;
 
 public enum MenuItem implements SecuredItem{
     
-    editPatient(ITEM_EDIT_PATIENT ), 
-    editUser(ITEM_EDIT_USER),
-    editRole(ITEM_EDIT_ROLE);
+    addPatient(ITEM_ADD_PATIENT ), 
+    addNote(ITEM_ADD_NOTE),
+    manageAccount(ITEM_MANAGE_ACCOUNT),
+    manageSystem(ITEM_MANAGE_SYSTEM);
+   
     
     public static MainDictionary dictionary;
     private int secureItemID;
@@ -20,9 +22,10 @@ public enum MenuItem implements SecuredItem{
     
     public String getItemTitle(){
         switch(this){
-            case editPatient:return dictionary.editPatient();
-            case editUser:return dictionary.editUser();
-            case editRole:return dictionary.editRole();
+            case addPatient:return dictionary.addPatient();
+            case addNote:return dictionary.addNote();
+            case manageAccount:return dictionary.manageAccount();
+            case manageSystem:return dictionary.manageSystem();
             default:return "";
         }
     }

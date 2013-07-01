@@ -8,6 +8,7 @@ import com.gwtplatform.mvp.client.PopupView;
 import com.gwtplatform.mvp.client.PresenterWidget;
 import com.gwtplatform.mvp.client.proxy.PlaceManager;
 import com.gwtplatform.mvp.client.proxy.PlaceRequest;
+import com.kamitsoft.client.core.patient.PatientMainPresenter;
 import com.kamitsoft.client.places.NamesTokens;
 import com.kamitsoft.shared.beans.patient.PatientInfo;
 
@@ -47,6 +48,7 @@ public class PatientListPopupPresenter extends PresenterWidget<PatientListPopupP
     }
     
     protected void display(PatientInfo info) {
+       
         PlaceRequest request = new PlaceRequest(NamesTokens.patientInfo);
         request = request.with("patientID", String.valueOf(info.getPatientID()));
         placeManager.revealPlace(request);
